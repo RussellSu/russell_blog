@@ -2,12 +2,17 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view></router-view>
+    <navbar></navbar>
   </div>
 </template>
 
 <script>
+  import Navbar from '@/components/SideBarNav'
   export default {
-    name: 'app'
+    name: 'app',
+    components: {//  这写成对象而不是数组，为啥？
+      Navbar
+    }
   }
 </script>
 
