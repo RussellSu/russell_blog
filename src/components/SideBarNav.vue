@@ -13,7 +13,9 @@
   var navList = [
     {title: 'home', routeName: '/'},
     {title: 'users', routeName: '/users'},
-    {title: 'articles', routeName: '/articles'}
+    {title: 'articles', routeName: '/articles'},
+    {title: 'links', routeName: '/links'},
+    {title: 'about', routeName: '/about'}
   ]
   export default {
     name: 'navbar',

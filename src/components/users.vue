@@ -1,5 +1,5 @@
 <template>
-  <div class="users-module">
+  <div class="users-module module">
     <h1>users</h1>
     <h2>{{description}}</h2>
     <div>{{main}}</div>
