@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 module.exports = (config) => {
     mongoose.connect(`mongodb://${config.dev.host}/${config.dev.dbname}`, { useMongoClient: true }, err => {
