@@ -1,4 +1,12 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "debug.hideActionBar": false
+    "debug.hideActionBar": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.autoIndent": true,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true
 }

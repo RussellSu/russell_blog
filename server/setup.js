@@ -1,14 +1,14 @@
 module.exports = function (app, config) {
-    var http = require("http");
-    var path = require("path");
-    var errorHandler = require("errorhandler");
-    var morgan = require("morgan");
-    var bodyParser = require("body-parser");
-    var cookieParser = require("cookie-parser");
-    var session = require("express-session");
-    var MongoStore = require("connect-mongo")(session);
-    var cors = require("cors");
-    var mongoose = require("mongoose");
+  var http = require('http')
+  var path = require('path')
+  var errorHandler = require('errorhandler')
+  var morgan = require('morgan')
+  var bodyParser = require('body-parser')
+  var cookieParser = require('cookie-parser')
+  var session = require('express-session')
+  var MongoStore = require('connect-mongo')(session)
+  var cors = require('cors')
+  var mongoose = require('mongoose')
 
     //     var secure = true;
     //     if (process.env.ENV === 'local' || process.env.ENV === 'dev') {

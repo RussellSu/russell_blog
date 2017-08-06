@@ -6,9 +6,9 @@ require('./databaseConnect')(config)
 // require('./routes')(app, config)
 
 var server = app.listen(config.port, () => {
-    let host = server.address().address;
-    let port = server.address().port;
-    console.log("【node server】 listening at http://%s:%s", host, port);
+    let host = server.address().address
+    let port = server.address().port
+    console.log('【node server】 listening at http://%s:%s', host, port)
 })
 
 require('./routes')(app, config)
