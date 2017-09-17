@@ -19,7 +19,7 @@ var navList = [
 ]
 export default {
   name: 'navbar',
-  data() {
+  data () {
     return {
       navList: navList
     }
