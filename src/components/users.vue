@@ -1,5 +1,5 @@
 <template>
-  <div class="users-module module">
+  <section class="users-module module">
     <h1>users</h1>
     <h2>{{description}}</h2>
     <div class="module-body">
@@ -22,25 +22,28 @@
             <td>{{user.fullname}}</td>
             <td>{{user.email}}</td>
             <td>{{user.gender}}</td>
-            <td>{{useSr.phone}}</td>
+            <td>{{user.phone}}</td>
             <td>{{user.createTime}}</td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {
   name: 'users',
   created () {
     this.getList()
+    document.title = this.$route.name
   },
   data () {
     return {
       description: 'This is users module.',
       main: 'to be continued.',
       fullname: '',
+      email: '',
+      phone: '',
       userList: []
     }
   },
@@ -58,7 +61,9 @@ export default {
       const fullname = _this.fullname
       const email = _this.email
       const phone = _this.phone
-      this.$http.post('/api/users', { 'fullname': fullname, 'email': email, 'phone': phone }).then(res => console.log(res.data)).catch(err => console.log(err.response))
+      this.$http.post('/api/users', { 'fullname': fullname, 'email': email, 'phone': phone })
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.response))
     }
   }
 }

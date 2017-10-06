@@ -5,7 +5,7 @@
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
   "editor.formatOnType": true,
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.autoIndent": true,
   "editor.formatOnSave": false,
   "editor.insertSpaces": true,

@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 var articleSchema = new Schema({
   title: { type: String, default: '' },
-  author: { type: Schema.Types.ObjectId, ref: 'userModel', index: true },
+  // author: { type: Schema.Types.ObjectId, ref: 'userModel', index: true },
+  author: { type: Schema.Types.ObjectId, ref: 'userModel' },
+  tags: {type: Array, default: []},
   text: { type: String, default: '' },
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now },

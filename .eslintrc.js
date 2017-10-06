@@ -28,6 +28,7 @@ module.exports = {
     'generator-star-spacing': 0,
     'indent': [2, 2],
     'comma-dangle': [2, 'only-multiline'],
+    'space-before-function-paren': [2, 'always'],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }

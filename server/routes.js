@@ -1,15 +1,25 @@
 var path = require('path')
+// var users = require('./routes/users.js')
 
-module.exports = (express, app, config) => {
-  console.log('routes.js require success!')
-  require('./routes/users')
-  app.get('/', function (req, res, next) {
+module.exports = (express, app, config, apiRouter) => {
+  app.all('/', function (req, res, next) {
+    console.log('req.originalUrl', req.originalUrl)
     if (req.originalUrl === '/') {
+      console.log(process.env.NODE_ENV)
       res.sendFile('index.html', { root: path.join(__dirname, '../dist') })
     } else {
       next()
     }
   })
+  app.get('/users' + '| /articles', function (req, res) {
+    res.sendFile('index.html', { root: path.join(__dirname, '../dist') })
+  })
+  // app.use('/', (req, res) => {
+  //   res.sendFile('cmsApp.html', { root: path.join(__dirname, '../dist') })
+  // })
+
+  require('./routes/get')(app, config, apiRouter)
+  require('./routes/post')(app, config, apiRouter)
   // app.get('/homepage', function (req, res) {
   //   // res.send('hello world!');
   //   res.sendFile('cmsApp.html', { root: path.join(__dirname, './public') })
@@ -17,10 +27,7 @@ module.exports = (express, app, config) => {
   // app.get('/login', function (req, res) {
   //   res.sendFile('login.html', { root: path.join(__dirname, '../public') })
   // })
-  app.get('/users' + '| /articles', function (req, res) {
-    res.sendFile('cmsApp.html', { root: path.join(__dirname, '../public') })
-  })
-  console.log(45678)
+  app.use('/api', apiRouter)
   // 托管静态文件， dis目录下面的文件就可以访问了
   app.use(express.static('./dist'))
   // app.get('*', (req, res) => {

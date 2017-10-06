@@ -4,7 +4,7 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../dist/cmsApp.html'),//生成的html路径及名称
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -23,12 +23,12 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 7777,
+    port: 3007,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/': {
+      '/api': {// 将所有api/ 请求发给后台
         //这里的target填服务端的端口的接口地址
         target: 'http://localhost:3000',
         changeOrigin: true,
