@@ -7,7 +7,8 @@ module.exports = (express, app, config, apiRouter) => {
     if (req.originalUrl === '/') {
       console.log(process.env.NODE_ENV)
       res.sendFile('index.html', { root: path.join(__dirname, '../dist') })
-    } else {
+    }
+    else {
       next()
     }
   })

@@ -30,6 +30,8 @@ module.exports = {
     'comma-dangle': [2, 'only-multiline'],
     'space-before-function-paren': [2, 'always'],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    //if-else中的else语句，连同catch 和 finally，都必须在右括号后另起一行， allowSingleLine 允许块的开括号和闭括号在 同一行
+    'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }]
   }
 }

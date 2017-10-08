@@ -16,7 +16,7 @@ exports.addArticle = (req, res) => {
 
   Article.create(createObj, (err, updated) => {
     if (err) {
-      return res.status(400).send(err)
+      return res.status(500).send(err)
     }
     res.send({ 'article': updated })
   })
