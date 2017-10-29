@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Users from '@/components/users'
 import Articles from '@/components/articles'
+import ArticleItem from '@/components/ArticleItem'
 import About from '@/components/About'
 import Links from '@/components/Links'
 import Me from '@/components/Me'
@@ -25,7 +26,19 @@ export default new Router({
     {
       path: '/articles',
       name: 'articles',
-      component: Articles
+      component: Articles,
+      // children: [
+      //   {
+      //     path: ':id',
+      //     name: 'articleItem',
+      //     component: ArticleItem
+      //   }
+      // ]
+    },
+    {
+      path: '/articles/:id',
+      name: 'articleItem',
+      component: ArticleItem,
     },
     {
       path: '/editArticle',

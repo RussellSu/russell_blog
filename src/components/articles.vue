@@ -7,17 +7,22 @@
       <table>
         <thead>
           <tr>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>标题</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr v-for='article of articles'>
+            <td>
+              <router-link :to="'/articles/' + article._id">
+              <!-- <router-link :to="{ name: 'articles', params: {id: article._id} }"> -->
+              {{article.title}}
+              </router-link>
+              </td>
+            <td>{{article.createTime}}</td>
+            <td>{{article.updateTime}}</td>
             <td></td>
           </tr>
         </tbody>
@@ -34,13 +39,22 @@ export default {
   data () {
     return {
       description: 'This is articles module.',
-      main: 'to be continued.'
+      main: 'to be continued.',
+      articles: []
     }
   },
   created () {
     document.title = this.$route.name
+    this.getList()
   },
   methods: {
+    getList () {
+      this.$http.get('/api/articles')
+      .then(res => {
+        this.articles = res.data.articles
+      })
+      .catch(err => console.log(err))
+    },
     editNew () {
       alert('editNew!')
     }
