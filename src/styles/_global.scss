@@ -1,0 +1,53 @@
+html{
+  height: 100%;
+  font-family: Verdana, sans-serif;
+  font-family: 'Courier New', Verdana, STKaiti, sans-serif;
+  // font-family: 'Microsoft Yahei Mono', 'Courier New', Verdana, sans-serif;
+}
+body{
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+  
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li{
+    display: inline-block
+  }
+}
+
+button {
+  background-color: transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
+  padding: 10px;
+  cursor: pointer;
+  &.btn-circle {
+    border-radius: 50%;
+  }
+}
+
+textarea{
+  font-family: inherit;
+  background-color: rgba(155, 155, 155, .5);
+  padding: 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+// @@@@@@@@@@@@@@@@@@@ temp style before add UI-framework @@@@@@@@@@@@@@@@@@ START
+
+input[type=text] {
+  padding: .5rem;
+  border: 1px solid rgba(255, 255, 255, .5);
+  background-color: rgba(155, 155, 155, .5);
+}
+
+// @@@@@@@@@@@@@@@@@@@ temp style before add UI-framework @@@@@@@@@@@@@@@@@@ END
+
+
