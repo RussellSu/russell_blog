@@ -4,7 +4,7 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/cmsApp.html'),//生成的html路径及名称
+    index: path.resolve(__dirname, '../dist/index.html'),//生成的html路径及名称，给 webpack.XXX.config.js HtmlWebpackPlugin使用
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

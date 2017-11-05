@@ -8,12 +8,19 @@ module.exports = (express, app, config, apiRouter) => {
       console.log(process.env.NODE_ENV)
       res.sendFile('index.html', { root: path.join(__dirname, '../dist') })
     }
+    else if (req.originalUrl === '/login') {
+      console.log('login!!!')
+      res.sendFile('login.html', { root: path.join(__dirname, '../dist') })
+    }
     else {
       next()
     }
   })
   app.get('/users' + '| /articles', function (req, res) {
     res.sendFile('index.html', { root: path.join(__dirname, '../dist') })
+  })
+  app.get('/login', function (req, res) {
+    res.sendFile('login.html', { root: path.join(__dirname, '../dist') })
   })
   // app.use('/', (req, res) => {
   //   res.sendFile('cmsApp.html', { root: path.join(__dirname, '../dist') })

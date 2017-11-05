@@ -52,7 +52,7 @@ export default {
       this.$http.get('/api/users')
         .then(res => {
           this.userList = res.data.users
-          console.log(res)
+          console.log('getList res:', res)
         })
         .catch(err => console.log(err.response))
     },
