@@ -2,9 +2,10 @@ var express = require('express')
 let app = express()
 const apiRouter = express.Router()
 const config = require('./config')
+const passport = require('passport')
 
 require('./databaseConnect')(config)
-require('./setup')(app, config)
+require('./setup')(app, passport, config)
 require('./routes.js')(express, app, config, apiRouter)
 
 var server = app.listen(config.port, () => {

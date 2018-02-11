@@ -8,10 +8,12 @@ import About from '@/components/About'
 import Links from '@/components/Links'
 import Me from '@/components/Me'
 import EditArticle from '@/components/EditArticle'
+import NotFoundPage from '@/components/notFoundPage'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -21,7 +23,10 @@ export default new Router({
     {
       path: '/users',
       name: 'users',
-      component: Users
+      component: Users,
+      meta: {
+        requireAuth: true // 需要登陆
+      }
     },
     {
       path: '/articles',
@@ -43,7 +48,10 @@ export default new Router({
     {
       path: '/editArticle',
       name: 'editArticle',
-      component: EditArticle
+      component: EditArticle,
+      meta: {
+        requireAuth: true // 需要登陆
+      }
     },
     {
       path: '/about',
@@ -59,6 +67,29 @@ export default new Router({
       path: '/me',
       name: 'me',
       component: Me
+    },
+    {
+      path: '*',
+      name: 'notFoundPage',
+      component: NotFoundPage
     }
   ]
 })
+// var _this = this
+router.beforeEach((to, from, next) => {
+  console.log('to', to)
+  if (to.matched.some(item => item.meta.requireAuth)) {
+    if (window.Russell.user) {
+      console.log('Russell.user', window.Russell.user)
+      next()
+    }
+    else {
+      window.location.href = '/login'
+    }
+  }
+  else {
+    next()
+  }
+})
+
+export default router

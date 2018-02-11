@@ -3,15 +3,19 @@ var Schema = mongoose.Schema
 
 var userSchema = new Schema({
   fullname: { type: String, default: '', index: true },
+  nickname: { type: String, default: '', trim: true },
+  password: { type: String, default: '', trim: true },
   prid: { type: String, default: '', index: true },
   email: { type: String, default: '' },
   phone: { type: String, default: '' },
   gender: { type: String, default: 'M', enum: ['M', 'F'] },
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now },
-}, {
-  collection: 'users'
-})
+},
+  {
+    collection: 'users'
+  }
+)
 
 userSchema.pre('save', next => {
   var _this = this

@@ -1,5 +1,5 @@
 <template>
-  <div id="cms">
+  <div id="web">
     <div class="main-wrapper">
       <transition name="slide">
         <router-view></router-view>
@@ -14,18 +14,8 @@ import Navbar from '@/components/SideBarNav'
 import '@/styles/index.scss'
 
 export default {
-  name: 'cms',
+  name: 'web',
   created () {
-    if (!window.Russell.user) {
-      this.$http
-        .get('/api/profile')
-        .then(res => {
-          window.Russell.user = res.data.user
-        })
-        .catch(err => {
-          alert(err)
-        })
-    }
   },
   components: {//  这写成对象而不是数组，为啥？
     Navbar
@@ -38,7 +28,7 @@ body {
   background-image: url("./assets/bg_body003.png");
 }
 
-#cms {
+#web {
   // font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

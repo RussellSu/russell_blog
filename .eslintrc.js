@@ -32,6 +32,7 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     //if-else中的else语句，连同catch 和 finally，都必须在右括号后另起一行， allowSingleLine 允许块的开括号和闭括号在 同一行
-    'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }]
+    'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }],
+    'operator-linebreak': [2, 'before'] // + || 强制操作符使用一致的换行符风格  before行前
   }
 }

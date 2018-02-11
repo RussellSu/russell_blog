@@ -23,7 +23,7 @@
             <td>{{user.email}}</td>
             <td>{{user.gender}}</td>
             <td>{{user.phone}}</td>
-            <td>{{user.createTime}}</td>
+            <td>{{user.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
           </tr>
         </tbody>
       </table>

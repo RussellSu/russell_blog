@@ -51,8 +51,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index,
-      template: 'index.html',//根目录下index.html
+      filename: config.build.cms,
+      template: 'cms.html',//根目录下cms.html
       inject: true,
       minify: {
         removeComments: true,
@@ -62,12 +62,35 @@ var webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      chunks: ['cms','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
+    // new HtmlWebpackPlugin({
+    //   filename: config.build.web,
+    //   template: 'web.html',//根目录下web.html
+    //   inject: true,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeAttributeQuotes: true
+    //     // more options:
+    //     // https://github.com/kangax/html-minifier#options-quick-reference
+    //   },
+    //   // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    //   chunksSortMode: 'dependency',
+    //   chunks: ['web','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
+    // }),
     new HtmlWebpackPlugin({
-      filename: 'login.html',
+      filename: config.build.login,
       template: 'login.html',
-      inject: false
+      inject: true,
+      minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true
+      },
+      chunksSortMode: 'dependency',
+      chunks: ['login','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({

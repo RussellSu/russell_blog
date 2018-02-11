@@ -4,6 +4,9 @@
       <li v-for="item of navList">
         <router-link v-bind:to="item.routeName" exact>{{item.title}}</router-link>
       </li>
+      <li class="logout-btn">
+        <a href="/logout">logout</a>
+      </li>
     </ul>
   </nav>
 </template>
@@ -58,6 +61,7 @@ nav:after {
 }
 ul{
   margin-top: 40px;
+  height: calc(100% - 40px);
 }
 li{
   display: block;
@@ -77,5 +81,11 @@ li{
       color: #00FF39;
     }
   }
+}
+.logout-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 </style>

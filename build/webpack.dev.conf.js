@@ -26,14 +26,22 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
+      filename: 'cms.html',
+      template: 'cms.html',
+      inject: true,//是否开启注入
+      chunks: ['cms']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'web.html',
+    //   template: 'web.html',
+    //   inject: true,//是否开启注入
+    //   chunks: ['web']//需要引入的Chunk，不配置就会引入所有页面的资源
+    // }),
     new HtmlWebpackPlugin({
       filename: 'login.html',
       template: 'login.html',
-      inject: false
+      inject: true,
+      chunks: ['login']
     }),
     new FriendlyErrorsPlugin()
   ]

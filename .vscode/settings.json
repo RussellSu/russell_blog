@@ -9,5 +9,10 @@
   "editor.autoIndent": true,
   "editor.formatOnSave": false,
   "editor.insertSpaces": true,
-  "javascript.format.insertSpaceBeforeFunctionParenthesis": true
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    // "vue": "html"
+  },
+  "emmet.triggerExpansionOnTab": true
 }

@@ -21,8 +21,8 @@
               {{article.title}}
               </router-link>
               </td>
-            <td>{{article.createTime}}</td>
-            <td>{{article.updateTime}}</td>
+            <td>{{article.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
+            <td>{{article.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
             <td></td>
           </tr>
         </tbody>

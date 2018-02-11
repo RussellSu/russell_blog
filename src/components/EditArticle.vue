@@ -52,11 +52,19 @@ export default {
   },
   methods: {
     createNewArticle () {
+      var _this = this
       this.$http.post('/api/articles', { data: JSON.stringify(this.article) })
         .then(res => {
           console.log(res.data)
+          _this.$router.replace('articles')
         })
         .catch(err => {
+          if (err.response.data.missingTitle) {
+            alert('请填写题目')
+          }
+          else if (err.response.data.missingText) {
+            alert('请填写正文')
+          }
           console.log(err.response)
         })
     },

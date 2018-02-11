@@ -16,7 +16,8 @@ exports.addUser = (req, res) => {
     if (user) {
       if (user.emai === email) {
         return res.json({ 'emailRepeated': true })
-      } else {
+      }
+      else {
         return res.json({ 'phoneRepeated': true })
       }
     }
