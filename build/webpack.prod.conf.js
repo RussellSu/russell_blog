@@ -65,21 +65,21 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency',
       chunks: ['cms','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: config.build.web,
-    //   template: 'web.html',//根目录下web.html
-    //   inject: true,
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: true,
-    //     removeAttributeQuotes: true
-    //     // more options:
-    //     // https://github.com/kangax/html-minifier#options-quick-reference
-    //   },
-    //   // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-    //   chunksSortMode: 'dependency',
-    //   chunks: ['web','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
-    // }),
+    new HtmlWebpackPlugin({
+      filename: config.build.web,
+      template: 'web.html',//根目录下web.html
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
+      chunks: ['web','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
+    }),
     new HtmlWebpackPlugin({
       filename: config.build.login,
       template: 'login.html',

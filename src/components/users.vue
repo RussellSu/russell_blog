@@ -49,6 +49,8 @@ export default {
   },
   methods: {
     getList () {
+      console.log('users getList')
+      // this.$http.get('/api/users?_=' + new Date())
       this.$http.get('/api/users')
         .then(res => {
           this.userList = res.data.users

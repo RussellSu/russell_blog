@@ -5,10 +5,7 @@ exports.isLogin = (req, res, next) => {
     console.error('missing session!')
     // res.setHeader('Content-type', 'text/html');
     res.cookie('originalUrl', req.originalUrl)
-    res.redirect('../login')
-    // res.location('/login')
-    // res.sendFile('login.html', { root: path.join(__dirname, '../../dist') })
-    // next('/login')
+    res.status(500).send({ 'notLogin': true})
   }
   else {
     next()

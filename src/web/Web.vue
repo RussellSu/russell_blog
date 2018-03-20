@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Navbar from '@/components/SideBarNav'
-import '@/styles/index.scss'
+import Navbar from '@/web/components/SideBarNav'
+import '@/web/styles/index.scss'
 
 export default {
   name: 'web',
@@ -32,7 +32,7 @@ body {
   // font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #7e9e9d; // margin-top: 60px;
   .main-wrapper {
     margin: 0 auto;
@@ -44,8 +44,16 @@ body {
     height: 100vh;
     box-sizing: border-box;
     overflow: auto;
+
     section[class*='-module'] {
-      padding-top: 50px;
+      margin: 0 20px;
+      // padding-top: 50px;
+      .module-title{
+        margin: 0;
+        line-height: 1.5;
+        font-size: 4rem;
+        text-align: center;
+      }
     }
   }
 }

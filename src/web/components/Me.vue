@@ -1,6 +1,6 @@
 <template>
   <section class="me-module module">
-    <img class="avatar" src="./../assets/aboutme03.jpg" />
+    <img class="avatar" src="./../assets/aboutme.jpg" />
     <h1>{{ mainTitle }}</h1>
     <h2>{{ subTitle }}</h2>
     <h3>{{ info }}</h3>
@@ -27,6 +27,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.module{
+  text-align: center;
+}
   .avatar{
     display:inline-block;
     width: 200px;

@@ -11,6 +11,9 @@ var mongoose = require('mongoose')
 var secret = require('../secret/secret.js')
 
 module.exports = function (app, passport, config) {
+  process.env.ENV = process.env.ENV || 'dev'
+  console.log(`■■■process.env.ENV:${process.env.ENV}`)
+
   // 非生产环境CORS
   if (process.env.ENV !== 'production') {
     console.log('CORS ENABLED.')
@@ -28,7 +31,7 @@ module.exports = function (app, passport, config) {
   app.use(bodyParser.urlencoded({ extended: true, limit: '80mb' }))
   // parse application/json
   app.use(bodyParser.json({ limit: '50mb' }))
-  console.log('■secret.cookieSecret■', secret.cookieSecret)
+  console.log('■■■secret.cookieSecret■', secret.cookieSecret)
   app.use(cookieParser(secret.cookieSecret))
   app.use(session({
     resave: true,

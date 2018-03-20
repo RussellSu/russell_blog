@@ -10,7 +10,7 @@ function resolve (dir) {
 module.exports = {
   entry: {
     cms: './src/cms.js',
-    // web: './src/web.js',
+    web: './src/web/web.js',
     login: './src/login.js'
   },
   output: {
@@ -24,7 +24,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
     }
   },
   module: {

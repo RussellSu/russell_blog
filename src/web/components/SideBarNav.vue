@@ -1,6 +1,6 @@
 <template>
   <nav class="side-nav">
-  <div class="fullname"></div>
+  <div class="fullname"></div></div>
     <ul>
       <li v-for="item of navList">
         <router-link v-bind:to="item.routeName" exact>{{item.title}}</router-link>
@@ -13,10 +13,9 @@
 </template>
 
 <script>
-//  import sidebar from '@/navList'
+//  import sidebar from '@/web/navList'
 var navList = [
-  {title: 'home', routeName: '/', exact: true},
-  { title: 'users', routeName: '/users' },
+  // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },
   { title: 'links', routeName: '/links' },
   { title: 'about', routeName: '/about' },

@@ -31,12 +31,12 @@ module.exports = merge(baseWebpackConfig, {
       inject: true,//是否开启注入
       chunks: ['cms']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'web.html',
-    //   template: 'web.html',
-    //   inject: true,//是否开启注入
-    //   chunks: ['web']//需要引入的Chunk，不配置就会引入所有页面的资源
-    // }),
+    new HtmlWebpackPlugin({
+      filename: 'web.html',
+      template: 'web.html',
+      inject: true,//是否开启注入
+      chunks: ['web']//需要引入的Chunk，不配置就会引入所有页面的资源
+    }),
     new HtmlWebpackPlugin({
       filename: 'login.html',
       template: 'login.html',
