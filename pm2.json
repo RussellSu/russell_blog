@@ -1,0 +1,34 @@
+{
+  "name"             : "russell-blog",
+  "cwd"              : "/srv/russell-blog",
+  "args"             : ["--toto=heya coco", "-d", "1"],
+  "script"           : "server/server.js",
+  "node_args"        : ["--harmony", " --max-stack-size=102400000"],
+  "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+  "error_file"       : "/var/log/russell-blog/russell-blog.stderr.log",
+  "out_file"         : "log/russell-blog.stdout.log",
+  "pid_file"         : "pids/node-geo-api.pid",
+  "instances"        : "max",
+  "min_uptime"       : "200s",
+  "max_restarts"     : 10, 
+  "max_restarts-description-lalalala": "defaults to 15",
+  "max_memory_restart": "800M",
+  "cron_restart"     : "1 0 * * *",
+  "watch"            : false,
+  "ignore_watch"      : ["[\\/\\\\]\\./", "node_modules"],
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "fork",
+  "autorestart"      : false, 
+  "autorestart-description-lalalala": "enable/disable automatic restart when an app crashes or exits",
+  "vizion"           : false, 
+  "vizion-description-lalalala"           : "enable/disable vizion features (versioning control)",
+  "Default environment variables that will be injected in any environment and at any start": "lalalalalalalala",
+  "env": {
+    "NODE_ENV": "production",
+    "AWESOME_SERVICE_API_TOKEN": "xxx"
+  },
+  "env_*" : {
+    "SPECIFIC_ENV" : true
+  }
+}
