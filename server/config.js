@@ -6,7 +6,7 @@ module.exports = {
   },
   prd: {
     host: '',
-    dbname: 'russell-prd',
+    dbname: 'russell-blog',
 
   }
 }
