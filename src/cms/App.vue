@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Navbar from '@/components/SideBarNav'
-import '@/styles/index.scss'
+import Navbar from '@/cms/components/SideBarNav'
+import '@/cms/styles/index.scss'
 
 export default {
   name: 'cms',

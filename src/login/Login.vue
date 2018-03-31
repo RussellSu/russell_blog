@@ -6,7 +6,7 @@
         <div class="left-bar">
           <p class="">I don't have a account</p>
           <a href="/" class="login-btn" title="I am just a tourist.">tourist</a>
-          <a href="/logon" class="login-btn">log on</a>
+          <a href="/signup" class="login-btn">Sign up</a>
         </div>
         <div class="right-bar">
           <p class="">I have a account</p>

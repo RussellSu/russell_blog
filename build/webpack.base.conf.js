@@ -9,9 +9,10 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    cms: './src/cms.js',
+    cms: './src/cms/cms.js',
     web: './src/web/web.js',
-    login: './src/login.js'
+    login: './src/login/login.js',
+    signup: './src/signup/signup.js',    
   },
   output: {
     path: config.build.assetsRoot,

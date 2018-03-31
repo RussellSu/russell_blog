@@ -1,4 +1,4 @@
 module.exports = {
-  'keygen': '',
-  'cookieSecret': ''
+  'keygen': 'super ultimatum',
+  'cookieSecret': 'bogeyman'
 }

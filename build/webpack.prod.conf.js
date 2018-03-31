@@ -92,6 +92,18 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency',
       chunks: ['login','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
+    new HtmlWebpackPlugin({
+      filename: config.build.signup,
+      template: 'signup.html',
+      inject: true,
+      minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true
+      },
+      chunksSortMode: 'dependency',
+      chunks: ['signup','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
+    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

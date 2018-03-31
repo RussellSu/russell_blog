@@ -3,7 +3,7 @@
   "cwd"              : "./",
   "args"             : ["--toto=heya coco", "-d", "1"],
   "script"           : "server/server.js",
-  "node_args"        : ["--harmony", " --max-stack-size=102400000"],
+  "node_args"        : ["--harmony"],
   "log_date_format"  : "YYYY-MM-DD HH:mm Z",
   "error_file"       : "/var/log/russell-blog/russell-blog.stderr.log",
   "out_file"         : "/var/log/russell-blog/russell-blog.stdout.log",

@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import Users from '@/components/users'
-import Articles from '@/components/articles'
-import ArticleItem from '@/components/ArticleItem'
-import About from '@/components/About'
-import Links from '@/components/Links'
-import EditArticle from '@/components/EditArticle'
-import NotFoundPage from '@/components/notFoundPage'
+import Hello from '@/cms/components/Hello'
+import Users from '@/cms/components/users'
+import Articles from '@/cms/components/articles'
+import ArticleItem from '@/cms/components/ArticleItem'
+import About from '@/cms/components/About'
+import Links from '@/cms/components/Links'
+import EditArticle from '@/cms/components/EditArticle'
+import NotFoundPage from '@/cms/components/notFoundPage'
 
 Vue.use(Router)
 

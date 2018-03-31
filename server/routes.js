@@ -33,6 +33,14 @@ module.exports = (express, app, config, apiRouter) => {
       res.sendFile('login.html', { root: path.join(__dirname, '../dist') })
     }
   })
+  app.get('/signup', function (req, res) {
+    if (req.session && req.session.user) {
+      res.redirect('/')
+    }
+    else {
+      res.sendFile('signup.html', { root: path.join(__dirname, '../dist') })
+    }
+  })
   // app.use('/', (req, res) => {
   //   res.sendFile('cmsApp.html', { root: path.join(__dirname, '../dist') })
   // })

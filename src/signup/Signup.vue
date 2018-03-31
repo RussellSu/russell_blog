@@ -1,0 +1,182 @@
+<template>
+  <div id="signup">
+    <div class="center-wrapper">
+      <div class="w-header">welcome to Russell's Home!</div>
+      <div class="w-body clearfix">
+        <div class="right-bar">
+          <p class="">person information</p>
+          <div class="acount signup-item">
+            <i class="fa fa-user"></i>
+            <input type="text" class="" v-model='username'>
+          </div>
+          <div class="password signup-item">
+            <i class="fa fa-key"></i>
+            <input type="password" class="" v-model='password'>
+          </div>
+          <div class="btn-bar signup-item">
+            <a class="signup-btn cursor-hand" title="signup" @click='signup'>Sign up</a>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="btn-bar">
+        
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+// import "@/styles/signup.scss";
+
+export default {
+  name: 'signup',
+  components: {},
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    signup () {
+      var _this = this
+      var data = {
+        username: _this.username,
+        password: _this.password
+      }
+      this.$http
+        .post('/api/signup', { data: JSON.stringify(data) })
+        .then(res => {
+          console.log(res.data)
+          window.location.href = '/'
+        })
+        .catch(err => {
+          if (err.response.data.empty) {
+            alert('用户名密码不可为空')
+          }
+          else if (err.response.data.userNotFound) {
+            alert('用户名或密码不正确')
+          }
+          console.log(err.response)
+        })
+    }
+  }
+}
+</script>
+
+<style>
+html {
+ font-size: 16px;
+} 
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.cursor-hand {
+  cursor: pointer;
+}
+</style>
+
+<style lang="scss" scoped>
+#signup {
+  height: 100%;
+  background-color: #6c6c6c; /*#f6f1e8*/
+  background-attachment: fixed;
+  background-image: url("/static/img/giraffe03.jpg");
+  background-position: 0 0;
+  background-size: cover;
+  background-repeat: space;
+}
+.center-wrapper {
+  position: fixed;
+  left: calc(50% - 250px);
+  top: calc(50% - 150px);
+  width: 500px;
+  height: 300px;
+  padding: 10px;
+  background-color: rgba(49, 176, 213, 0.5);
+  box-shadow: 0px 0px 17px #dadada;
+  border-radius: 4px 4px;
+  color: #fff;
+}
+.center-wrapper input {
+  border: 0;
+  padding: 0.3rem;
+  font-family: inherit;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.w-header {
+  padding: 1rem .5rem;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.w-body {
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: center;
+  &:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: #FFF;
+  }
+}
+.left-bar {
+  float: left;
+  width: 45%;
+  min-height: 200px;
+}
+.right-bar {
+  float: right;
+  width: 45%;
+}
+.signup-item {
+  margin: 0 0.5rem 1rem 0.5rem;
+  text-align: center;
+}
+.signup-item .fa {
+  margin-right: .1rem;
+  min-width: 16px;
+}
+
+.center-wrapper .btn-bar {
+  text-align: center;
+}
+
+.center-wrapper .signup-btn {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  // margin: 0 1.2rem;
+  padding: 4px 10px;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  transition: color, background-color, transform 0.5s;
+}
+
+.center-wrapper .signup-btn:hover {
+  transform: scale3d(1.4, 1.4, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(49, 176, 213, 1);
+  background-color: #fff;
+}
+</style>

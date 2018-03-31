@@ -7,6 +7,7 @@ module.exports = {
     cms: path.resolve(__dirname, '../dist/cms.html'),//生成的html路径及名称，给 webpack.XXX.config.js HtmlWebpackPlugin使用
     web: path.resolve(__dirname, '../dist/web.html'),//生成的html路径及名称，给 webpack.XXX.config.js HtmlWebpackPlugin使用
     login: path.resolve(__dirname, '../dist/login.html'),//生成的html路径及名称，给 webpack.XXX.config.js HtmlWebpackPlugin使用
+    signup: path.resolve(__dirname, '../dist/signup.html'),//生成的html路径及名称，给 webpack.XXX.config.js HtmlWebpackPlugin使用
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
