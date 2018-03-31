@@ -11,11 +11,11 @@ var mongoose = require('mongoose')
 var secret = require('../secret/secret.js')
 
 module.exports = function (app, passport, config) {
-  process.env.ENV = process.env.ENV || 'dev'
-  console.log(`■■■process.env.ENV:${process.env.ENV}`)
+  process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
+  console.log(`■■■process.env.NODE_ENV:${process.env.NODE_ENV}`)
 
   // 非生产环境CORS
-  if (process.env.ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     console.log('CORS ENABLED.')
     app.use(cors({
       origin: ['http://localhost:3000', 'http://localhost:3007'],
@@ -41,7 +41,7 @@ module.exports = function (app, passport, config) {
     secret: secret.cookieSecret, // 签名，与cookie-parse中设置的签名字符串一致
     rolling: false,
     cookie: {
-      secure: process.env.ENV === 'production',
+      secure: process.env.NODE_ENV === 'production',
       httpOnly: true, // 只有server可读写cookie(防止client修改伪造cookie)
       maxAge: 60 * 60 * 1000 // 1 小时失效
     },
