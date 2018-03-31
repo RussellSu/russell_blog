@@ -25,7 +25,7 @@ module.exports = function (app, passport, config) {
   }
 
   app.enable('trust proxy')
-  app.disable('X-Powered-By')
+  app.disable('x-powered-by')
   app.use(morgan('dev'))
   app.use(errorHandler())
   // parse application/x-www-form-urlencoded
