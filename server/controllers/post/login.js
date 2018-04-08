@@ -8,17 +8,22 @@ exports.login = function (req, res) {
   User.findOne({
     '$or': [
       { 'fullname': data.username },
-      { 'phone': data.username },
+      { 'phoneNumber': data.username },
       { 'email': data.username }
-    ],
-    'password': data.password
-  }, 'fullname prid email phone gender').lean().exec((err, user) => {
+    ]
+  }, 'hash salt fullname prid email phoneNumber gender').exec((err, user) => {
     if (err) {
       return res.status(501).send(err)
     }
     if (!user) {
-      return res.status(404).send({ 'userNotFound': true })
+      return res.status(404).send({ 'validFailed': true })
     }
+    const passwordRight = user.validPassword(data.password)
+    if (!passwordRight) {
+      return res.status(404).send({ 'validFailed': true })
+    }
+    delete user.salt
+    delete user.hash
     req.session.user = user
     res.status(200).send({ 'user': user })
   })

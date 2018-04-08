@@ -1,7 +1,7 @@
 <template>
 <section class="articles-module module">
     <h1 class="module-title">articles</h1>
-    <div class="article-list">
+    <div class="article-list rs-scrollbar">
       <div class="article" v-for="article of articles">
         <router-link :to="'/articles/' + article._id" class="article-title"> {{article.title}}</router-link>
         <div class="float-left"><b>创建时间：</b>{{article.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>

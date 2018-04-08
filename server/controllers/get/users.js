@@ -4,7 +4,7 @@ exports.profile = (req, res) => {
   if (!req.session || !req.session.user) {
     return res.status(400).send({'missingUser': true})
   }
-  User.findOne({ '_id': req.session.user._id }, 'fullname prid email phone').lean().exec((err, user) => {
+  User.findOne({ '_id': req.session.user._id }, 'fullname prid email phoneNumber').lean().exec((err, user) => {
     if (err) return res.status(501).send(err)
     res.json({'user': user})
   })

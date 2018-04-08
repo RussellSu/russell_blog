@@ -61,7 +61,7 @@ export default {
           if (err.response.data.empty) {
             alert('用户名密码不可为空')
           }
-          else if (err.response.data.userNotFound) {
+          else if (err.response.data.validFailed) {
             alert('用户名或密码不正确')
           }
           console.log(err.response)

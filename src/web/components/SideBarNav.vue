@@ -50,7 +50,7 @@ nav:hover {
 
 nav:after {
   content: "";
-  display: block;
+  display: none;
   position: absolute;
   top: 50%;
   right: -10px;
@@ -77,7 +77,6 @@ li{
       background-color: rgba(255, 255, 255, 0.3);
     }
     &.router-link-active{
-      font-size: 28px;
       color: #00FF39;
     }
   }

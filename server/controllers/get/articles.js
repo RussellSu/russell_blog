@@ -1,7 +1,7 @@
 let Article = require('../../models/articles')
 
 exports.articleList = (req, res) => {
-  Article.find({}).exec((err, articles) => {
+  Article.find({}).lean().exec((err, articles) => {
     if (err) {
       return res.json(err)
     }

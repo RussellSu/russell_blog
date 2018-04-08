@@ -23,7 +23,7 @@
             "name": "node server",
             // "port": 3000,
             "program": "${workspaceRoot}\\server\\server.js",
-            "NODE_ENV": "dev",
+            // "NODE_ENV": "dev",
             "env": {
               "NODE_ENV": "dev"
             },
