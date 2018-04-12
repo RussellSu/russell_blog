@@ -55,7 +55,7 @@ module.exports = function(app, passport, config) {
     secret: secret.cookieSecret, // 签名，与cookie-parse中设置的签名字符串一致
     rolling: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
+      // secure: process.env.NODE_ENV === 'production', // 一旦true, 若无https 连接， cookie不会再发送给server
       httpOnly: true, // 只有server可读写cookie(防止client修改伪造cookie)
       maxAge: 60 * 60 * 1000 // 1 小时失效
     },
