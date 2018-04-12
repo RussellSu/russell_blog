@@ -45,14 +45,6 @@ let router = new Router({
       component: ArticleItem,
     },
     {
-      path: '/editArticle',
-      name: 'editArticle',
-      component: EditArticle,
-      meta: {
-        requireAuth: true // 需要登陆
-      }
-    },
-    {
       path: '/about',
       name: 'about',
       component: About

@@ -10,7 +10,7 @@ exports.addArticle = (req, res) => {
   }
   let createObj = {
     'title': article.title,
-    // 'author': '',
+    'author': req.user._id,
     'text': article.text,
   }
 

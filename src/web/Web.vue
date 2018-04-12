@@ -57,7 +57,7 @@ body {
     border-width: 0 1px;
     border-style: solid;
     border-color: rgba(216, 216, 216, 0.1);
-    max-width: 800px;
+    max-width: 1080px;
     height: 100vh;
     box-sizing: border-box;
     overflow: auto;

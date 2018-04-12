@@ -1,7 +1,7 @@
 {
   "name"             : "russell-blog",
   "cwd"              : "./",
-  "args"             : ["--toto=heya coco", "-d", "1"],
+  "args"             : ["--secret01=sss001 coco", "-d", "1"],
   "script"           : "server/server.js",
   "node_args"        : ["--harmony"],
   "log_date_format"  : "YYYY-MM-DD HH:mm Z",
@@ -26,6 +26,7 @@
   "Default environment variables that will be injected in any environment and at any start": "lalalalalalalala",
   "env": {
     "NODE_ENV": "dev",
+    "cookieSecret": "bogeyman",
     "AWESOME_SERVICE_API_TOKEN": "xxx"
   },
   "env_*" : {

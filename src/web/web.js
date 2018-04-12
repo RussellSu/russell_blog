@@ -14,7 +14,7 @@ Vue.config.productionTip = false
 import router from './router'
 
 Vue.filter('time_format', (value, formatStr = 'YYYYMMDD') => Moment(value).format(formatStr))
-
+/* eslint-disable no-unused-vars */
 window.Russell = {}
 /* eslint-disable no-new */
 new Vue({

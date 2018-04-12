@@ -1,9 +1,9 @@
-const Path = require('path')
+// const Path = require('path')
 const Crypto = require('crypto')
 
 exports.isLogin = (req, res, next) => {
-  if (!req.session || !req.session.user) {
-    console.error('missing session!')
+  if (!req.user) {
+    console.error('not login!')
     // res.setHeader('Content-type', 'text/html');
     res.cookie('originalUrl', req.originalUrl)
     res.status(500).send({ 'notLogin': true })

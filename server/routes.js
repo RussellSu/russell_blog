@@ -5,7 +5,7 @@ var path = require('path')
 
 module.exports = (express, app, config, apiRouter) => {
   console.log(`■■■server process.env.NODE_ENV:${process.env.NODE_ENV}`)
-  app.all('/', function (req, res, next) {
+  app.all('/', function(req, res, next) {
     console.log('■req.originalUrl■', req.originalUrl)
     if (req.originalUrl === '/') {
       res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
@@ -17,24 +17,24 @@ module.exports = (express, app, config, apiRouter) => {
   app.get('/articles'
     + '|/about'
     + '|/links'
-    + '|/me', function (req, res) {
-      res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
-    })
+    + '|/me', function(req, res) {
+    res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
+  })
   app.get('/cms/about'
     + '|/cms/users'
     + '|/cms/articles'
-    + '|/cms/links', function (req, res) {
-      res.sendFile('cms.html', { root: path.join(__dirname, '../dist') })
-    })
-  app.get('/login', function (req, res) {
-    if (req.user || req.session && req.session.passport && req.session.passport.user) {
+    + '|/cms/links', function(req, res) {
+    res.sendFile('cms.html', { root: path.join(__dirname, '../dist') })
+  })
+  app.get('/login', function(req, res) {
+    if (req.user) {
       res.redirect('/')
     }
     else {
       res.sendFile('login.html', { root: path.join(__dirname, '../dist') })
     }
   })
-  app.get('/signup', function (req, res) {
+  app.get('/signup', function(req, res) {
     if (req.session && req.session.user) {
       res.redirect('/')
     }
@@ -67,7 +67,7 @@ module.exports = (express, app, config, apiRouter) => {
   //   console.log(req.originalUrl)
   //   res.status(200).send('OK')
   // })
-  app.get('*', function (req, res) {
+  app.get('*', function(req, res) {
     res.sendStatus(404)
     // res.sendFile('404.html', { root: path.join(__dirname, '../dist') })
   })

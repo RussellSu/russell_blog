@@ -10,7 +10,7 @@
           <b>最后更新：</b>{{article.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
       </div>
     </div>
-    <router-link to="/editArticle" tag="button" exact class="edit-new button btn-circle">+</router-link>
+    <router-link to="/editArticle" tag="button" exact class="edit-new button btn-circle">✎</router-link>
   </section>
 </template>
 <script>
@@ -68,5 +68,7 @@ export default {
   right: 40px;
   width: 50px;
   height: 50px;
+  font-size: 26px;
+  line-height: 1;
 }
 </style>

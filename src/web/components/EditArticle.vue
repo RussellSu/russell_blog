@@ -9,11 +9,11 @@
       <h3 class="ar-title">作者</h3>
       <p v-text="article.author"></p>
     </div>
-    <div style="" class="p-l">
+    <div style="" class="pull-left">
       <h3 class="ar-title">正文</h3>
       <textarea v-model='article.text' name="" class="ar-text" cols="30" rows="10" placeholder="正文"></textarea>
     </div>
-    <div class="p-r">
+    <div class="pull-right">
       <h3>预览</h3>
       <div v-html="compileMD" class="code-preview"></div>
     </div>
@@ -34,7 +34,7 @@ export default {
       mainTitle: '编辑文章',
       article: {
         title: '',
-        author: '',
+        author: window.Russell.user ? window.Russell.user.fullname : '',
         text: ''
       }
     }
@@ -65,6 +65,9 @@ export default {
           }
           else if (err.response.data.missingText) {
             alert('请填写正文')
+          }
+          else {
+            alert(JSON.stringify(err.response.data))
           }
           console.log(err.response)
         })

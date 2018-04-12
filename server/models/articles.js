@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 var articleSchema = new Schema({
-  title: { type: String, default: '' },
+  title: { type: String, default: '', index: true },
   // author: { type: Schema.Types.ObjectId, ref: 'userModel', index: true },
   author: { type: Schema.Types.ObjectId, ref: 'userModel' },
   tags: {type: Array, default: []},
   text: { type: String, default: '' },
   createTime: { type: Date, default: Date.now },
-  updateTime: { type: Date, default: Date.now },
+  updateTime: { type: Date, default: Date.now, index: true },
 }, {
   collection: 'articles'
 })
