@@ -54,7 +54,7 @@ export default {
     createNewArticle() {
       var _this = this
       this.$http
-        .post('/api/articles', { data: JSON.stringify(this.article) })
+        .post('/api/articles', { data: this.article })
         .then(res => {
           console.log(res.data)
           _this.$router.replace('articles')

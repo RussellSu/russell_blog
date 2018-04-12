@@ -1,7 +1,10 @@
 const Article = require('../../models/articles')
 
 exports.addArticle = (req, res) => {
-  const article = JSON.parse(req.body.data)
+  const article = req.body.data
+  if (!article) {
+    return res.status(400).send({ 'missingArticle': true })
+  }
   if (!article.title) {
     return res.status(400).send({ 'missingTitle': true })
   }
