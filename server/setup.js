@@ -45,7 +45,7 @@ module.exports = function(app, passport, config) {
   // parse application/json
   app.use(bodyParser.json({ limit: '50mb' }))
   // parse application/x-www-form-urlencoded
-  app.use(bodyParser.urlencoded({ extended: true, limit: '80mb' }))
+  app.use(bodyParser.urlencoded({ extended: true }))
   console.log('■■■secret.cookieSecret■', secret.cookieSecret)
   app.use(cookieParser(secret.cookieSecret))
   app.use(session({
