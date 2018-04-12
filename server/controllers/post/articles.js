@@ -1,7 +1,7 @@
 const Article = require('../../models/articles')
 
 exports.addArticle = (req, res) => {
-  const article = req.body.data
+  let article = req.body.data
   if (!article) {
     return res.status(400).send({ 'missingArticle': true })
   }
