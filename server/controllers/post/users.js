@@ -16,15 +16,15 @@ exports.addUser = (req, res) => {
     }
     if (user) {
       if (user.emai === email) {
-        return res.json({ 'emailRepeated': true })
+        return res.status(500).send({ 'emailRepeated': true })
       }
       else {
-        return res.json({ 'phoneRepeated': true })
+        return res.status(500).send({ 'phoneRepeated': true })
       }
     }
     User.create(createObj, (err, updated) => {
       if (err) {
-        return res.send(err)
+        return res.status(500).send(err)
       }
       res.send({ 'user': updated })
     })

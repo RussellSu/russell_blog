@@ -16,6 +16,21 @@ import '@/web/styles/index.scss'
 export default {
   name: 'web',
   created () {
+    console.log('web.vue created')
+    this.getProfile()
+  },
+  methods: {
+    getProfile () {
+      this.$http.get('/api/profile')
+      .then(res => {
+        if (res.data.user && res.data.user._id) {
+          window.Russell.user = res.data.user
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
   },
   components: {//  这写成对象而不是数组，为啥？
     Navbar

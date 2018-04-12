@@ -3,7 +3,7 @@ let Article = require('../../models/articles')
 exports.articleList = (req, res) => {
   Article.find({}).lean().exec((err, articles) => {
     if (err) {
-      return res.json(err)
+      return res.status(500).send(err)
     }
     res.json({'articles': articles})
   })
@@ -12,8 +12,8 @@ exports.articleList = (req, res) => {
 exports.articleItem = (req, res) => {
   Article.findOne({_id: req.params.id}).exec((err, article) => {
     if (err) {
-      return res.json(err)
+      return res.status(500).send(err)
     }
-    res.json({'article': article})
+    res.status(200).send({'article': article})
   })
 }

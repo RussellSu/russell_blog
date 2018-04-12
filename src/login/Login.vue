@@ -46,13 +46,14 @@ export default {
   },
   methods: {
     login () {
-      var _this = this
-      var data = {
-        username: _this.username,
-        password: _this.password
-      }
+      // var _this = this
+      // var data = {
+      //   username: _this.username,
+      //   password: _this.password
+      // }
       this.$http
-        .post('/api/login', { data: JSON.stringify(data) })
+        // .post('/api/login', { data: JSON.stringify(data) })
+        .get('/api/auth/provider')
         .then(res => {
           console.log(res.data)
           window.location.href = '/'

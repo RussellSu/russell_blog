@@ -11,7 +11,7 @@ exports.login = function (req, res) {
       { 'phoneNumber': data.username },
       { 'email': data.username }
     ]
-  }, 'hash salt fullname prid email phoneNumber gender').exec((err, user) => {
+  }, 'hash salt fullname prid email phoneNumber gender', (err, user) => {
     if (err) {
       return res.status(501).send(err)
     }
