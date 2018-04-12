@@ -42,10 +42,10 @@ module.exports = function(app, passport, config) {
 
   app.use(morgan('dev'))
   app.use(errorHandler())
-  // parse application/x-www-form-urlencoded
-  app.use(bodyParser.urlencoded({ extended: true, limit: '80mb' }))
   // parse application/json
   app.use(bodyParser.json({ limit: '50mb' }))
+  // parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: true, limit: '80mb' }))
   console.log('■■■secret.cookieSecret■', secret.cookieSecret)
   app.use(cookieParser(secret.cookieSecret))
   app.use(session({
