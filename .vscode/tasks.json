@@ -6,6 +6,15 @@
     {
       "type": "npm",
       "script": "build",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "lint",
       "problemMatcher": []
     }
   ]

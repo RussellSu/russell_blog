@@ -25,7 +25,7 @@
   "vizion-description-lalalala"           : "enable/disable vizion features (versioning control)",
   "Default environment variables that will be injected in any environment and at any start": "lalalalalalalala",
   "env": {
-    "NODE_ENV": "production",
+    "NODE_ENV": "dev",
     "AWESOME_SERVICE_API_TOKEN": "xxx"
   },
   "env_*" : {
