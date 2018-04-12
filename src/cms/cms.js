@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 
 import router from './router'
 
-Vue.filter('time_format', function (value, formatStr = 'YYYYMMDD') {
+Vue.filter('time_format', (value, formatStr = 'YYYYMMDD') => {
   return Moment(value).format(formatStr)
 })
 

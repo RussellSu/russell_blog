@@ -1,4 +1,5 @@
 var path = require('path')
+
 // var Utils = require('./utils')
 // var users = require('./routes/users.js')
 
@@ -26,7 +27,7 @@ module.exports = (express, app, config, apiRouter) => {
       res.sendFile('cms.html', { root: path.join(__dirname, '../dist') })
     })
   app.get('/login', function (req, res) {
-    if (req.session && req.session.user) {
+    if (req.user || req.session && req.session.passport && req.session.passport.user) {
       res.redirect('/')
     }
     else {
@@ -53,7 +54,10 @@ module.exports = (express, app, config, apiRouter) => {
   // })
 
   app.get('/logout', (req, res) => {
-    req.session.destroy(() => res.redirect('/login'))
+    // req.logout()---------------------------------------------------------------------------------
+    req.session.destroy(() => {
+      res.redirect('/login')
+    })
   })
   // 所有api 接口托管到apiRouter， 这样就以类似 apiRouter.get('/users')代替 app.get('/api/users')
   app.use('/api', apiRouter)

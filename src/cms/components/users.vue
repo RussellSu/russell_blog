@@ -33,11 +33,11 @@
 <script>
 export default {
   name: 'users',
-  created () {
+  created() {
     this.getList()
     document.title = this.$route.name
   },
-  data () {
+  data() {
     return {
       description: 'This is users module.',
       main: 'to be continued.',
@@ -48,30 +48,32 @@ export default {
     }
   },
   methods: {
-    getList () {
+    getList() {
       console.log('users getList')
       // this.$http.get('/api/users?_=' + new Date())
-      this.$http.get('/api/users')
+      this.$http
+        .get('/api/users')
         .then(res => {
           this.userList = res.data.users
           console.log('getList res:', res)
         })
         .catch(err => console.log(err.response))
     },
-    createUser () {
+    createUser() {
       let _this = this
       const fullname = _this.fullname
       const email = _this.email
       const phone = _this.phone
-      this.$http.post('/api/users', { 'fullname': fullname, 'email': email, 'phone': phone })
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.response))
+      this.$http
+        .post('/api/users', { fullname: fullname, email: email, phone: phone })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err.response))
     }
   }
 }
 </script>
 <style scoped>
 h1 {
-  font-size: 4rem
+  font-size: 4rem;
 }
 </style>

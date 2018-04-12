@@ -23,10 +23,9 @@
           </div>
         </div>
       </div>
-      
-      
+
       <div class="btn-bar">
-        
+
       </div>
     </div>
   </div>
@@ -38,14 +37,14 @@
 export default {
   name: 'login',
   components: {},
-  data () {
+  data() {
     return {
       username: '',
       password: ''
     }
   },
   methods: {
-    login () {
+    login() {
       // var _this = this
       // var data = {
       //   username: _this.username,
@@ -74,8 +73,8 @@ export default {
 
 <style>
 html {
- font-size: 16px;
-} 
+  font-size: 16px;
+}
 body {
   height: 100vh;
   margin: 0;
@@ -85,7 +84,7 @@ body {
   visibility: hidden;
   display: block;
   font-size: 0;
-  content: " ";
+  content: ' ';
   clear: both;
   height: 0;
 }
@@ -99,7 +98,7 @@ body {
   height: 100%;
   background-color: #6c6c6c; /*#f6f1e8*/
   background-attachment: fixed;
-  background-image: url("/static/img/giraffe03.jpg");
+  background-image: url('/static/img/giraffe03.jpg');
   background-position: 0 0;
   background-size: cover;
   background-repeat: space;
@@ -124,7 +123,7 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 .w-header {
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -135,14 +134,14 @@ body {
   left: 0;
   text-align: center;
   &:before {
-    content: "";
+    content: '';
     display: inline-block;
     position: absolute;
     top: 0;
     left: 50%;
     width: 1px;
     height: 100%;
-    background-color: #FFF;
+    background-color: #fff;
   }
 }
 .left-bar {

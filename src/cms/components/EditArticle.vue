@@ -29,7 +29,7 @@ import 'highlight.js/styles/googlecode.css'
 export default {
   name: 'editArticle',
   components: { Marked, highlightjs },
-  data () {
+  data() {
     return {
       mainTitle: '编辑文章',
       article: {
@@ -40,20 +40,21 @@ export default {
     }
   },
   computed: {
-    compileMD: function () {
+    compileMD: function() {
       return Marked(this.article.text, { sanitize: true })
     }
   },
-  created () {
+  created() {
     document.title = '编辑'
   },
-  mounted () {
+  mounted() {
     this.markdown()
   },
   methods: {
-    createNewArticle () {
+    createNewArticle() {
       var _this = this
-      this.$http.post('/api/articles', { data: JSON.stringify(this.article) })
+      this.$http
+        .post('/api/articles', { data: JSON.stringify(this.article) })
         .then(res => {
           console.log(res.data)
           _this.$router.replace('articles')
@@ -68,10 +69,10 @@ export default {
           console.log(err.response)
         })
     },
-    markdown () {
+    markdown() {
       Marked.setOptions({
         renderer: new Marked.Renderer(),
-        hightlight: function (code) {
+        hightlight: function(code) {
           return highlightjs.highlightAuto(code).value
         },
         gfm: true,

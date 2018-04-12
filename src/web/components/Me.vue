@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'me',
-  data () {
+  data() {
     return {
       mainTitle: '关于我',
       subTitle: 'In the land of Javascript, no one is king.',
@@ -19,7 +19,7 @@ export default {
       description: '我是苏晓，是一名程序员。这是我的博客，是记录我工作学习生活的地方。',
     }
   },
-  created () {
+  created() {
     document.title = this.$route.name
   }
 }
@@ -27,12 +27,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.module{
+.module {
   text-align: center;
 }
-  .avatar{
-    display:inline-block;
-    width: 200px;
-    height: auto;
-  }
+.avatar {
+  display: inline-block;
+  width: 200px;
+  height: auto;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <nav class="side-nav">
-  <div class="fullname"></div>
+    <div class="fullname"></div>
     <ul>
       <li v-for="item of navList">
         <router-link v-bind:to="item.routeName" exact>{{item.title}}</router-link>
@@ -15,16 +15,16 @@
 <script>
 //  import sidebar from '@/navList'
 var navList = [
-  {title: 'home', routeName: '/', exact: true},
+  { title: 'home', routeName: '/', exact: true },
   { title: 'users', routeName: '/users' },
   { title: 'articles', routeName: '/articles' },
   { title: 'links', routeName: '/links' },
   { title: 'about', routeName: '/about' },
-  {title: 'me', routeName: '/me'}
+  { title: 'me', routeName: '/me' }
 ]
 export default {
   name: 'navbar',
-  data () {
+  data() {
     return {
       navList: navList
     }
@@ -50,7 +50,7 @@ nav:hover {
 }
 
 nav:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 50%;
@@ -60,25 +60,25 @@ nav:after {
   border-radius: 50%;
   background-color: #000;
 }
-ul{
+ul {
   margin-top: 40px;
   height: calc(100% - 40px);
 }
-li{
+li {
   display: block;
-  a{
+  a {
     width: 100%;
     display: inline-block;
     padding: 10px 0;
     font-size: 20px;
-    color: #FFF;
+    color: #fff;
     line-height: 30px;
-    &:hover{
+    &:hover {
       // color: #00FF39;
       background-color: rgba(255, 255, 255, 0.3);
     }
-    &.router-link-active{
-      color: #00FF39;
+    &.router-link-active {
+      color: #00ff39;
     }
   }
 }

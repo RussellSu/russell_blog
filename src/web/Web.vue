@@ -15,24 +15,26 @@ import '@/web/styles/index.scss'
 
 export default {
   name: 'web',
-  created () {
+  created() {
     console.log('web.vue created')
     this.getProfile()
   },
   methods: {
-    getProfile () {
-      this.$http.get('/api/profile')
-      .then(res => {
-        if (res.data.user && res.data.user._id) {
-          window.Russell.user = res.data.user
-        }
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    getProfile() {
+      this.$http
+        .get('/api/profile')
+        .then(res => {
+          if (res.data.user && res.data.user._id) {
+            window.Russell.user = res.data.user
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
-  components: {//  这写成对象而不是数组，为啥？
+  components: {
+    //  这写成对象而不是数组，为啥？
     Navbar
   }
 }
@@ -40,7 +42,7 @@ export default {
 
 <style lang="scss">
 body {
-  background-image: url("./assets/bg_body003.png");
+  background-image: url('./assets/bg_body003.png');
 }
 
 #web {
@@ -63,7 +65,7 @@ body {
     section[class*='-module'] {
       margin: 0 20px;
       // padding-top: 50px;
-      .module-title{
+      .module-title {
         margin: 0;
         line-height: 1.5;
         font-size: 4rem;

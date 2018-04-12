@@ -17,7 +17,7 @@ import 'highlight.js/styles/googlecode.css'
 export default {
   name: 'articleItem',
   components: { Marked, highlightjs },
-  data () {
+  data() {
     console.log('data')
     return {
       article: {
@@ -29,31 +29,32 @@ export default {
     }
   },
   computed: {
-    compileMD: function () {
+    compileMD: function() {
       return Marked(this.article.text, { sanitize: true })
     }
   },
-  created () {
+  created() {
     console.log('created')
     this.getData()
     document.title = this.article.title
   },
-  mounted () {
+  mounted() {
     console.log('mounted')
     this.markdown()
   },
   methods: {
-    getData () {
-      this.$http.get('/api/articles/' + this.$route.params.id)
-      .then(res => {
-        this.article = res.data.article
-      })
-      .catch(err => console.log(err))
+    getData() {
+      this.$http
+        .get('/api/articles/' + this.$route.params.id)
+        .then(res => {
+          this.article = res.data.article
+        })
+        .catch(err => console.log(err))
     },
-    markdown () {
+    markdown() {
       Marked.setOptions({
         renderer: new Marked.Renderer(),
-        hightlight: function (code) {
+        hightlight: function(code) {
           return highlightjs.highlightAuto(code).value
         },
         gfm: true,
@@ -69,8 +70,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .mark-body{
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, .1);;
-  }
+.mark-body {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
 </style>

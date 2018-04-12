@@ -9,6 +9,8 @@ var MongoStore = require('connect-mongo')(session)
 var cors = require('cors')
 var mongoose = require('mongoose')
 var secret = require('../secret/secret.js')
+var User = require('./models/users.js')
+var PassportHttp = require("passport-http")
 
 module.exports = function (app, passport, config) {
   process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
@@ -54,12 +56,44 @@ module.exports = function (app, passport, config) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.serializeUser(function (user, done) {
-    done(null, user);
+  passport.serializeUser(function (user123, done) {
+    done(null, user123._id); // 绑到 req.session.passport.user
   });
 
-  passport.deserializeUser(function (user, done) {
-    done(null, user);
+  passport.deserializeUser(function (userId, done) { //userId来源 req.session.passport.user
+    //通过req.session.passport.user 实时查询user 更新req.user
+    User.findOne({ '_id': userId }, "fullname email phoneNumber").lean().exec((err, user) => {
+      user.gaga = "gaga"
+      done(err, user); //置为  req.user req.session.passport.user
+    })
   });
-
+  passport.use(new PassportHttp.BasicStrategy(
+    function (username, password, done) {
+      User.findOne({
+        '$or': [
+          { 'fullname': username },
+          { 'phoneNumber': username },
+          { 'email': username }
+        ]
+      }, (err, user) => {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false, { message: 'Incorrect username or password' });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: 'Incorrect username or password.' });
+        }
+        let userObj = {
+          '_id': user._id,
+          'fullname': user.fullname,
+          'email': user.email,
+          'phoneNumber': user.phoneNumber,
+          'gender': user.gender,
+        }
+        return done(null, userObj);  // 会把此对象 传给 passport.serializeUser 第一个参数
+      });
+    }
+  ))
 }

@@ -1,6 +1,8 @@
 <template>
   <nav class="side-nav">
-  <div class="fullname"></div></div>
+    <div class="fullname">
+
+    </div>
     <ul>
       <li v-for="item of navList">
         <router-link v-bind:to="item.routeName" exact>{{item.title}}</router-link>
@@ -16,17 +18,25 @@
 //  import sidebar from '@/web/navList'
 var navList = [
   // {title: 'home', routeName: '/', exact: true},
-  { title: 'articles', routeName: '/articles' },
-  { title: 'links', routeName: '/links' },
-  { title: 'about', routeName: '/about' },
-  {title: 'me', routeName: '/me'}
+  { title: "articles", routeName: "/articles" },
+  { title: "links", routeName: "/links" },
+  { title: "about", routeName: "/about" },
+  { title: "me", routeName: "/me" }
 ]
+// var user = window.Russell.user
 export default {
-  name: 'navbar',
-  data () {
+  name: "navbar",
+  data() {
     return {
       navList: navList
+      // user: user
     }
+  },
+  created() {
+    console.log("sidebar created")
+  },
+  mounted() {
+    console.log("sidebar mounted")
   }
 }
 </script>

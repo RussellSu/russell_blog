@@ -15,7 +15,7 @@ import '@/cms/styles/index.scss'
 
 export default {
   name: 'cms',
-  created () {
+  created() {
     if (!window.Russell.user) {
       this.$http
         .get('/api/profile')
@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
 body {
-  background-image: url("./assets/bg_body003.png");
+  background-image: url('./assets/bg_body003.png');
 }
 
 #cms {

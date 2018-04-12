@@ -14,7 +14,7 @@
         </div>
         <div class="acount signup-item">
           <span class="item-name">username</span>
-            <input type="text" class="item-input" v-model='username'>
+          <input type="text" class="item-input" v-model='username'>
           <span class="item-desc">6-16位 字母 数字 英文点号 下划线 中划线</span>
         </div>
         <div class="password signup-item">
@@ -38,32 +38,32 @@
 // import "@/styles/signup.scss";
 
 export default {
-  name: "signup",
+  name: 'signup',
   components: {},
-  data () {
+  data() {
     return {
-      email: "",
-      phoneNumber: "",
-      username: "",
-      password: "",
-      password2: "",
+      email: '',
+      phoneNumber: '',
+      username: '',
+      password: '',
+      password2: ''
     }
   },
   methods: {
-    signup () {
+    signup() {
       var _this = this
       var data = {
         email: _this.email,
         phoneNumber: _this.phoneNumber,
         username: _this.username,
         password: _this.password,
-        password2: _this.password2,
+        password2: _this.password2
       }
       this.$http
-        .post("/api/users/register", { data: JSON.stringify(data) })
+        .post('/api/users/register', { data: JSON.stringify(data) })
         .then(res => {
           console.log(res.data)
-          window.location.href = "/login"
+          window.location.href = '/login'
         })
         .catch(err => {
           if (err.response.data.emailEmpty) {
@@ -76,19 +76,19 @@ export default {
             alert('用户名不可为空')
           }
           else if (err.response.data.passwordEmpty) {
-            alert("密码不可为空")
+            alert('密码不可为空')
           }
           else if (err.response.data.passwordNotSame) {
-            alert("两次密码不一致")
+            alert('两次密码不一致')
           }
           else if (err.response.data.invalidEmail) {
-            alert("无效的email")
+            alert('无效的email')
           }
           else if (err.response.data.invalidPhoneNumber) {
-            alert("无效的电话号码")
+            alert('无效的电话号码')
           }
           else if (err.response.data.invalidfullname) {
-            alert("无效的用户名")
+            alert('无效的用户名')
           }
           else if (err.response.data.invalidPassword) {
             alert('无效的密码')
@@ -123,7 +123,7 @@ body {
   visibility: hidden;
   display: block;
   font-size: 0;
-  content: " ";
+  content: ' ';
   clear: both;
   height: 0;
 }
@@ -139,7 +139,7 @@ body {
   background-color: #6c6c6c;
   /*#f6f1e8*/
   background-attachment: fixed;
-  background-image: url("/static/img/giraffe03.jpg");
+  background-image: url('/static/img/giraffe03.jpg');
   background-position: 0 0;
   background-size: cover;
   background-repeat: space;
@@ -159,7 +159,7 @@ body {
 }
 
 .w-header {
-  padding: .5rem;
+  padding: 0.5rem;
   font-size: 20px;
   line-height: 1.2;
   font-weight: bold;
@@ -174,11 +174,11 @@ body {
 }
 
 .signup-item {
-  margin: 0 .5rem 1rem .5rem;
+  margin: 0 0.5rem 1rem 0.5rem;
 }
 
 .item-name {
-  display:inline-block;
+  display: inline-block;
   min-width: 150px;
   text-align: center;
 }

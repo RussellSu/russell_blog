@@ -17,10 +17,10 @@
           <tr v-for='article of articles'>
             <td>
               <router-link :to="'/articles/' + article._id">
-              <!-- <router-link :to="{ name: 'articles', params: {id: article._id} }"> -->
-              {{article.title}}
+                <!-- <router-link :to="{ name: 'articles', params: {id: article._id} }"> -->
+                {{article.title}}
               </router-link>
-              </td>
+            </td>
             <td>{{article.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
             <td>{{article.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
             <td></td>
@@ -36,26 +36,27 @@
 <script>
 export default {
   name: 'articles',
-  data () {
+  data() {
     return {
       description: 'This is articles module.',
       main: 'to be continued.',
       articles: []
     }
   },
-  created () {
+  created() {
     document.title = this.$route.name
     this.getList()
   },
   methods: {
-    getList () {
-      this.$http.get('/api/articles')
-      .then(res => {
-        this.articles = res.data.articles
-      })
-      .catch(err => console.log(err))
+    getList() {
+      this.$http
+        .get('/api/articles')
+        .then(res => {
+          this.articles = res.data.articles
+        })
+        .catch(err => console.log(err))
     },
-    editNew () {
+    editNew() {
       alert('editNew!')
     }
   }
