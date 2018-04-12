@@ -6,7 +6,6 @@ import Articles from '@/cms/components/articles'
 import ArticleItem from '@/cms/components/ArticleItem'
 import About from '@/cms/components/About'
 import Links from '@/cms/components/Links'
-import EditArticle from '@/cms/components/EditArticle'
 import NotFoundPage from '@/cms/components/notFoundPage'
 
 Vue.use(Router)
