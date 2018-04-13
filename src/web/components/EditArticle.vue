@@ -9,14 +9,17 @@
       <h3 class="ar-title">作者</h3>
       <p v-text="article.author"></p>
     </div>
-    <div style="" class="pull-left">
+    <div class="edit-body row clearfix">
+    <div class="pull-left m-6">
       <h3 class="ar-title">正文</h3>
-      <textarea v-model='article.text' name="" class="ar-text" cols="30" rows="10" placeholder="正文"></textarea>
+      <textarea v-model='article.text' name="" class="ar-text" cols="30" rows="10" placeholder="正文" style="width:100%"></textarea>
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-6">
       <h3>预览</h3>
-      <div v-html="compileMD" class="code-preview"></div>
+      <div v-html="compileMD" class="code-preview" style="width:100%"></div>
     </div>
+    </div>
+    
     <button @click='createNewArticle' class='create-btn'>创建</button>
   </section>
 </template>

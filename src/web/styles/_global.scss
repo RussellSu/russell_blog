@@ -134,3 +134,23 @@ input[type=text] {
   }
 }
 
+.row {
+  .m-3 {
+    width: 25%;
+  }
+  .m-4 {
+    width: 33.33%;
+  }
+  .m-6 {
+    width: 50%;
+  }
+  .m-8 {
+    width: 66.66%;
+  }
+  .m-9 {
+    width: 75%;
+  }
+  .m-12 {
+    width: 100%;
+  }
+}
