@@ -4,8 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import Axios from 'axios'
 import Moment from 'moment'
-
-Axios.defaults.headers.post['content-Type'] = 'appliction/json'
+import 'font-awesome/css/font-awesome.min.css'
+// Axios.defaults.headers.post['content-Type'] = 'appliction/json'
 Vue.prototype.$http = Axios
 Vue.prototype.$moment = Moment
 
