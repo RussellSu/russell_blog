@@ -61,7 +61,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      favicon: path.resolve(process.cwd(),'static','img','favicon.icon'),
+      favicon: path.resolve('./','..','static','img','favicon.icon'),
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
       chunks: ['cms','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
@@ -77,7 +77,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      favicon: path.resolve(process.cwd(),'static','img','favicon.icon'),
+      favicon: path.resolve('./','..','static','img','favicon.icon'),
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
       chunks: ['web','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
@@ -91,7 +91,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           collapseWhitespace: true,
           removeAttributeQuotes: true
       },
-      favicon: path.resolve(process.cwd(),'static','img','favicon.icon'),
+      favicon: path.resolve('./','..','static','img','favicon.icon'),
       chunksSortMode: 'dependency',
       chunks: ['login','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
@@ -104,7 +104,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           collapseWhitespace: true,
           removeAttributeQuotes: true
       },
-      favicon: path.resolve(process.cwd(),'static','img','favicon.icon'),
+      favicon: path.resolve('./','..','static','img','favicon.icon'),
       chunksSortMode: 'dependency',
       chunks: ['signup','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
