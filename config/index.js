@@ -10,7 +10,7 @@ module.exports = {
     signup: path.resolve(__dirname, '../dist/signup.html'),//生成的html路径及名称，给 webpack.XXX.config.js HtmlWebpackPlugin使用
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
