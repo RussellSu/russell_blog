@@ -101,6 +101,9 @@ export default {
 }
 
 .code-preview {
+  padding: .5rem;
+  min-height: 3rem;
+  box-sizing: border-box;
   background-color: #000;
 }
 </style>
