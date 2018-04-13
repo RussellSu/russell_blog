@@ -10,7 +10,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = config.build.env
-console.log('-----------------------',path.resolve(__dirname))
+
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -61,7 +61,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      favicon: path.resolve(__dirname,'..','static','img','favicon.ico'),
+      favicon: path.resolve(__dirname,'..','static','favicon.ico'),
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
       chunks: ['cms','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
@@ -77,7 +77,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      favicon: path.resolve(__dirname,'..','static','img','favicon.ico'),
+      favicon: path.resolve(__dirname,'..','static','favicon.ico'),
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
       chunks: ['web','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
@@ -91,7 +91,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           collapseWhitespace: true,
           removeAttributeQuotes: true
       },
-      favicon: path.resolve(__dirname,'..','static','img','favicon.ico'),
+      favicon: path.resolve(__dirname,'..','static','favicon.ico'),
       chunksSortMode: 'dependency',
       chunks: ['login','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
@@ -104,7 +104,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           collapseWhitespace: true,
           removeAttributeQuotes: true
       },
-      favicon: path.resolve(__dirname,'..','static','img','favicon.ico'),
+      favicon: path.resolve(__dirname,'..','static','favicon.ico'),
       chunksSortMode: 'dependency',
       chunks: ['signup','manifest', 'vendor']//需要引入的Chunk，不配置就会引入所有页面的资源
     }),
