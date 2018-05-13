@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Articles from '@/web/components/articles'
 import ArticleItem from '@/web/components/ArticleItem'
-import About from '@/web/components/About'
 import Links from '@/web/components/Links'
 import Me from '@/web/components/Me'
 import EditArticle from '@/web/components/EditArticle'
@@ -42,11 +41,6 @@ let router = new Router({
       meta: {
         requireAuth: true // 需要登陆
       }
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: About
     },
     {
       path: '/links',

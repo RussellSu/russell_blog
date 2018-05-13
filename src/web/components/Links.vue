@@ -1,6 +1,6 @@
 <template>
-  <section class="links-module module">
-    <img src="./../assets/logo.png">
+  <section class="links-module module text-center">
+    <img src="./../assets/vue-logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>

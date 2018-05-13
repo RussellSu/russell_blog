@@ -27,6 +27,7 @@ export default {
           if (res.data.user && res.data.user._id) {
             window.Russell.user = res.data.user
           }
+          console.log('window.Russell-1', window.Russell)
         })
         .catch(err => {
           console.log(err)

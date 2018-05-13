@@ -14,7 +14,7 @@ var PassportHttp = require("passport-http")
 
 module.exports = function(app, passport, config) {
   process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
-  console.log(`■■■process.env.NODE_ENV:${process.env.NODE_ENV}`)
+  console.log(`■■■process.env.NODE_ENV■${process.env.NODE_ENV}`)
 
   // 非生产环境CORS
   if (process.env.NODE_ENV !== 'production') {
@@ -104,7 +104,7 @@ module.exports = function(app, passport, config) {
           'phoneNumber': user.phoneNumber,
           'gender': user.gender,
         }
-        return done(null, userObj)  // 会把此对象 传给 passport.serializeUser 第一个参数
+        return done(null, userObj) // 会把此对象 传给 passport.serializeUser 第一个参数
       })
     }
   ))

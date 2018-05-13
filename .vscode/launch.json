@@ -7,6 +7,12 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "RunJS",
+      "program": "${file}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "build",
       "runtimeExecutable": "npm",
       "windows": {

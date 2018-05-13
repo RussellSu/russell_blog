@@ -29,7 +29,7 @@ module.exports = {
     port: 3007,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     proxyTable: {
       '/api': {// 将所有api/ 请求发给后台
         //这里的target填服务端的端口的接口地址

@@ -3,28 +3,38 @@
     <div class="center-wrapper">
       <div class="w-header">person information</div>
       <div class="w-body clearfix">
-        <div class="acount signup-item">
+        <div class="signup-item">
           <span class="item-name">email</span>
-          <input type="text" class="item-input" v-model='email'>
+          <div class="item-detail">
+            <input type="text" class="item-input" v-model='email'>
+          </div>
         </div>
-        <div class="acount signup-item">
+        <div class="signup-item">
           <span class="item-name">phoneNumber</span>
-          <input type="text" class="item-input" v-model='phoneNumber'>
-          <span class="item-desc">11位数字</span>
+          <div class="item-detail">
+            <input type="text" class="item-input" v-model='phoneNumber'>
+            <span class="item-desc">11位数字</span>
+          </div>
         </div>
-        <div class="acount signup-item">
+        <div class="signup-item">
           <span class="item-name">username</span>
-          <input type="text" class="item-input" v-model='username'>
-          <span class="item-desc">6-16位 字母 数字 英文点号 下划线 中划线</span>
+          <div class="item-detail">
+            <input type="text" class="item-input" v-model='username'>
+            <span class="item-desc">6-16位 字母 数字 英文点号 下划线 中划线</span>
+          </div>
         </div>
         <div class="password signup-item">
           <span class="item-name">password</span>
-          <input type="password" class="item-input" v-model='password'>
-          <span class="item-desc">8-20位 字母 数字 特殊符号（!@$） 组成的强密码</span>
+          <div class="item-detail">
+            <input type="password" class="item-input" v-model='password'>
+            <span class="item-desc">8-20位 字母 数字 特殊符号（!@$） 组成的强密码</span>
+          </div>
         </div>
         <div class="password signup-item">
           <span class="item-name">password again</span>
-          <input type="password" class="item-input" v-model='password2'>
+          <div class="item-detail">
+            <input type="password" class="item-input" v-model='password2'>
+          </div>
         </div>
         <div class="btn-bar signup-item">
           <a class="signup-btn cursor-hand" title="signup" @click='signup'>Sign up</a>
@@ -182,7 +192,9 @@ body {
   min-width: 150px;
   text-align: center;
 }
-
+.item-detail {
+  display: inline-block;
+}
 .item-input {
   border: 0;
   padding: 0.3rem;

@@ -1,6 +1,6 @@
 <template>
-  <section class="me-module module">
-    <img class="avatar" src="./../assets/aboutme.jpg" />
+  <section class="me-module module text-center">
+    <img class="avatar" src="/static/img/suxiao-hahaha.jpg" />
     <h1>{{ mainTitle }}</h1>
     <h2>{{ subTitle }}</h2>
     <h3>{{ info }}</h3>
@@ -13,6 +13,7 @@ export default {
   name: 'me',
   data() {
     return {
+      // avatarUrl: avatarUrl,
       mainTitle: '关于我',
       subTitle: 'In the land of Javascript, no one is king.',
       info: 'email: suxiao666@outlook.com',

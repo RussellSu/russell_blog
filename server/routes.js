@@ -4,7 +4,6 @@ var path = require('path')
 // var users = require('./routes/users.js')
 
 module.exports = (express, app, config, apiRouter) => {
-  console.log(`■■■server process.env.NODE_ENV:${process.env.NODE_ENV}`)
   app.all('/', function(req, res, next) {
     console.log('■req.originalUrl■', req.originalUrl)
     if (req.originalUrl === '/') {
@@ -15,13 +14,11 @@ module.exports = (express, app, config, apiRouter) => {
     }
   })
   app.get('/articles'
-    + '|/about'
     + '|/links'
     + '|/me', function(req, res) {
     res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
   })
-  app.get('/cms/about'
-    + '|/cms/users'
+  app.get('/cms/users'
     + '|/cms/articles'
     + '|/cms/links', function(req, res) {
     res.sendFile('cms.html', { root: path.join(__dirname, '../dist') })

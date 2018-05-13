@@ -57,6 +57,10 @@ input[type=text] {
   clear: both;
   height: 0;
 }
+.text-center {
+  text-align: center;
+}
+
 .float-left {
   float: left !important;
 }
@@ -70,9 +74,9 @@ input[type=text] {
     width: 8px;
     height: 8px;
   }
-  &::-webkit-scrollbar-button {
+  // &::-webkit-scrollbar-button {
 
-  }
+  // }
   &::-webkit-scrollbar-track {
     display:none;
   }

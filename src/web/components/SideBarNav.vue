@@ -1,7 +1,12 @@
 <template>
   <nav class="side-nav">
-    <div class="fullname">
-
+    <div class="user-info">
+      <span v-if="user._id">
+        {{!user.fullname}}
+      </span>
+      <span v-else>
+        未登录
+      </span>
     </div>
     <ul>
       <li v-for="item of navList">
@@ -18,25 +23,26 @@
 //  import sidebar from '@/web/navList'
 var navList = [
   // {title: 'home', routeName: '/', exact: true},
-  { title: "articles", routeName: "/articles" },
-  { title: "links", routeName: "/links" },
-  { title: "about", routeName: "/about" },
-  { title: "me", routeName: "/me" }
+  { title: 'articles', routeName: '/articles' },
+  { title: 'links', routeName: '/links' },
+  { title: 'me', routeName: '/me' }
 ]
 // var user = window.Russell.user
 export default {
-  name: "navbar",
+  name: 'navbar',
   data() {
     return {
-      navList: navList
-      // user: user
+      navList: navList,
+      user: {}
     }
   },
   created() {
-    console.log("sidebar created")
+    console.log('sidebar created')
   },
   mounted() {
-    console.log("sidebar mounted")
+    console.log('sidebar mounted', window.Russell.user)
+    this.user = window.Russell.user || {}
+    console.log('sidebar mounted', 'window.Russell', window.Russell)
   }
 }
 </script>
@@ -49,9 +55,9 @@ nav {
   height: 100vh;
   background-color: #000;
   text-align: center;
-  // transform: translateX(-100px);
-  transform: translateX(0);
-  transition: transform .5s linear;
+  transform: translateX(-90px);
+  // transform: translateX(0);
+  transition: transform 0.5s linear;
 }
 
 nav:hover {
@@ -59,8 +65,8 @@ nav:hover {
 }
 
 nav:after {
-  content: "";
-  display: none;
+  content: '';
+  display: block;
   position: absolute;
   top: 50%;
   right: -10px;
@@ -69,25 +75,31 @@ nav:after {
   border-radius: 50%;
   background-color: #000;
 }
-ul{
+.user-info {
+  line-height: 80px;
+  background-color: #2e2e2e;
+  border-radius: 50%;
+  margin: 10px;
+}
+ul {
   margin-top: 40px;
   height: calc(100% - 40px);
 }
-li{
+li {
   display: block;
-  a{
+  a {
     width: 100%;
     display: inline-block;
     padding: 10px 0;
-    font-size: 20px;
-    color: #FFF;
+    // font-size: 20px;
+    color: #fff;
     line-height: 30px;
-    &:hover{
+    &:hover {
       // color: #00FF39;
       background-color: rgba(255, 255, 255, 0.3);
     }
-    &.router-link-active{
-      color: #00FF39;
+    &.router-link-active {
+      color: #00ff39;
     }
   }
 }
