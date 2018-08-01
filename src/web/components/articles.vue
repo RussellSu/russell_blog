@@ -4,10 +4,14 @@
     <div class="article-list rs-scrollbar">
       <div class="article" v-for="article in articles">
         <router-link :to="'/articles/' + article._id" class="article-title"> {{article.title}}</router-link>
-        <div class="float-left">
-          <b>创建时间：</b>{{article.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
-        <div class="float-right">
-          <b>最后更新：</b>{{article.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
+        <div class="clearfix article-info">
+          <div class="float-left"></div>
+          <div class="float-right">
+            <b>创建：</b><span>{{article.createTime | time_format('YYYY/MM/DD HH:mm')}}</span>
+            <br/>
+            <b>更新：</b><span>{{article.updateTime | time_format('YYYY/MM/DD HH:mm')}}</span>
+          </div>
+        </div>
       </div>
     </div>
     <router-link to="/editArticle" tag="button" exact class="edit-new-btn button btn-circle">✎</router-link>
@@ -50,7 +54,7 @@ export default {
 .article {
   min-height: 50px;
   margin-bottom: 1rem;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .article-title {
@@ -65,7 +69,7 @@ export default {
 .edit-new-btn {
   position: absolute;
   bottom: 70px;
-  right: 40px;
+  right: 20px;
   width: 50px;
   height: 50px;
   font-size: 26px;

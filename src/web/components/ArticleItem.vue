@@ -125,12 +125,12 @@ export default {
 
 @media screen and (max-width: 960px) {
   .write-commont-btn {
-    bottom: 70px;
+    bottom: 70px !important;
   }
 }
 .write-commont-btn {
   position: fixed;
-  right: 30px;
+  right: 20px;
   bottom: 30px;
   border-radius: 50%;
   height: 40px;

@@ -164,21 +164,6 @@ export default {
     display: block;
   }
 }
-.bottom-nav:hover {
-  transform: translateX(0);
-}
-
-.bottom-nav:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #000;
-}
 .bottom-nav ul {
   // margin-top: 40px;
   // height: calc(100% - 40px);
