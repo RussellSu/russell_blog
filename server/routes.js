@@ -15,7 +15,7 @@ module.exports = (express, app, config, apiRouter) => {
   })
   app.get('/articles'
     + '|/links'
-    + '|/me', function(req, res) {
+    + '|/author', function(req, res) {
     res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
   })
   app.get('/cms/users'

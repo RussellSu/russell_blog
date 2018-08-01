@@ -60,7 +60,9 @@ input[type=text] {
 .text-center {
   text-align: center;
 }
-
+.hide {
+  display: none !important;
+}
 .float-left {
   float: left !important;
 }

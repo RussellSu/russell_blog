@@ -5,12 +5,13 @@
         <router-view></router-view>
       </transition>
     </div>
-    <navbar></navbar>
+    <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
-import Navbar from '@/web/components/SideBarNav'
+import NavBar from '@/web/components/NavBar'
+// import {mapGetters, mapState} from 'vuex'
 import '@/web/styles/index.scss'
 
 export default {
@@ -21,22 +22,12 @@ export default {
   },
   methods: {
     getProfile() {
-      this.$http
-        .get('/api/profile')
-        .then(res => {
-          if (res.data.user && res.data.user._id) {
-            window.Russell.user = res.data.user
-          }
-          console.log('window.Russell-1', window.Russell)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      this.$store.dispatch('getUserProfile')
     }
   },
   components: {
     //  这写成对象而不是数组，为啥？
-    Navbar
+    NavBar,
   }
 }
 </script>
@@ -52,6 +43,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
   color: #7e9e9d; // margin-top: 60px;
+  
+  @media screen and (max-width: 960px) {
+    .main-wrapper {
+      height: calc(100vh - 60px) !important;
+    }
+  }
   .main-wrapper {
     margin: 0 auto;
     // padding-top: 50px;

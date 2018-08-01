@@ -1,5 +1,5 @@
 <template>
-  <section class="me-module module text-center">
+  <section class="author-module module text-center">
     <img class="avatar" src="/static/img/suxiao-hahaha.jpg" />
     <h1>{{ mainTitle }}</h1>
     <h2>{{ subTitle }}</h2>
@@ -10,11 +10,11 @@
 
 <script>
 export default {
-  name: 'me',
+  name: 'author',
   data() {
     return {
       // avatarUrl: avatarUrl,
-      mainTitle: '关于我',
+      mainTitle: '关于作者',
       subTitle: 'In the land of Javascript, no one is king.',
       info: 'email: suxiao666@outlook.com',
       description: '我是苏晓，是一名程序员。这是我的博客，是记录我工作学习生活的地方。',

@@ -116,6 +116,7 @@ export default {
 .comment-editor {
   textarea {
     width: 100%;
+    color: #FFF;
   }
   // .submit-btn {
 

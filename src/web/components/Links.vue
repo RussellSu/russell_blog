@@ -36,10 +36,15 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a>
       </li>
     </ul>
+    _id: {{_id}}
+    fullname: {{fullname}}
+    isLogin: {{isLogin}}
+    <button @click="trigger">action</button>
   </section>
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex'
 export default {
   name: 'links',
   data() {
@@ -49,6 +54,21 @@ export default {
   },
   created() {
     document.title = this.$route.name
+  },
+  computed: {
+    ...mapState({
+      _id: state => state.userProfile._id,
+      fullname: state => state.userProfile.fullname,
+      gender: state => state.userProfile.gender,
+    }),
+    ...mapGetters([
+      'isLogin'
+    ])
+  },
+  methods: {
+    trigger() {
+      this.$store.dispatch('getUserProfile')
+    }
   }
 }
 </script>

@@ -3,9 +3,10 @@ import Router from 'vue-router'
 import Articles from '@/web/components/articles'
 import ArticleItem from '@/web/components/ArticleItem'
 import Links from '@/web/components/Links'
-import Me from '@/web/components/Me'
+import Author from '@/web/components/Author'
 import EditArticle from '@/web/components/EditArticle'
 import NotFoundPage from '@/web/components/notFoundPage'
+import store from '@/web/store'
 
 Vue.use(Router)
 
@@ -48,9 +49,9 @@ let router = new Router({
       component: Links
     },
     {
-      path: '/me',
-      name: 'me',
-      component: Me
+      path: '/author',
+      name: 'author',
+      component: Author
     },
     {
       path: '*',
@@ -60,9 +61,11 @@ let router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
+  // let _this = this
   console.log('to', to)
+  console.log(store)
   if (to.matched.some(item => item.meta.requireAuth)) {
-    if (window.Russell.user) {
+    if (store.state.userProfile._id) {
       next()
     }
     else {
