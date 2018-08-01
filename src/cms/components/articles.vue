@@ -29,7 +29,7 @@
       </table>
     </div>
     <!-- <button class="edit-new button btn-circle" @click="editNew">+</button> -->
-    <router-link to="/editArticle" tag="button" exact class="edit-new button btn-circle">+</router-link>
+    <router-link to="/editArticle" tag="button" exact class="edit-new-btn button btn-circle">+</router-link>
 
   </section>
 </template>
@@ -63,9 +63,9 @@ export default {
 }
 </script>
 <style scoped>
-.edit-new {
+.edit-new-btn {
   position: absolute;
-  bottom: 100px;
+  bottom: 70px;
   right: 40px;
   width: 50px;
   height: 50px;

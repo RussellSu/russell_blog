@@ -187,7 +187,8 @@ export default {
       border-left: 1px solid #898989;
     }
     a {
-      min-width: 20vw;
+      // min-width: 20vw;
+      width: 33vw;
       display: inline-block;
       color: #fff;
       line-height: 60px;

@@ -66,7 +66,7 @@ body {
       .module-title {
         margin: 0;
         line-height: 1.5;
-        font-size: 4rem;
+        font-size: 3rem;
         text-align: center;
       }
     }
