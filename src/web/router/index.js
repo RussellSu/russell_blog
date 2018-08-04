@@ -4,6 +4,7 @@ import Articles from '@/web/components/articles'
 import ArticleItem from '@/web/components/ArticleItem'
 import Links from '@/web/components/Links'
 import Author from '@/web/components/Author'
+import Me from '@/web/components/Me'
 import EditArticle from '@/web/components/EditArticle'
 import NotFoundPage from '@/web/components/notFoundPage'
 import store from '@/web/store'
@@ -52,6 +53,11 @@ let router = new Router({
       path: '/author',
       name: 'author',
       component: Author
+    },
+    {
+      path: '/me',
+      name: 'me',
+      component: Me
     },
     {
       path: '*',

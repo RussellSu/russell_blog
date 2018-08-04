@@ -36,10 +36,6 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a>
       </li>
     </ul>
-    _id: {{_id}}
-    fullname: {{fullname}}
-    isLogin: {{isLogin}}
-    <button @click="trigger">action</button>
   </section>
 </template>
 
@@ -66,9 +62,6 @@ export default {
     ])
   },
   methods: {
-    trigger() {
-      this.$store.dispatch('getUserProfile')
-    }
   }
 }
 </script>

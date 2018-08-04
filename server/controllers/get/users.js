@@ -1,6 +1,7 @@
 let User = require("../../models/users.js")
 
 exports.auth = (req, res) => {
+  console.log('auth')
   if (!req.user) {
     return res.status(400).send({ missingUser: true })
   }

@@ -8,6 +8,12 @@ const trim = function(str) {
 const isEmptyObj = function(data) {
   return Object.keys(data).length === 0
 }
+const isStringify = data => typeof data === 'string'
+  && (
+    (data.startsWith('[') && data.endsWith(']'))
+  || (data.startsWith('{') && data.endsWith('}'))
+  )
+
 const judgeType = function(data) {
   const typeMap = {
     '[object String]': 'string',
@@ -94,6 +100,7 @@ const moneyFormat = function(data) {
 export default {
   trim,
   isEmptyObj,
+  isStringify,
   judgeType,
   deepClone,
   timeFormat,

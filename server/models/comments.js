@@ -8,11 +8,11 @@ var repliesSubSchema = new Schema({
   createTime: { type: Date, default: Date.now },
 })
 var commentSchema = new Schema({
-  title: { type: String, default: '', index: true },
+  // title: { type: String, default: '', index: true },
   article: { type: Schema.Types.ObjectId, ref: 'articleModel', index: true },
   user: { type: Schema.Types.ObjectId, ref: 'userModel' },
-  replies: [repliesSubSchema], // 楼中楼
-  text: { type: String, default: '' },
+  replies: { type: [repliesSubSchema], default: [] }, // 楼中楼
+  text: { type: String, default: '', index: true },
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now, index: true },
 }, {

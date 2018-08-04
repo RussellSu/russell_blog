@@ -39,6 +39,13 @@ export default {
       }
     })
   },
+  submitComment(data) {
+    return service({
+      url: '/api/comments',
+      method: 'POST',
+      data: data
+    })
+  },
   postDemo(data) {
     return service({
       url: '/api/postDemo',

@@ -50,21 +50,23 @@ export default {
       //   username: _this.username,
       //   password: _this.password
       // }
+      console.log('login')
       this.$http
         // .post('/api/login', { data: JSON.stringify(data) })
         .get('/api/auth/provider')
         .then(res => {
           console.log(res.data)
           window.location.href = '/'
-        })
-        .catch(err => {
-          if (err.response.data.empty) {
-            alert('用户名密码不可为空')
+        }, err => {
+          if (err.response.data) {
+            if (err.response.data.empty) {
+              alert('用户名密码不可为空')
+            }
+            else if (err.response.data.validFailed) {
+              alert('用户名或密码不正确')
+            }
           }
-          else if (err.response.data.validFailed) {
-            alert('用户名或密码不正确')
-          }
-          console.log(err.response)
+          console.log('login', err.response)
         })
     }
   }

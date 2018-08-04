@@ -3,14 +3,12 @@
     <h1 class="module-title">articles</h1>
     <div class="article-list rs-scrollbar">
       <div class="article" v-for="article in articles">
+        <div class="article-top-bar">
+          <p class="text-right">更新：{{article.updateTime | time_format('YYYY/MM/DD HH:mm')}}</p>
+        </div>
         <router-link :to="'/articles/' + article._id" class="article-title"> {{article.title}}</router-link>
         <div class="clearfix article-info">
           <div class="float-left"></div>
-          <div class="float-right">
-            <b>创建：</b><span>{{article.createTime | time_format('YYYY/MM/DD HH:mm')}}</span>
-            <br/>
-            <b>更新：</b><span>{{article.updateTime | time_format('YYYY/MM/DD HH:mm')}}</span>
-          </div>
         </div>
       </div>
     </div>
@@ -57,13 +55,18 @@ export default {
   padding: 0 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+.article-top-bar {
+  color: #7b7b7b;
+  font-weight: bold;
+}
 .article-title {
   display: block;
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    // background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: underline;
   }
 }
 .edit-new-btn {

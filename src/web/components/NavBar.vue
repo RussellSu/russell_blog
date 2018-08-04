@@ -40,7 +40,8 @@ var navList = [
   // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },
   { title: 'links', routeName: '/links' },
-  { title: 'author', routeName: '/author' }
+  { title: 'author', routeName: '/author' },
+  { title: 'me', routeName: '/me' },
 ]
 // var user = window.Russell.user
 export default {
@@ -152,7 +153,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 60px;
+  height: 50px;
   background-color: #000;
   text-align: center;
   // transform: translateX(-90px);
@@ -168,18 +169,20 @@ export default {
   // margin-top: 40px;
   // height: calc(100% - 40px);
   li {
+    width: 25vw;
+    box-sizing: border-box;
     &:not(:first-of-type) {
       border-left: 1px solid #898989;
     }
     a {
       // min-width: 20vw;
-      width: 33vw;
       display: inline-block;
+      font-size: 1.5rem;
       color: #fff;
-      line-height: 60px;
+      line-height: 50px;
       &:hover {
         // color: #00FF39;
-        background-color: rgba(255, 255, 255, 0.3);
+        // background-color: rgba(255, 255, 255, 0.3);
       }
       &.router-link-active {
         color: #00ff39;

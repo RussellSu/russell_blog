@@ -10,4 +10,7 @@ module.exports = function(app, config, apiRouter) {
 
   const articles = require('../controllers/post/articles.js')
   apiRouter.post('/articles', articles.addArticle)
+
+  const comments = require('../controllers/post/comments.js')
+  apiRouter.post('/comments', comments.addComment)
 }

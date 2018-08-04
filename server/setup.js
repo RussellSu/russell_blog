@@ -79,33 +79,31 @@ module.exports = function(app, passport, config) {
       done(err, user) // 置为  req.user req.session.passport.user
     })
   })
-  passport.use(new PassportHttp.BasicStrategy(
-    function(username, password, done) {
-      User.findOne({
-        '$or': [
-          { 'fullname': username },
-          { 'phoneNumber': username },
-          { 'email': username }
-        ]
-      }, (err, user) => {
-        if (err) {
-          return done(err)
-        }
-        if (!user) {
-          return done(null, false, { message: 'Incorrect username or password' })
-        }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: 'Incorrect username or password.' })
-        }
-        let userObj = {
-          '_id': user._id,
-          'fullname': user.fullname,
-          'email': user.email,
-          'phoneNumber': user.phoneNumber,
-          'gender': user.gender,
-        }
-        return done(null, userObj) // 会把此对象 传给 passport.serializeUser 第一个参数
-      })
-    }
-  ))
+  passport.use(new PassportHttp.BasicStrategy(function(username, password, done) {
+    User.findOne({
+      '$or': [
+        { 'fullname': username },
+        { 'phoneNumber': username },
+        { 'email': username }
+      ]
+    }).exec((err, user) => {
+      if (err) {
+        return done(err)
+      }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username or password' })
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect username or password.' })
+      }
+      let userObj = {
+        '_id': user._id,
+        'fullname': user.fullname,
+        'email': user.email,
+        'phoneNumber': user.phoneNumber,
+        'gender': user.gender,
+      }
+      return done(null, userObj) // 会把此对象 传给 passport.serializeUser 第一个参数
+    })
+  }))
 }

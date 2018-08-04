@@ -29,7 +29,7 @@
     </div>
     <div class="comment-editor" v-show="showCommentEditor">
       添加评论
-      <textarea name="" id="" cols="30" rows="10" v-model="newComment"></textarea>
+      <textarea name="" id="" cols="30" rows="10" v-model.trim="newComment"></textarea>
       <button class="submit-btn pull-right" @click="submitComment">提交</button>
     </div>
     <button class="write-commont-btn btn" @click="writeComment" v-show="!showCommentEditor">评论</button>
@@ -47,6 +47,7 @@ export default {
     console.log('data')
     return {
       article: {
+        _id: '',
         title: '',
         text: '',
         createTime: '',
@@ -100,7 +101,14 @@ export default {
       this.showCommentEditor = true
     },
     submitComment() {
-      alert('to be continued')
+      if (!this.newComment.length) {
+        alert('你不打算说点啥吗')
+        return
+      }
+      this.$api.submitComment({
+        article: this.article._id,
+        text: this.newComment
+      })
     }
   }
 }
