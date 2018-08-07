@@ -20,7 +20,7 @@ export default {
   getArticleDetail(id) {
     return service({
       url: `/api/articles/${id}`,
-      method: 'GET',
+      method: 'GET'
     })
   },
   createNewArticle(data) {

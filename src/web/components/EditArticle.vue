@@ -10,16 +10,16 @@
       <p v-text="article.author"></p>
     </div>
     <div class="edit-body row clearfix">
-    <div class="pull-left m-6">
-      <h3 class="ar-title">正文</h3>
-      <textarea v-model='article.text' name="" class="ar-text" cols="30" rows="10" placeholder="正文" style="width:100%"></textarea>
+      <div class="pull-left m-6">
+        <h3 class="ar-title">正文</h3>
+        <textarea v-model='article.text' name="" class="ar-text" cols="30" rows="10" placeholder="正文" style="width:100%"></textarea>
+      </div>
+      <div class="pull-right m-6">
+        <h3>预览</h3>
+        <div v-html="compileMD" class="code-preview" style="width:100%"></div>
+      </div>
     </div>
-    <div class="pull-right m-6">
-      <h3>预览</h3>
-      <div v-html="compileMD" class="code-preview" style="width:100%"></div>
-    </div>
-    </div>
-    
+
     <button @click='createNewArticle' class='create-btn'>创建</button>
   </section>
 </template>
@@ -56,10 +56,12 @@ export default {
   methods: {
     createNewArticle() {
       var _this = this
-      this.$api.createNewArticle({ data: this.article }).then(res => {
+      this.$api.createNewArticle({ data: this.article }).then(
+        res => {
           console.log(res.data)
           _this.$router.replace('articles')
-        }, err => {
+        },
+        err => {
           if (err.response.data.missingTitle) {
             alert('请填写题目')
           }
@@ -70,7 +72,8 @@ export default {
             alert(JSON.stringify(err.response.data))
           }
           console.log(err.response)
-        })
+        }
+      )
     },
     markdown() {
       Marked.setOptions({
@@ -98,7 +101,7 @@ export default {
 }
 
 .code-preview {
-  padding: .5rem;
+  padding: 0.5rem;
   min-height: 3rem;
   box-sizing: border-box;
   background-color: #000;

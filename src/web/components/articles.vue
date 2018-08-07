@@ -17,11 +17,11 @@
 </template>
 <script>
 export default {
-  name: "articles",
+  name: 'articles',
   data() {
     return {
-      description: "This is articles module.",
-      main: "to be continued.",
+      description: 'This is articles module.',
+      main: 'to be continued.',
       articles: []
     }
   },
@@ -31,9 +31,12 @@ export default {
   },
   methods: {
     getList() {
-      this.$api.getArticleList("/api/articles").then(res => {
+      this.$api.getArticleList('/api/articles').then(
+        res => {
           this.articles = res.data.articles
-        }, err => console.log(err))
+        },
+        err => console.log(err)
+      )
     }
   }
 }
