@@ -75,12 +75,13 @@ export default {
   },
   methods: {
     getData() {
-      this.$http
-        .get('/api/articles/' + this.$route.params.id)
-        .then(res => {
+      this.$api.getArticleDetail(this.$route.params.id).then(res => {
+        if (res.data.article) {
           this.article = res.data.article
-        })
-        .catch(err => console.log(err))
+        }
+      }, err => {
+        console.log(err)
+      })
     },
     markdown() {
       Marked.setOptions({

@@ -56,13 +56,10 @@ export default {
   methods: {
     createNewArticle() {
       var _this = this
-      this.$http
-        .post('/api/articles', { data: this.article })
-        .then(res => {
+      this.$api.createNewArticle({ data: this.article }).then(res => {
           console.log(res.data)
           _this.$router.replace('articles')
-        })
-        .catch(err => {
+        }, err => {
           if (err.response.data.missingTitle) {
             alert('请填写题目')
           }

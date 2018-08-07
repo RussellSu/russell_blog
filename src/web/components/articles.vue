@@ -31,15 +31,9 @@ export default {
   },
   methods: {
     getList() {
-      this.$http
-        .get("/api/articles")
-        .then(res => {
+      this.$api.getArticleList("/api/articles").then(res => {
           this.articles = res.data.articles
-        })
-        .catch(err => console.log(err))
-    },
-    editNew() {
-      alert("editNew!")
+        }, err => console.log(err))
     }
   }
 }

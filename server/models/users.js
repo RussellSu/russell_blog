@@ -12,6 +12,7 @@ var userSchema = new Schema({
   email: { type: String, default: '', unique: true },
   phoneNumber: { type: String, default: '' },
   gender: { type: String, default: 'M', enum: ['M', 'F'] },
+  avatar: { type: String, default: '' },
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now },
 },

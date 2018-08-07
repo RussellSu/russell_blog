@@ -1,7 +1,13 @@
 <template>
   <section class="me-module module text-center">
     <!-- <img class="avatar" src="/static/img/suxiao-hahaha.jpg" />  -->
-    <h1>姓名：{{ fullname }}</h1>
+    <div class="user-info">
+      <img  class="avatar" :src="avatar"/>
+      <p>姓名：{{ fullname }}</p>
+      <p></p>
+      <p></p>
+    </div>
+    <h1></h1>
     <h2>昵称：{{ nickname }}</h2>
     <h3>性别：{{ gender }}</h3>
     <div class="browser-info text-left clearfix">
@@ -38,6 +44,7 @@ export default {
       fullname: state => state.userProfile.fullname,
       nickname: state => state.userProfile.nickname,
       gender: state => state.userProfile.gender,
+      avatar: state => state.userProfile.avatar,
     }),
     ...mapGetters([
       'isLogin'

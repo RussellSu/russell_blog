@@ -49,6 +49,13 @@ body {
       height: calc(100vh - 60px) !important;
     }
   }
+  @media screen and (max-width: 360px) {
+    .main-wrapper {
+      section[class*='-module'] {
+        margin: 0
+      }
+    }
+  }
   .main-wrapper {
     margin: 0 auto;
     // padding-top: 50px;
