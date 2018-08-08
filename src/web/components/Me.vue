@@ -101,12 +101,12 @@ export default {
   }
   .info-key {
     display: inline-block;
-    min-width: 200px;
+    // min-width: 200px;
     font-weight: bold;
     font-size: 1.4rem;
   }
   .info-value {
-
+    color: #FF0;
   }
 }
 </style>
