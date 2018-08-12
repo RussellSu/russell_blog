@@ -7,27 +7,28 @@
           <span class="item-name">email</span>
           <div class="item-detail">
             <input type="text" class="item-input" v-model='email'>
+            <p class="item-desc"></p>
           </div>
         </div>
         <div class="signup-item">
           <span class="item-name">phoneNumber</span>
           <div class="item-detail">
             <input type="text" class="item-input" v-model='phoneNumber'>
-            <span class="item-desc">11位数字</span>
+            <p class="item-desc">11位数字</p>
           </div>
         </div>
         <div class="signup-item">
           <span class="item-name">username</span>
           <div class="item-detail">
             <input type="text" class="item-input" v-model='username'>
-            <span class="item-desc">6-16位 字母 数字 英文点号 下划线 中划线</span>
+            <p class="item-desc">6-16位 字母 数字 英文点号 下划线 中划线</p>
           </div>
         </div>
         <div class="password signup-item">
           <span class="item-name">password</span>
           <div class="item-detail">
             <input type="password" class="item-input" v-model='password'>
-            <span class="item-desc">8-20位 字母 数字 特殊符号（!@$） 组成的强密码</span>
+            <p class="item-desc">8-20位 字母 数字 特殊符号（!@$） 组成的强密码</p>
           </div>
         </div>
         <div class="password signup-item">
@@ -36,7 +37,7 @@
             <input type="password" class="item-input" v-model='password2'>
           </div>
         </div>
-        <div class="btn-bar signup-item">
+        <div class="btn-bar">
           <a class="signup-btn cursor-hand" title="signup" @click='signup'>Sign up</a>
         </div>
       </div>
@@ -157,20 +158,21 @@ body {
 
 .center-wrapper {
   position: fixed;
-  left: calc(50% - 250px);
-  top: calc(50% - 150px);
-  width: 500px;
-  height: 300px;
-  padding: 10px;
-  background-color: rgba(49, 176, 213, 0.5);
-  box-shadow: 0px 0px 17px #dadada;
+  left: calc(50vw - 17rem);
+  top: calc(50vh - 20rem);
+  width: 34rem;
+  height: 40rem;
+  padding: 1rem;
+  background-color: rgba(49,176,213,.5);
+  box-shadow: 0 0 17px #dadada;
   border-radius: 4px 4px;
   color: #fff;
+  box-sizing: border-box;
 }
 
 .w-header {
   padding: 0.5rem;
-  font-size: 20px;
+  font-size: 2rem;
   line-height: 1.2;
   font-weight: bold;
   text-align: center;
@@ -184,20 +186,25 @@ body {
 }
 
 .signup-item {
-  margin: 0 0.5rem 1rem 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0;
 }
 
 .item-name {
   display: inline-block;
-  min-width: 150px;
   text-align: center;
+  font-size: 1rem;
+  width: 40%;
 }
 .item-detail {
   display: inline-block;
+  width: 60%;
+  vertical-align: middle;
 }
 .item-input {
   border: 0;
   padding: 0.3rem;
+  min-width: 90%;
   font-family: inherit;
   color: #fff;
   background-color: rgba(255, 255, 255, 0.2);
@@ -205,8 +212,9 @@ body {
 
 .item-desc {
   display: inline-block;
-  font-size: 12px;
-  width: 150px;
+  font-size: .8rem;
+  // width: 150px;
+  margin: 1rem 0 0 0;
   vertical-align: middle;
   line-height: 1.2;
   color: rgba(255, 255, 255, 0.6);

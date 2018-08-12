@@ -80,6 +80,7 @@ module.exports = function(app, passport, config) {
     })
   })
   passport.use(new PassportHttp.BasicStrategy(function(username, password, done) {
+    // 每次走中间件 passport.authenticate('basic', { session: true }) 都会执行此部分
     User.findOne({
       '$or': [
         { 'fullname': username },

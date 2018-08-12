@@ -16,23 +16,23 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <script>
-    // (function (doc, win) {
-    //     var docEl = doc.documentElement,
-    //         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-    //         recalc = function () {
-    //             var clientWidth = docEl.clientWidth;
-    //             if (!clientWidth) return;
-    //             if(clientWidth>=640){
-    //                 docEl.style.fontSize = '16px';
-    //             }else{
-    //                 docEl.style.fontSize = 12 * (clientWidth / 320) + 'px';
-    //             }
-    //         };
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=640){
+                    docEl.style.fontSize = '16px';
+                }else{
+                    docEl.style.fontSize = 12 * (clientWidth / 480) + 'px'; // 320 480
+                }
+            };
 
-    //     if (!doc.addEventListener) return;
-    //     win.addEventListener(resizeEvt, recalc, false);
-    //     doc.addEventListener('DOMContentLoaded', recalc, false);
-    // })(document, window);
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
   </script>
 </head>
 
