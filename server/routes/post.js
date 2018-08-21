@@ -9,8 +9,8 @@ module.exports = function(app, config, apiRouter) {
   apiRouter.post('/users/register', user.register)
 
   const articles = require('../controllers/post/articles.js')
-  apiRouter.post('/articles', articles.addArticle)
+  apiRouter.post('/articles', isLogin, articles.addArticle)
 
   const comments = require('../controllers/post/comments.js')
-  apiRouter.post('/comments', comments.addComment)
+  apiRouter.post('/comments', isLogin, comments.addComment)
 }
