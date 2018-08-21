@@ -13,7 +13,10 @@ exports.articleList = (req, res) => {
 exports.articleItem = (req, res) => {
   Promise.all([
     Article.findOne({_id: req.params.id}).lean(),
-    Comment.find({article: req.params.id}).lean(),
+    Comment.find({ article: req.params.id })
+      .populate('user', 'fullname nickname email thumbnail')
+      .populate('replies.user', 'fullname nickname email')
+      .populate('replies.to', 'fullname nickname email').lean(),
   ]).then(data => {
     let article = data[0]
     if (!article) {
