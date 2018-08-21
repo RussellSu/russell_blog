@@ -19,12 +19,12 @@ exports.encrypt = (originStr, secretKey, algorithm = 'aes192') => {
   }
   let cip = Crypto.createCipher(algorithm, secretKey)
   let encrypted = cip.update(originStr, 'binary', 'hex')
-  encrypted += cip.final('hex') 
+  encrypted += cip.final('hex')
   return encrypted
 }
 
-//解密
-exports.decrypt = function (encryptedStr, secretKey, algorithm = 'aes192') {
+// 解密
+exports.decrypt = (encryptedStr, secretKey, algorithm = 'aes192') => {
   if (!secretKey) {
     throw new Error('encrypt: secreKey(second parameter) can not be empty!')
   }

@@ -38,8 +38,8 @@ exports.register = (req, res) => {
   const username = (dataBody.username || '').trim()
   const password = (dataBody.password || '').trim()
   const password2 = (dataBody.password2 || '').trim()
-  let emailRegExp = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9_\-]+(\.[a-zA-Z_\-]+)+$/g  //xiao.su-russell_su@xiao_su-russell.xiao-su.com
-  let phoneNumberRegExp = /^[0-9]{11}$/g           // 11位 数字
+  let emailRegExp = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z_-]+)+$/g // xiao.su-russell_su@xiao_su-russell.xiao-su.com
+  let phoneNumberRegExp = /^[0-9]{11}$/g // 11位 数字
   let usernameRegExp = /^[a-zA-Z0-9_\.\-]{6,16}$/g  // 6-16位 字母 数字 英文点号 下划线 中划线
   let passwordExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@$])[0-9a-zA-Z!@$]{8,20}$/g // 8-20位 字母 数字 特殊符号 
   if (!email) {
