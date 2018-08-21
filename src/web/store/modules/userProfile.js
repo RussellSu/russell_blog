@@ -9,6 +9,7 @@ const userProfile = {
     email: '', // { type: String, default: '', unique: true },
     phoneNumber: '', // { type: String, default: '' },
     gender: '', // { type: String, default: 'M', enum: ['M', 'F'] },
+    thumbnail: '',
     createTime: '',
     updateTime: ''
   },

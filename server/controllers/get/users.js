@@ -12,7 +12,7 @@ exports.profile = (req, res) => {
   if (!req.user) {
     return res.json({ user: {} })
   }
-  User.findOne({ _id: req.user._id }, "fullname prid email phoneNumber")
+  User.findOne({ _id: req.user._id }, "fullname prid email phoneNumber thumbnail")
     .lean()
     .exec((err, user) => {
       if (err) return res.status(501).send(err)

@@ -1,14 +1,9 @@
 <template>
 <div>
   <nav class="side-nav">
-    <div class="user-info">
-      <span v-if="isLogin">
-        {{fullname}}
-      </span>
-      <span v-else>
-        <span @click="toLogin">未登录</span>
-      </span>
+    <div class="user-info" v-if="isLogin" :style="{'background-image':`url(${thumbnail})`}">
     </div>
+    <div class="user-info" v-else @click="toLogin">未登录</div>
     {{fullname}}
     {{nickname}}
     <ul>
@@ -65,6 +60,7 @@ export default {
       fullname: state => state.userProfile.fullname,
       nickname: state => state.userProfile.nickname,
       gender: state => state.userProfile.gender,
+      thumbnail: state => state.userProfile.thumbnail,
     }),
     ...mapGetters([
       'isLogin'
@@ -113,10 +109,14 @@ export default {
   background-color: #000;
 }
 .user-info {
+  height: 80px;
   line-height: 80px;
-  background-color: #2e2e2e;
-  border-radius: 50%;
   margin: 10px;
+  border-radius: 50%;
+  background-color: #2e2e2e;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .side-nav ul {
   margin-top: 40px;
