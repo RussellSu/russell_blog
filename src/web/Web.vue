@@ -6,18 +6,33 @@
       </transition>
     </div>
     <nav-bar></nav-bar>
+    <loading :active="activeLoading" :content="loadingContent"></loading>
   </div>
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex'
 import NavBar from '@/web/components/NavBar'
+import Loading from '@/web/components/Loading'
 // import {mapGetters, mapState} from 'vuex'
 import '@/web/styles/index.scss'
 
 export default {
   name: 'web',
+  components: {
+    NavBar,
+    Loading
+  },
+  computed: {
+    ...mapState({
+      activeLoading: state => state.app.loading.active,
+      loadingContent: state => state.app.loading.content,
+    }),
+    ...mapGetters([
+      'isLogin'
+    ])
+  },
   created() {
-    console.log('web.vue created')
     this.getProfile()
   },
   methods: {
@@ -25,10 +40,6 @@ export default {
       this.$store.dispatch('getUserProfile')
     }
   },
-  components: {
-    //  这写成对象而不是数组，为啥？
-    NavBar,
-  }
 }
 </script>
 

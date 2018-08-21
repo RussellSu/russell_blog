@@ -31,11 +31,17 @@ export default {
   },
   methods: {
     getList() {
+      let _this = this
+      this.$store.commit('ACTIVE_LOADING')
       this.$api.getArticleList('/api/articles').then(
         res => {
+          _this.$store.commit('INACTIVE_LOADING')
           this.articles = res.data.articles
         },
-        err => console.log(err)
+        err => {
+          _this.$store.commit('INACTIVE_LOADING')
+          console.log(err)
+        }
       )
     }
   }
