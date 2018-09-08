@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
-  <title>注册新用户</title>
+  <title>登陆</title>
   <!-- 避免IE使用兼容模式, 优先使用 IE 最新版本和 Chrome-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览。-->
@@ -14,9 +13,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!--制定iphone中safari顶端的状态条的样式（default:白色，black:黑色，black-translucent：灰色半透明）-->
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="theme-color" content="#00ff39">
+  <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
   <script>
-    (function (doc, win) {
+      (function (doc, win) {
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function () {
@@ -36,8 +36,12 @@
   </script>
 </head>
 
-<body id="signup-body">
-  <div id="signup"></div>
+<body>
+  <noscript>
+    <strong>login:We're sorry but russell-blog doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="login"></div>
+  <!-- built files will be auto injected -->
 </body>
 
 </html>

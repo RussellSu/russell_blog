@@ -75,7 +75,9 @@ module.exports = function(app, passport, config) {
   passport.deserializeUser(function(userId, done) { // userId来源 req.session.passport.user
     // 通过req.session.passport.user 实时查询user 更新req.user
     User.findOne({ '_id': userId }, "fullname email phoneNumber").lean().exec((err, user) => {
-      user.gaga = "gaga"
+      if (user) {
+        user.gaga = "gaga"
+      }
       done(err, user) // 置为  req.user req.session.passport.user
     })
   })

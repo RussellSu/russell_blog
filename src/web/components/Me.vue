@@ -1,6 +1,6 @@
 <template>
   <section class="me-module module text-center">
-    <!-- <img class="avatar" src="/static/img/suxiao-hahaha.jpg" />  -->
+    <!-- <img class="avatar" src="/img/suxiao-hahaha.jpg" />  -->
     <div class="user-info">
       <img  class="avatar" :src="avatar"/>
       <p>姓名：{{ fullname }}</p>
@@ -12,20 +12,20 @@
     <h3>性别：{{ gender }}</h3>
     <div class="browser-info text-left clearfix">
       <ol>
-        <li v-for="(value, key, index) in browserInfo" :key="key">
-          <span class="info-key">{{key}}</span>: 
+        <li v-for="(value, key) in browserInfo" :key="key">
+          <span class="info-key">{{key}}</span>:
           <span class="info-value">{{value}}</span>
           </li>
       </ol>
       <button @click="getBrowserInfo" class="pull-right">getBrowserInfo</button>
     </div>
-    <button v-if="isLogin" v-text @click="goLogInOut('out')">logout</button>
+    <button v-if="isLogin" @click="goLogInOut('out')">logout</button>
     <button v-else @click="goLogInOut('in')">login</button>
   </section>
 </template>
 
 <script>
-import {mapState, mapGetters} from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'author',
   data() {

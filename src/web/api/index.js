@@ -46,6 +46,15 @@ export default {
       data: data
     })
   },
+  markLike(id, type) {
+    return service({
+      url: `/api/like/${id}`,
+      method: 'POST',
+      data: {
+        type // article comment
+      }
+    })
+  },
   postDemo(data) {
     return service({
       url: '/api/postDemo',

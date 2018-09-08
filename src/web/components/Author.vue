@@ -1,6 +1,6 @@
 <template>
   <section class="author-module module text-center">
-    <img class="avatar" src="/static/img/suxiao-hahaha.jpg" />
+    <img class="avatar" src="/img/suxiao-hahaha.jpg" />
     <h1>{{ mainTitle }}</h1>
     <h2>{{ subTitle }}</h2>
     <h3>{{ info }}</h3>

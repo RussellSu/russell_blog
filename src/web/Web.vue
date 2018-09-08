@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {mapState, mapGetters} from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import NavBar from '@/web/components/NavBar'
 import Loading from '@/web/components/Loading'
 // import {mapGetters, mapState} from 'vuex'
@@ -54,7 +54,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
   color: #7e9e9d; // margin-top: 60px;
-  
+
   @media screen and (max-width: 960px) {
     .main-wrapper {
       height: calc(100vh - 60px) !important;

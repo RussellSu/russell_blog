@@ -2,7 +2,7 @@
   <nav class="side-nav">
     <div class="fullname"></div>
     <ul>
-      <li v-for="item of navList">
+      <li v-for="item of navList" :key="item.title">
         <router-link v-bind:to="item.routeName" exact>{{item.title}}</router-link>
       </li>
       <li class="logout-btn">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-//  import sidebar from '@/navList'
+//  import sidebar from '@/cms/navList'
 var navList = [
   { title: 'home', routeName: '/', exact: true },
   { title: 'users', routeName: '/users' },

@@ -41,7 +41,7 @@ const userProfile = {
     },
   },
   actions: {
-    getUserProfile({state, rootState, commit, dispatch}) {
+    getUserProfile({ state, rootState, commit, dispatch }) {
       console.log('store action getUserProfile')
       api.getUserProfile().then(res => {
         if (res.data && res.data.user) {

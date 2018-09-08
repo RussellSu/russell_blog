@@ -18,7 +18,7 @@
           <td>创建时间</td>
         </tr>
         <tbody>
-          <tr v-for="user of userList">
+          <tr v-for="user of userList" :key="user.id">
             <td>{{user.fullname}}</td>
             <td>{{user.email}}</td>
             <td>{{user.gender}}</td>

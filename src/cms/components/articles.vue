@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for='article of articles'>
+          <tr v-for='article of articles' :key="article._id">
             <td>
               <router-link :to="'/articles/' + article._id">
                 <!-- <router-link :to="{ name: 'articles', params: {id: article._id} }"> -->

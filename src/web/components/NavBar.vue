@@ -7,7 +7,7 @@
     {{fullname}}
     {{nickname}}
     <ul>
-      <li v-for="item of navList">
+      <li v-for="item of navList" :key="item.title">
         <router-link :to="item.routeName" exact>{{item.title}}</router-link>
       </li>
       <li class="logout-btn" v-if="isLogin">
@@ -17,7 +17,7 @@
   </nav>
   <nav class="bottom-nav">
     <ul>
-      <li v-for="item of navList">
+      <li v-for="item of navList" :key="item.title">
         <router-link :to="item.routeName" exact>{{item.title}}</router-link>
       </li>
       <li class="logout-btn hide" v-if="isLogin">
@@ -30,7 +30,7 @@
 
 <script>
 //  import sidebar from '@/web/navList'
-import {mapState, mapGetters} from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 var navList = [
   // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },

@@ -7,27 +7,27 @@
 </template>
 
 <script>
-  export default {
-    name: 'loadingData',
-    props: {
-      active: {
-        type: Boolean,
-        default: false,
-      },
-      content: {
-        type: String,
-        default: 'loading...',
-      }
+export default {
+  name: 'loadingData',
+  props: {
+    active: {
+      type: Boolean,
+      default: false,
     },
-    data() {
-      return {
-      }
-    },
-    created() {
-    },
-    methods: {
+    content: {
+      type: String,
+      default: 'loading...',
     }
+  },
+  data() {
+    return {
+    }
+  },
+  created() {
+  },
+  methods: {
   }
+}
 </script>
 
 <style scoped>

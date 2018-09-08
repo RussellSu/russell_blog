@@ -2,7 +2,7 @@
   <section class="articles-module module">
     <h1 class="module-title">articles</h1>
     <div class="article-list rs-scrollbar">
-      <div class="article" v-for="article in articles">
+      <div class="article" v-for="article in articles" :key="article._id">
         <div class="article-top-bar">
           <p class="text-right">更新：{{article.updateTime | time_format('YYYY/MM/DD HH:mm')}}</p>
         </div>

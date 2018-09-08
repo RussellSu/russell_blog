@@ -9,6 +9,7 @@ import api from '@/web/api/index.js'
 import service from '@/web/utils/service.js'
 import store from '@/web/store/index.js'
 import 'font-awesome/css/font-awesome.min.css'
+import router from './router'
 // Axios.defaults.headers.post['content-Type'] = 'appliction/json' // 默认 application/x-www-urlencoded
 Vue.prototype.$http = service
 // Vue.prototype.$http = Axios
@@ -18,17 +19,13 @@ Vue.prototype.$tool = tool
 
 Vue.config.productionTip = false
 
-import router from './router'
-
 Vue.filter('time_format', (value, formatStr = 'YYYYMMDD') => Moment(value).format(formatStr))
 /* eslint-disable no-unused-vars */
 window.Russell = {}
 /* eslint-disable no-new */
 const vue = new Vue({
-  el: '#web',
   router,
   store,
-  template: '<Web/>',
-  components: { Web }
-})
+  render: h => h(Web)
+}).$mount('#web')
 window.vueVO = vue

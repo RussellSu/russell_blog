@@ -50,7 +50,7 @@ module.exports = (express, app, config, apiRouter) => {
   //   // res.send('hello world!');
   //   res.sendFile('cmsApp.html', { root: path.join(__dirname, './public') })
   // })
-
+  require('./utils/upload')(app)
   app.get('/logout', (req, res) => {
     // req.logout()---------------------------------------------------------------------------------
     req.session.destroy(() => {

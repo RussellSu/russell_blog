@@ -100,7 +100,7 @@ body {
   height: 100%;
   background-color: #6c6c6c; /*#f6f1e8*/
   background-attachment: fixed;
-  background-image: url('/static/img/giraffe03.jpg');
+  background-image: url('/img/giraffe03.jpg');
   background-position: 0 0;
   background-size: cover;
   background-repeat: space;

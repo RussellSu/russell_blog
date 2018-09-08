@@ -12,12 +12,12 @@
         <dd class="comment clearfix" v-for="comment of article.comments" :key="comment._id">
           <div class="comment-left pull-left text-center">
             <div class="user-thumbnail" :style="{'background-image':`url(${comment.user.thumbnail})`}"></div>
-            <i class="like-btn" @click="likeComment">like</i>
+            <i class="like-btn" @click="likeComment(comment._id)">like</i>
           </div>
           <div class="comment-right pull-right">
             <div class="comment-user">
               <span v-text="comment.user.fullname"></span>
-               - 
+               -&nbsp;
               <span>{{comment.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</span>
             </div>
             <div class="comment-body">
@@ -43,7 +43,7 @@
   </section>
 </template>
 <script>
-import {mapState, mapGetters} from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Marked from 'marked'
 import highlightjs from 'highlight.js'
 import 'highlight.js/styles/googlecode.css'
@@ -142,8 +142,13 @@ export default {
         console.log(err.response)
       })
     },
-    likeComment() {
+    likeComment(commnetId) {
       alert('to be continued')
+      this.$api.markLike(commnetId, 'comment').then(res => {
+        console.log(res.data)
+      }, err => {
+        console.log(err)
+      })
     }
   }
 }
@@ -153,6 +158,9 @@ export default {
   margin: 1rem 0;
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.1);
+  code {
+    white-space: pre-wrap;
+  }
 }
 .comments-wrapper {
   margin: 10px 0;
