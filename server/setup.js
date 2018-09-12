@@ -12,7 +12,7 @@ var secret = require('../secret/secret.js')
 var User = require('./models/users.js')
 var PassportHttp = require("passport-http")
 
-module.exports = function(app, passport, config) {
+module.exports = function (app, passport, config) {
   process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
   console.log(`■■■process.env.NODE_ENV■${process.env.NODE_ENV}`)
 
@@ -28,15 +28,15 @@ module.exports = function(app, passport, config) {
 
   app.enable('trust proxy')
   app.disable('x-powered-by')
-  app.options("*", function(req, res) {
+  app.options("*", (req, res) => {
     res.status(404).sendfile("./public/404.html")
   })
 
-  app.head("*", function(req, res) {
+  app.head("*", (req, res) => {
     res.status(404).sendfile("./public/404.html")
   })
 
-  app.trace("*", function(req, res) {
+  app.trace("*", (req, res) => {
     res.status(404).sendfile("./public/404.html")
   })
 
@@ -68,11 +68,11 @@ module.exports = function(app, passport, config) {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  passport.serializeUser(function(user123, done) {
+  passport.serializeUser((user123, done) => {
     done(null, user123._id) // 绑到 req.session.passport.user
   })
 
-  passport.deserializeUser(function(userId, done) { // userId来源 req.session.passport.user
+  passport.deserializeUser((userId, done) => { // userId来源 req.session.passport.user
     // 通过req.session.passport.user 实时查询user 更新req.user
     User.findOne({ '_id': userId }, "fullname email phoneNumber").lean().exec((err, user) => {
       if (user) {
@@ -81,7 +81,7 @@ module.exports = function(app, passport, config) {
       done(err, user) // 置为  req.user req.session.passport.user
     })
   })
-  passport.use(new PassportHttp.BasicStrategy(function(username, password, done) {
+  passport.use(new PassportHttp.BasicStrategy((username, password, done) => {
     // 每次走中间件 passport.authenticate('basic', { session: true }) 都会执行此部分
     User.findOne({
       '$or': [

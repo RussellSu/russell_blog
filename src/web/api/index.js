@@ -1,13 +1,13 @@
 import service from '@/web/utils/service.js'
 
 export default {
-  getUserProfile() {
+  getUserProfile () {
     return service({
       url: '/api/profile',
       method: 'GET'
     })
   },
-  getArticleList(pageSize = 10, curPage = 1) {
+  getArticleList (pageSize = 10, curPage = 1) {
     return service({
       url: `/api/articles`,
       method: 'GET',
@@ -17,20 +17,20 @@ export default {
       }
     })
   },
-  getArticleDetail(id) {
+  getArticleDetail (id) {
     return service({
       url: `/api/articles/${id}`,
       method: 'GET'
     })
   },
-  createNewArticle(data) {
+  createNewArticle (data) {
     return service({
       url: '/api/articles',
       method: 'POST',
       data: data
     })
   },
-  getDemo(id, pageSize = 10, curPage = 1) {
+  getDemo (id, pageSize = 10, curPage = 1) {
     return service({
       url: `/api/getDemo/${pageSize}/${curPage}`,
       method: 'GET',
@@ -39,14 +39,14 @@ export default {
       }
     })
   },
-  submitComment(data) {
+  submitComment (data) {
     return service({
       url: '/api/comments',
       method: 'POST',
       data: data
     })
   },
-  markLike(id, type) {
+  markLike (id, type) {
     return service({
       url: `/api/like/${id}`,
       method: 'POST',
@@ -55,20 +55,20 @@ export default {
       }
     })
   },
-  postDemo(data) {
+  postDemo (data) {
     return service({
       url: '/api/postDemo',
       method: 'POST',
       data: data
     })
   },
-  putDemo() {
+  putDemo () {
     return service({
       url: '/api/putDemo',
       method: 'PUT'
     })
   },
-  deleteDemo() {
+  deleteDemo () {
     return service({
       url: '/api/deleteDemo',
       method: 'DELETE'

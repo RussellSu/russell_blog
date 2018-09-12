@@ -24,12 +24,12 @@
 <script>
 export default {
   name: 'about',
-  data() {
+  data () {
     return {
       msg: 'About Russell'
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
   }
 }

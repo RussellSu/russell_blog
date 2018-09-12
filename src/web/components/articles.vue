@@ -18,19 +18,19 @@
 <script>
 export default {
   name: 'articles',
-  data() {
+  data () {
     return {
       description: 'This is articles module.',
       main: 'to be continued.',
       articles: []
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
     this.getList()
   },
   methods: {
-    getList() {
+    getList () {
       let _this = this
       this.$store.commit('ACTIVE_LOADING')
       this.$api.getArticleList('/api/articles').then(

@@ -15,7 +15,7 @@ import '@/cms/styles/index.scss'
 
 export default {
   name: 'cms',
-  created() {
+  created () {
     if (!window.Russell.user) {
       this.$http
         .get('/api/profile')

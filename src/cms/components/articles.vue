@@ -36,19 +36,19 @@
 <script>
 export default {
   name: 'articles',
-  data() {
+  data () {
     return {
       description: 'This is articles module.',
       main: 'to be continued.',
       articles: []
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
     this.getList()
   },
   methods: {
-    getList() {
+    getList () {
       this.$http
         .get('/api/articles')
         .then(res => {
@@ -56,7 +56,7 @@ export default {
         })
         .catch(err => console.log(err))
     },
-    editNew() {
+    editNew () {
       alert('editNew!')
     }
   }

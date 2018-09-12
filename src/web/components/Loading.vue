@@ -19,11 +19,11 @@ export default {
       default: 'loading...',
     }
   },
-  data() {
+  data () {
     return {
     }
   },
-  created() {
+  created () {
   },
   methods: {
   }

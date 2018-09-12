@@ -37,14 +37,14 @@
 export default {
   name: 'login',
   components: {},
-  data() {
+  data () {
     return {
       username: '',
       password: ''
     }
   },
   methods: {
-    login() {
+    login () {
       // var _this = this
       // var data = {
       //   username: _this.username,

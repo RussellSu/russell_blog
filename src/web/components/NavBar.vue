@@ -41,16 +41,16 @@ var navList = [
 // var user = window.Russell.user
 export default {
   name: 'navBar',
-  data() {
+  data () {
     return {
       navList: navList,
       user: {}
     }
   },
-  created() {
+  created () {
     console.log('sidebar created')
   },
-  mounted() {
+  mounted () {
     // console.log('sidebar mounted', window.Russell.user)
     // this.user = window.Russell.user || {}
     // console.log('sidebar mounted', 'window.Russell', window.Russell)
@@ -67,7 +67,7 @@ export default {
     ])
   },
   methods: {
-    toLogin() {
+    toLogin () {
       window.location.href = '/login'
     }
   }

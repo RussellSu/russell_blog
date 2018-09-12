@@ -32,7 +32,7 @@ import 'highlight.js/styles/googlecode.css'
 export default {
   name: 'editArticle',
   components: { Marked, highlightjs },
-  data() {
+  data () {
     return {
       mainTitle: '编辑文章',
       article: {
@@ -43,18 +43,18 @@ export default {
     }
   },
   computed: {
-    compileMD: function() {
+    compileMD: function () {
       return Marked(this.article.text, { sanitize: true })
     }
   },
-  created() {
+  created () {
     document.title = '编辑'
   },
-  mounted() {
+  mounted () {
     this.markdown()
   },
   methods: {
-    createNewArticle() {
+    createNewArticle () {
       var _this = this
       this.$api.createNewArticle({ data: this.article }).then(
         res => {
@@ -75,10 +75,10 @@ export default {
         }
       )
     },
-    markdown() {
+    markdown () {
       Marked.setOptions({
         renderer: new Marked.Renderer(),
-        hightlight: function(code) {
+        hightlight: function (code) {
           return highlightjs.highlightAuto(code).value
         },
         gfm: true,

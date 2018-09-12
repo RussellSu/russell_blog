@@ -1,11 +1,11 @@
-const trim = function(str) {
+const trim = function (str) {
   if (typeof str !== 'string') {
     console.warn('this variable is not a String')
     return str
   }
   return str.replace(/(^\s+)|(\s+$)/g, '')
 }
-const isEmptyObj = function(data) {
+const isEmptyObj = function (data) {
   return Object.keys(data).length === 0
 }
 const isStringify = data => typeof data === 'string'
@@ -14,7 +14,7 @@ const isStringify = data => typeof data === 'string'
   || (data.startsWith('{') && data.endsWith('}'))
   )
 
-const judgeType = function(data) {
+const judgeType = function (data) {
   const typeMap = {
     '[object String]': 'string',
     '[object Boolean]': 'boolean',
@@ -30,7 +30,7 @@ const judgeType = function(data) {
   return typeMap[Object.prototype.toString.call(data)]
 }
 
-const deepClone = function(data) {
+const deepClone = function (data) {
   let _this = this
   const type = judgeType(data)
   let temp
@@ -56,7 +56,7 @@ const deepClone = function(data) {
   return temp
 }
 
-const timeFormat = function(data, formatStr = 'yyyy-MM-dd') {
+const timeFormat = function (data, formatStr = 'yyyy-MM-dd') {
   const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   var map = {
     'M+': data.getMonth() + 1,
@@ -93,7 +93,7 @@ const timeFormat = function(data, formatStr = 'yyyy-MM-dd') {
   return formatStr
 }
 
-const moneyFormat = function(data) {
+const moneyFormat = function (data) {
 
 }
 

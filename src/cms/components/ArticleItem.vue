@@ -15,7 +15,7 @@ import 'highlight.js/styles/googlecode.css'
 export default {
   name: 'articleItem',
   components: { Marked, highlightjs },
-  data() {
+  data () {
     return {
       description: 'This is articles item.',
       main: 'to be continued.',
@@ -23,19 +23,19 @@ export default {
     }
   },
   computed: {
-    compileMD: function() {
+    compileMD: function () {
       return Marked(this.article.text, { sanitize: true })
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
     this.getData()
   },
-  mounted() {
+  mounted () {
     this.markdown()
   },
   methods: {
-    getData() {
+    getData () {
       this.$http
         .get('/api/articles/' + this.$route.params.id)
         .then(res => {
@@ -43,10 +43,10 @@ export default {
         })
         .catch(err => console.log(err))
     },
-    markdown() {
+    markdown () {
       Marked.setOptions({
         renderer: new Marked.Renderer(),
-        hightlight: function(code) {
+        hightlight: function (code) {
           return highlightjs.highlightAuto(code).value
         },
         gfm: true,

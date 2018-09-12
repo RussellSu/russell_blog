@@ -26,12 +26,12 @@
 <script>
 export default {
   name: 'hello',
-  data() {
+  data () {
     return {
       msg: 'Welcome to Russell\'s blog'
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
   }
 }

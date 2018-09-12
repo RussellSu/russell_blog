@@ -10,11 +10,12 @@ const userProfile = {
     phoneNumber: '', // { type: String, default: '' },
     gender: '', // { type: String, default: 'M', enum: ['M', 'F'] },
     thumbnail: '',
+    avatar: '',
     createTime: '',
     updateTime: ''
   },
   mutations: {
-    SET_USER_PROFILE(state, payload) { // 批量设置字段
+    SET_USER_PROFILE (state, payload) { // 批量设置字段
       console.log('【SET_USER_PROFILE】', payload)
       for (let [key, value] of Object.entries(payload)) {
         if (state[key] !== undefined && value !== undefined) {
@@ -22,7 +23,7 @@ const userProfile = {
         }
       }
     },
-    RESET_USER_PROFILE(state) {
+    RESET_USER_PROFILE (state) {
       console.log('【RESET_USER_PROFILE】')
       for (let [key, value] of Object.entries(state)) {
         if (typeof value === 'string') {
@@ -41,7 +42,7 @@ const userProfile = {
     },
   },
   actions: {
-    getUserProfile({ state, rootState, commit, dispatch }) {
+    getUserProfile ({ state, rootState, commit, dispatch }) {
       console.log('store action getUserProfile')
       api.getUserProfile().then(res => {
         if (res.data && res.data.user) {
@@ -51,9 +52,19 @@ const userProfile = {
     },
   },
   getters: {
-    isLogin(state, getter, rootState) {
+    isLogin (state, getter, rootState) {
       console.log('isLogin', state)
       return !!state._id
+    },
+    genderText (state) {
+      let text = 'unknown'
+      if (state.gender === 'M') {
+        text = '小哥哥'
+      }
+      if (state.gender === 'F') {
+        text = '小姐姐'
+      }
+      return text
     }
   }
 }

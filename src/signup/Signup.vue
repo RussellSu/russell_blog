@@ -51,7 +51,7 @@
 export default {
   name: 'signup',
   components: {},
-  data() {
+  data () {
     return {
       email: '',
       phoneNumber: '',
@@ -61,7 +61,7 @@ export default {
     }
   },
   methods: {
-    signup() {
+    signup () {
       var _this = this
       var data = {
         email: _this.email,

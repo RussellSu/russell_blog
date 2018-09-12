@@ -54,7 +54,7 @@ export default {
     Marked,
     highlightjs,
   },
-  data() {
+  data () {
     console.log('data')
     return {
       article: {
@@ -71,7 +71,7 @@ export default {
     }
   },
   computed: {
-    compileMD: function() {
+    compileMD: function () {
       return Marked(this.article.text, { sanitize: true })
     },
     ...mapState({
@@ -81,17 +81,17 @@ export default {
       'isLogin'
     ])
   },
-  created() {
+  created () {
     console.log('created')
     this.getData()
     document.title = this.article.title
   },
-  mounted() {
+  mounted () {
     console.log('mounted')
     this.markdown()
   },
   methods: {
-    getData() {
+    getData () {
       let _this = this
       this.$store.commit('ACTIVE_LOADING')
       this.$api.getArticleDetail(this.$route.params.id).then(res => {
@@ -104,10 +104,10 @@ export default {
         console.log(err)
       })
     },
-    markdown() {
+    markdown () {
       Marked.setOptions({
         renderer: new Marked.Renderer(),
-        hightlight: function(code) {
+        hightlight: function (code) {
           return highlightjs.highlightAuto(code).value
         },
         gfm: true,
@@ -119,10 +119,10 @@ export default {
         smartypants: false
       })
     },
-    writeComment() {
+    writeComment () {
       this.showCommentEditor = true
     },
-    submitComment() {
+    submitComment () {
       let _this = this
       if (!this.newComment.length) {
         alert('你不打算说点啥吗')
@@ -142,7 +142,7 @@ export default {
         console.log(err.response)
       })
     },
-    likeComment(commnetId) {
+    likeComment (commnetId) {
       alert('to be continued')
       this.$api.markLike(commnetId, 'comment').then(res => {
         console.log(res.data)

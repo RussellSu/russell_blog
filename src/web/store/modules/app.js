@@ -20,10 +20,10 @@ const app = {
     }
   },
   mutations: {
-    SET_STATUS(state, payload) { // 单独设置status 值
+    SET_STATUS (state, payload) { // 单独设置status 值
       state.status = payload
     },
-    SET_APP(state, payload) { // 批量设置字段
+    SET_APP (state, payload) { // 批量设置字段
       console.log('【SET_APP】', payload)
       for (let [key, value] of Object.entries(payload)) {
         if (state[key] !== undefined && value !== undefined) {
@@ -31,7 +31,7 @@ const app = {
         }
       }
     },
-    ACTIVE_POPUP(state, payload) {
+    ACTIVE_POPUP (state, payload) {
       state.activePopup = true
       if (typeof payload === 'string') {
         state.popup.content = payload
@@ -48,7 +48,7 @@ const app = {
         payload.height && (state.popup.height = payload.height)
       }
     },
-    INACTIVE_POPUP(state, payload) {
+    INACTIVE_POPUP (state, payload) {
       state.activePopup = false
       state.popup.title = ''
       state.popup.content = ''
@@ -61,11 +61,11 @@ const app = {
       state.popup.okFoo = () => false
       state.popup.cancelFoo = () => false
     },
-    ACTIVE_LOADING(state, payload) {
+    ACTIVE_LOADING (state, payload) {
       state.loading.active = true
       typeof payload === 'string' && (state.loading.content = payload)
     },
-    INACTIVE_LOADING(state) {
+    INACTIVE_LOADING (state) {
       state.loading.active = false
       state.loading.content = '加载中'
     }

@@ -33,11 +33,11 @@
 <script>
 export default {
   name: 'users',
-  created() {
+  created () {
     this.getList()
     document.title = this.$route.name
   },
-  data() {
+  data () {
     return {
       description: 'This is users module.',
       main: 'to be continued.',
@@ -48,7 +48,7 @@ export default {
     }
   },
   methods: {
-    getList() {
+    getList () {
       console.log('users getList')
       // this.$http.get('/api/users?_=' + new Date())
       this.$http
@@ -59,7 +59,7 @@ export default {
         })
         .catch(err => console.log(err.response))
     },
-    createUser() {
+    createUser () {
       let _this = this
       const fullname = _this.fullname
       const email = _this.email

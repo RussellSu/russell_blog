@@ -32,11 +32,11 @@ export default {
       'isLogin'
     ])
   },
-  created() {
+  created () {
     this.getProfile()
   },
   methods: {
-    getProfile() {
+    getProfile () {
       this.$store.dispatch('getUserProfile')
     }
   },

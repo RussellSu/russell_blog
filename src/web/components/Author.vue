@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'author',
-  data() {
+  data () {
     return {
       // avatarUrl: avatarUrl,
       mainTitle: '关于作者',
@@ -20,7 +20,7 @@ export default {
       description: '我是苏晓，是一名程序员。这是我的博客，是记录我工作学习生活的地方。',
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
   }
 }

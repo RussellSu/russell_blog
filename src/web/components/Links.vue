@@ -38,12 +38,12 @@
 import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'links',
-  data() {
+  data () {
     return {
       msg: 'Welcome to Russell\'s App'
     }
   },
-  created() {
+  created () {
     document.title = this.$route.name
   },
   computed: {
