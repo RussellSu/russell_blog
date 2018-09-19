@@ -3,7 +3,7 @@
 module.exports = {
   root: true, // 只使用当前配置，停止在父级目录中寻找配置文件。
   parserOptions: {
-    parser: 'babel-eslint', // 解析器: Esprima（default）/ babel-eslint（babel-eslint解析器是对babel解析器的包装使其与ESLint解析） / typescript-eslint-parser(实验) 
+    parser: 'babel-eslint', // 解析器: Esprima（default）/ babel-eslint（babel-eslint解析器是对babel解析器的包装使其与ESLint解析） / typescript-eslint-parser(实验)
     // sourceType: 'module', // 设置 script(默认) 或 module，如果代码是在ECMASCRIPT中的模块
     // "ecmaVersion": 6, // 默认 3，5
   },
@@ -22,24 +22,29 @@ module.exports = {
     '@vue/standard'
   ],
   // http://eslint.cn/docs/user-guide/configuring#using-the-configuration-from-a-plugin
-  plugins: [],
+  plugins: [
+    // 'html' // eslint-plugin-html : This ESLint plugin allows linting and fixing inline scripts contained in HTML files.
+  ],
   // http://eslint.cn/docs/rules/
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'comma-dangle': [2, 'only-multiline'],// allow paren-less arrow functions
+    'comma-dangle': [2, 'only-multiline'], // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await
     'generator-star-spacing': 0,
     'indent': [2, 2],
-    'space-before-function-paren': [2, 'always'],
     // allow debugger during development
-    //if-else中的else语句，连同catch 和 finally，都必须在右括号后另起一行， allowSingleLine 允许块的开括号和闭括号在 同一行
+    // if-else中的else语句，连同catch 和 finally，都必须在右括号后另起一行， allowSingleLine 允许块的开括号和闭括号在 同一行
     'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }],
     'operator-linebreak': [2, 'before'], // + || 强制操作符使用一致的换行符风格  before行前
     'quotes': 0,
     'semi': [2, 'never'],
-    'space-before-function-paren': [2, 'never'],
-    "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]  //   来自某插件的某规则:  <pluginName>/<ruleName>
+    'space-before-function-paren': [2, {
+      "anonymous": "always",
+      "named": "always",
+      "asyncArrow": "always"
+    }],
+    "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }] //   来自某插件的某规则:  <pluginName>/<ruleName>
   },
 }

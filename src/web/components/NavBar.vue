@@ -69,7 +69,7 @@ export default {
   methods: {
     toLogin () {
       window.location.href = '/login'
-    }
+    },
   }
 }
 </script>

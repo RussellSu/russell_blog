@@ -53,7 +53,6 @@ const userProfile = {
   },
   getters: {
     isLogin (state, getter, rootState) {
-      console.log('isLogin', state)
       return !!state._id
     },
     genderText (state) {
