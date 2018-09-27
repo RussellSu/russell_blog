@@ -13,7 +13,7 @@ body{
 a {
   text-decoration: none;
 }
-  
+
 ul {
   margin: 0;
   padding: 0;
@@ -31,6 +31,9 @@ button {
   cursor: pointer;
   &.btn-circle {
     border-radius: 50%;
+  }
+  &:focus {
+    outline: 0;
   }
 }
 
@@ -56,6 +59,9 @@ input[type=text] {
   position: relative;
   top: 0;
   left: 0;
+}
+.hand {
+  cursor: pointer;
 }
 .clearfix:after {
   content: " ";
@@ -112,7 +118,7 @@ input[type=text] {
 
   // }
   // &&::-webkit-resize {
-    
+
   // }
 }
 .rs-switch {

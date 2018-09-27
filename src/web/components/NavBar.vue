@@ -3,7 +3,7 @@
   <nav class="side-nav">
     <div class="user-info" v-if="isLogin" :style="{'background-image':`url(${thumbnail})`}">
     </div>
-    <div class="user-info" v-else @click="toLogin">未登录</div>
+    <div class="user-info hand" v-else @click="toLogin">未登录</div>
     {{fullname}}
     {{nickname}}
     <ul>
@@ -180,10 +180,6 @@ export default {
       font-size: 1.5rem;
       color: #fff;
       line-height: 50px;
-      &:hover {
-        // color: #00FF39;
-        // background-color: rgba(255, 255, 255, 0.3);
-      }
       &.router-link-active {
         color: #00ff39;
       }
