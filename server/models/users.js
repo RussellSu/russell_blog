@@ -14,6 +14,7 @@ var userSchema = new Schema({
   gender: { type: String, default: 'M', enum: ['M', 'F'] },
   avatar: { type: String, default: '/img/avatar-placeholder.png' },
   thumbnail: { type: String, default: '/img/avatar-placeholder.png' },
+  lastLogin: { type: Date },
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now },
 },
@@ -22,13 +23,13 @@ var userSchema = new Schema({
 }
 )
 
-userSchema.methods.setPassword = function(password) {
+userSchema.methods.setPassword = function (password) {
   this.salt = Crypto.randomBytes(64).toString('hex')
   // 100000代表迭代次数 64代表长度
   this.hash = Crypto.pbkdf2Sync(password, this.salt, 100000, 64, 'sha512').toString('hex')
 }
 
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function (password) {
   var hash = Crypto.pbkdf2Sync(password, this.salt, 100000, 64, 'sha512').toString('hex')
   return this.hash === hash
 }

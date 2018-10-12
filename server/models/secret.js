@@ -2,14 +2,14 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var secretSchema = new Schema({
-  keygen: { type: String, default: ''},
-  cookieSecret: { type: String, default: ''},
+  keygen: { type: String, default: '' },
+  cookieSecret: { type: String, default: '' },
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now },
 },
-  {
-    collection: 'secret'
-  }
+{
+  collection: 'secret'
+}
 )
 
 secretSchema.pre('save', next => {

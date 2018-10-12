@@ -9,11 +9,13 @@ var Schema = mongoose.Schema
 // })
 
 var assetSchema = new Schema({
-  name: String,
-  filePath: String,
-  fileType: String,
+  name: { type: String, required: true },
+  filePath: { type: String, default: '' },
+  fileType: { type: String, required: true },
+  user: { type: Schema.Types.ObjectId, ref: 'userModel' },
+  identifier: { type: String },
   // options: optionsSchema,
-  type: { type: Number, default: 0 },
+  type: { type: String, default: 'other', enum: ['avatar', 'movie', 'music', 'image', 'other'] },
   created: { type: Date, default: Date.now }
 }, {
   collection: "assets"

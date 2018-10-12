@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 var movieSchema = new Schema({
   name: { type: String, default: '', index: true },
   // author: { type: Schema.Types.ObjectId, ref: 'userModel', index: true },
+  source: { type: String, default: '' },
   creator: { type: Schema.Types.ObjectId, ref: 'userModel' },
   types: { type: Array, default: [] },
   description: { type: String, default: '' },
