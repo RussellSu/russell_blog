@@ -1,3 +1,4 @@
+const fs = require('fs')
 // const path = require('path')
 // const glob = require('glob')
 
@@ -64,6 +65,14 @@ module.exports = {
         pathRewrite: {
           '^/api': '/api'
         }
+      },
+      '/uploads': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          '^/uploads': '/uploads'
+        }
       }
     }
   },
@@ -112,7 +121,7 @@ module.exports = {
     },
     cms: {
       entry: 'src/cms/cms.js',
-      template: 'src/ges/cms/cms.html',
+      template: 'src/cms/cms.html',
       filename: 'cms.html',
       title: 'RUSSELL-CMS',
       chunks: ['chunk-vendors', 'chunk-common', 'cms']
@@ -123,4 +132,11 @@ module.exports = {
     // 输出文件名会被推导为 `subpage.html`。
     // subpage: 'src/subpage.js'
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        data: fs.readFileSync('src/web/styles/variable.scss', 'utf-8')
+      }
+    }
+  }
 }
