@@ -1,9 +1,9 @@
 <template>
   <div id="web">
     <div class="main-wrapper"
-      @touchstart.stop.prevent="bottomNavTouchStart"
-      @touchmove.stop.prevent="bottomNavTouchMove"
-      @touchend.stop.prevent="bottomNavTouchEnd"
+      @touchstart.stop="bottomNavTouchStart"
+      @touchmove.stop="bottomNavTouchMove"
+      @touchend.stop="bottomNavTouchEnd"
       ref="mainWrapper">
       <transition name="fade" mode="out-in" :duration="500">
         <router-view></router-view>
