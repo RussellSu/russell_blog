@@ -24,6 +24,7 @@ module.exports = (express, app, config, apiRouter) => {
     res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
   })
   app.get([
+    '^/cms',
     '^/cms/users',
     '^/cms/articles',
     '^/cms/movies',
