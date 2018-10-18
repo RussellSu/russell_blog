@@ -15,19 +15,16 @@ module.exports = (express, app, config, apiRouter) => {
     }
   })
   app.get([
-    '^/articles',
-    '^/links',
-    '^/movies',
-    '^/author',
-    '^/me'
+    /^\/articles/,
+    /^\/links/,
+    /^\/movies/,
+    /^\/author/,
+    /^\/me/
   ], function (req, res) {
     res.sendFile('web.html', { root: path.join(__dirname, '../dist') })
   })
   app.get([
-    '^/cms',
-    '^/cms/users',
-    '^/cms/articles',
-    '^/cms/movies',
+    /^\/cms/,
   ], isLogin, function (req, res) {
     res.sendFile('cms.html', { root: path.join(__dirname, '../dist') })
   })

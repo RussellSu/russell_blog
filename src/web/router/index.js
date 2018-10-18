@@ -52,7 +52,7 @@ let router = new Router({
       component: Movies,
     },
     {
-      path: '/movie',
+      path: '/movies/:id',
       name: 'movie',
       component: Movie,
     },
