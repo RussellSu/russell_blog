@@ -1,5 +1,5 @@
 // var http = require('http')
-// var Path = require('path')
+var Path = require('path')
 var errorHandler = require('errorhandler')
 var morgan = require('morgan') // express 默认log midware
 var bodyParser = require('body-parser')
@@ -11,6 +11,16 @@ var mongoose = require('mongoose')
 var secret = require('../secret/secret.js')
 var User = require('./models/users.js')
 var PassportHttp = require("passport-http")
+
+const distPath = Path.resolve(__dirname, '..', 'dist')
+const cwdPath = process.cwd()
+const tempPath = Path.resolve(cwdPath, 'temp')
+const uploadPath = Path.resolve(cwdPath, 'uploads')
+
+console.log("distPath:", distPath)
+console.log("cwdPath:", cwdPath)
+console.log("tempPath:", tempPath)
+console.log("uploadPath:", uploadPath)
 
 module.exports = function (app, passport, config) {
   process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
@@ -69,10 +79,13 @@ module.exports = function (app, passport, config) {
   app.use(passport.session())
 
   passport.serializeUser((user123, done) => {
+    // 序列化： 将环境中的user.id序列化到session中，即sessionID，同时它将作为凭证存储在用户cookie中。
     done(null, user123._id) // 绑到 req.session.passport.user
   })
 
-  passport.deserializeUser((userId, done) => { // userId来源 req.session.passport.user
+  passport.deserializeUser((userId, done) => {
+    // 反序列化： 从session反序列化，参数为用户提交的sessionID，若存在则从数据库中查询user并存储与req.user中。
+    // userId来源 req.session.passport.user
     // 通过req.session.passport.user 实时查询user 更新req.user
     User.findOne({ '_id': userId }, "fullname email phoneNumber").lean().exec((err, user) => {
       if (user) {
@@ -109,4 +122,10 @@ module.exports = function (app, passport, config) {
       return done(null, userObj) // 会把此对象 传给 passport.serializeUser 第一个参数
     })
   }))
+  global.appConfig = {
+    distPath,
+    cwdPath,
+    tempPath,
+    uploadPath,
+  }
 }
