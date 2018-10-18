@@ -6,13 +6,13 @@ exports.articleList = (req, res) => {
     if (err) {
       return res.status(500).send(err)
     }
-    res.json({'articles': articles})
+    res.json({ 'articles': articles })
   })
 }
 
-exports.articleItem = (req, res) => {
+exports.articleDetail = (req, res) => {
   Promise.all([
-    Article.findOne({_id: req.params.id}).lean(),
+    Article.findOne({ _id: req.params.id }).lean(),
     Comment.find({ article: req.params.id })
       .populate('user', 'fullname nickname email thumbnail')
       .populate('replies.user', 'fullname nickname email')
@@ -20,11 +20,11 @@ exports.articleItem = (req, res) => {
   ]).then(data => {
     let article = data[0]
     if (!article) {
-      return res.status(500).send({error: 'not found article'})
+      return res.status(500).send({ error: 'not found article' })
     }
     article.comments = data[1]
-    res.status(200).send({'article': article})
+    res.status(200).send({ 'article': article })
   }, err => {
-    res.status(500).send({error: err})
+    res.status(500).send({ error: err })
   })
 }

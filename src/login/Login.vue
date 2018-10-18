@@ -56,6 +56,7 @@ export default {
         .get('/api/auth/provider')
         .then(res => {
           console.log(res.data)
+
           window.location.href = '/'
         }, err => {
           if (err.response.data) {
