@@ -1,6 +1,6 @@
 const { isLogin } = require('../utils/index')
 
-module.exports = function(app, config, apiRouter) {
+module.exports = function (app, config, apiRouter) {
   const login = require('../controllers/post/login.js')
   apiRouter.post('/login', login.login)
 
@@ -11,6 +11,13 @@ module.exports = function(app, config, apiRouter) {
   const articles = require('../controllers/post/articles.js')
   apiRouter.post('/articles', isLogin, articles.addArticle)
 
+  const movies = require('../controllers/post/movies.js')
+  apiRouter.post('/movies', isLogin, movies.createMovie)
+
   const comments = require('../controllers/post/comments.js')
   apiRouter.post('/comments', isLogin, comments.addComment)
+  const uploads = require('../controllers/post/uploads.js')
+  apiRouter.post('/uploads/avatar', isLogin, uploads.uploadAvatar2)
+  apiRouter.post('/uploads/movie', isLogin, uploads.uploadMovie)
+  apiRouter.post('/uploads/mergeChunk', isLogin, uploads.mergeChunk)
 }

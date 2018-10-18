@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const trim = function (str) {
   if (typeof str !== 'string') {
     console.warn('this variable is not a String')
@@ -96,6 +98,75 @@ const timeFormat = function (data, formatStr = 'yyyy-MM-dd') {
 const moneyFormat = function (data) {
 
 }
+// base64转换成二进制图片（Blob）
+const dataURI2Blob = function (base64Data) {
+  // base64 is like        data:image/png;base64,iVBORw0KGgoAAAAN..........
+  let byteStr
+  if (/base64/.test(base64Data.split(',')[0])) {
+    byteStr = window.atob(base64Data.split(',')[1])
+  }
+  else {
+    byteStr = unescape(base64Data.split(',')[1])
+  }
+  let mimeStr = base64Data.split(',')[0] // data:image/png;base64
+  mimeStr = mimeStr.split(':')[1] // image/png;base64
+  mimeStr = mimeStr.split(';')[0] // image/png
+  // 处理异常,将ascii码小于0的转换为大于0
+  // Uint8Array类型数组表示的8位无符号整数数组。内容被初始化为0, new in ES2017
+  let u8Arr = new Uint8Array(byteStr.length)
+  for (let i = 0; i < byteStr.length; i++) {
+    u8Arr[i] = byteStr.charCodeAt(i)
+  }
+  return new Blob([u8Arr], { type: mimeStr })
+}
+
+// base64转换成File
+const dataURI2File = function (base64Data, fileName) {
+  // base64 is like        data:image/png;base64,iVBORw0KGgoAAAAN..........
+  let byteStr
+  if (/base64/.test(base64Data.split(',')[0])) {
+    byteStr = window.atob(base64Data.split(',')[1])
+  }
+  else {
+    byteStr = unescape(base64Data.split(',')[1])
+  }
+  let mimeStr = base64Data.split(',')[0] // data:image/png;base64
+  mimeStr = mimeStr.split(':')[1] // image/png;base64
+  mimeStr = mimeStr.split(';')[0] // image/png
+  // 处理异常,将ascii码小于0的转换为大于0
+  // Uint8Array类型数组表示的8位无符号整数数组。内容被初始化为0, new in ES2017
+  let u8Arr = new Uint8Array(byteStr.length)
+  for (let i = 0; i < byteStr.length; i++) {
+    u8Arr[i] = byteStr.charCodeAt(i)
+  }
+  return new File([u8Arr], fileName, { type: mimeStr })
+}
+
+const dataURI2FormData = function (base64Data) {
+  let blob = dataURI2Blob(base64Data) // 上一步中的函数
+  // let canvas = document.createElement('canvas')
+  // let dataURL = canvas.toDataURL('image/jpeg', 0.5)
+  let fd = new FormData()
+  fd.append("the_file", blob, 'image.png')
+  // the_file为这个文件的key，等效于input中的name，
+  // image.png则是文件名，由于base64的图片信息是不带文件名的，所以可以手动指定一个，这个参数是可选的
+}
+
+const axiosSendFormData = function (uploadUrl, file) {
+  var fd = new FormData()
+  // fd.append('file', files[0])
+  fd.append('file', file)
+  let config = {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+  axios.post(uploadUrl, fd, config).then(res => {
+    console.log(res)
+  }).catch(res => {
+    console.log(res)
+  })
+}
 
 export default {
   trim,
@@ -104,5 +175,9 @@ export default {
   judgeType,
   deepClone,
   timeFormat,
-  moneyFormat
+  moneyFormat,
+  dataURI2Blob,
+  dataURI2File,
+  dataURI2FormData,
+  axiosSendFormData,
 }

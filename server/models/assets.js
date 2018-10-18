@@ -12,6 +12,7 @@ var assetSchema = new Schema({
   name: { type: String, required: true },
   filePath: { type: String, default: '' },
   fileType: { type: String, required: true },
+  fileSize: { type: Number, required: true },
   user: { type: Schema.Types.ObjectId, ref: 'userModel' },
   identifier: { type: String },
   // options: optionsSchema,

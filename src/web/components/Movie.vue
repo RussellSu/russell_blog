@@ -114,7 +114,6 @@ export default {
         'identifier': rootFile.uniqueIdentifier,
         'chunks': rootFile.chunks.map(item => ({ chunkNum: (item.offset + 1).toString() })),
         'filename': rootFile.name,
-        'fileSize': rootFile.size,
         'mimeType': rootFile.fileType,
       }).then(res => {
         _this.$api.updateMovieAsset(_this.movie._id, { 'source': res.data.filePath }).then(res => {

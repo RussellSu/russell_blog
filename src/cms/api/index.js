@@ -1,10 +1,24 @@
-import service from '@/web/utils/service.js'
+import service from '@/cms/utils/service.js'
 
 export default {
   getUserProfile () {
     return service({
       url: '/api/profile',
       method: 'GET'
+    })
+  },
+  mergeChunk (data) {
+    return service({
+      url: '/api/uploads/mergeChunk',
+      method: 'POST',
+      data: data
+    })
+  },
+  updateMovieAsset (id, data) {
+    return service({
+      url: `/api/movies/${id}/asset`,
+      method: 'PUT',
+      data: data
     })
   },
   getArticleList (pageSize = 10, curPage = 1) {
@@ -23,13 +37,6 @@ export default {
       method: 'GET'
     })
   },
-  createNewArticle (data) {
-    return service({
-      url: '/api/articles',
-      method: 'POST',
-      data: data
-    })
-  },
   getMovieList (pageSize = 10, curPage = 1) {
     return service({
       url: `/api/movies`,
@@ -44,6 +51,13 @@ export default {
     return service({
       url: `/api/movies/${id}`,
       method: 'GET'
+    })
+  },
+  createNewMovie (data) {
+    return service({
+      url: '/api/movies',
+      method: 'POST',
+      data: data
     })
   },
   getDemo (id, pageSize = 10, curPage = 1) {

@@ -35,6 +35,7 @@ var navList = [
   // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },
   { title: 'links', routeName: '/links' },
+  { title: 'movies', routeName: '/movies' },
   { title: 'author', routeName: '/author' },
   { title: 'me', routeName: '/me' },
 ]
@@ -169,7 +170,7 @@ export default {
   // margin-top: 40px;
   // height: calc(100% - 40px);
   li {
-    width: 25vw;
+    width: 20vw;
     box-sizing: border-box;
     &:not(:first-of-type) {
       border-left: 1px solid #898989;

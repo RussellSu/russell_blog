@@ -1,10 +1,6 @@
 <template>
   <section class="movies-module module text-center">
     <h1 class="module-title">movies</h1>
-    <div class="create-wrapper">
-      <input type="text" v-model.trim="newMovieName" />
-      <button @click="createNewMovie">create</button>
-    </div>
     <div class="movie-list rs-scrollbar">
       <div class="movie" v-for="movie in movies" :key="movie._id">
         <router-link :to="'/movies/' + movie._id" class="movie-title"> {{movie.name}}</router-link>
@@ -26,35 +22,17 @@ export default {
   },
   created () {
     document.title = this.$route.name
-    this.getList()
+    this.getMovies()
   },
   computed: {
     ...mapState({
-      _id: state => state.userProfile._id,
-      fullname: state => state.userProfile.fullname,
-      gender: state => state.userProfile.gender,
     }),
     ...mapGetters([
       'isLogin'
     ])
   },
   methods: {
-    createNewMovie () {
-      let _this = this
-      const newMovieName = _this.newMovieName
-      _this.$api.createNewMovie({ 'name': newMovieName }).then(
-        res => {
-          _this.getList()
-        },
-        err => {
-          if (err.data.missingName) {
-            alert('名称不可为空！')
-            console.log(err)
-          }
-        }
-      )
-    },
-    getList () {
+    getMovies () {
       let _this = this
       _this.$store.commit('ACTIVE_LOADING')
       _this.$api.getMovieList().then(

@@ -2,7 +2,7 @@
 var Utils = require('../utils')
 const passport = require('passport')
 
-module.exports = function(app, config, apiRouter) {
+module.exports = function (app, config, apiRouter) {
   const user = require('../controllers/get/users')
   apiRouter.get('/profile', user.profile)
   apiRouter.get('/auth/provider', passport.authenticate('basic', { session: true }), user.auth)
@@ -11,5 +11,12 @@ module.exports = function(app, config, apiRouter) {
 
   const articles = require('../controllers/get/articles')
   apiRouter.get('/articles', articles.articleList)
-  apiRouter.get('/articles/:id', articles.articleItem)
+  apiRouter.get('/articles/:id', articles.articleDetail)
+
+  const movies = require('../controllers/get/movies')
+  apiRouter.get('/movies', movies.movieList)
+  apiRouter.get('/movies/:id', movies.movieDetail)
+
+  const uploads = require('../controllers/get/uploads.js')
+  apiRouter.get('/uploads/movie', uploads.checkUploadMovie)
 }
