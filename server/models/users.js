@@ -8,6 +8,7 @@ var userSchema = new Schema({
   nickname: { type: String, default: '', trim: true },
   hash: { type: String, default: '', trim: true },
   salt: { type: String, default: '', trim: true },
+  roles: { type: Array, default: [] },
   prid: { type: String, default: '', index: true },
   email: { type: String, default: '', unique: true },
   phoneNumber: { type: String, default: '' },

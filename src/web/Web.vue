@@ -1,6 +1,10 @@
 <template>
   <div id="web">
-    <div class="main-wrapper">
+    <div class="main-wrapper"
+      @touchstart.stop.prevent="bottomNavTouchStart"
+      @touchmove.stop.prevent="bottomNavTouchMove"
+      @touchend.stop.prevent="bottomNavTouchEnd"
+      ref="mainWrapper">
       <transition name="fade" mode="out-in" :duration="500">
         <router-view></router-view>
       </transition>
@@ -23,6 +27,15 @@ export default {
     NavBar,
     Loading
   },
+  data () {
+    return {
+      touch: {
+        startX: 0,
+        startY: 0,
+      },
+      percent: 0,
+    }
+  },
   computed: {
     ...mapState({
       activeLoading: state => state.app.loading.active,
@@ -38,7 +51,59 @@ export default {
   methods: {
     getProfile () {
       this.$store.dispatch('getUserProfile')
-    }
+    },
+    bottomNavTouchStart (e) {
+      const touch = e.touches[0]
+      const startX = touch.pageX
+      const startY = touch.pageY
+      this.touch.startX = startX
+      this.touch.startY = startY
+      console.log('bottomNavTouchStart startX startY', startX, startY)
+    },
+    bottomNavTouchMove (e) {
+      const touch = e.touches[0]
+      // 横向和纵向偏离位置
+      const deltaX = touch.pageX - this.touch.startX
+      const deltaY = touch.pageY - this.touch.startY
+      // 当 横向偏离位置 大于 纵向偏离位置 时才认为滑动有效
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        return
+      }
+      if (Math.abs(deltaX) < 50) {
+        return
+      }
+      console.log(`deltaX is ${Math.abs(deltaX)}, should change route`)
+      // const left = this.currentPlay == 'red' ?  0 : -window.innerWidth
+      // var offsetWidth = Math.min(0, Math.max(-window.innerWidth,left+deltaX))
+      // // 记录滑动的距离占屏幕宽度的百分比，如果滑动太少则不切换
+      // this.percent = Math.abs(offsetWidth/window.innerWidth)
+      // // 移动红黄块
+      // this.$refs.mainWrapper.style["transform"] = `translate3d(${offsetWidth}px,0,0)`
+      // // 设置动画时间
+
+      console.log('bottomNavTouchMove deltaX deltaY', deltaX, deltaY)
+    },
+    bottomNavTouchEnd (e) {
+      console.log('bottomNavTouchEnd e', e)
+      // let offsetWidth
+      // let percent
+      // if(this.currentPlay === 'red'){
+      //   if(this.percent > 0.1) {
+      //     this.currentPlay = 'yellow'
+      //     offsetWidth = -window.innerWidth
+      //   } else {
+      //     offsetWidth = 0
+      //   }
+      // } else {
+      //   if(this.percent < 0.9) {
+      //     this.currentPlay = 'red'
+      //     offsetWidth = 0
+      //   } else {
+      //     offsetWidth = -window.innerWidth
+      //   }
+      // }
+      // this.$refs.mainWrapper.style["transform"]  = `translate3d(${offsetWidth}px,0,0)`
+    },
   },
 }
 </script>
@@ -58,6 +123,7 @@ body {
   @media screen and (max-width: 960px) {
     .main-wrapper {
       height: calc(100vh - 60px) !important;
+      margin: 0 auto !important;
     }
   }
   @media screen and (max-width: 360px) {
@@ -69,6 +135,7 @@ body {
   }
   .main-wrapper {
     margin: 0 auto;
+    margin-left: 200px;
     // padding-top: 50px;
     border-width: 0 1px;
     border-style: solid;

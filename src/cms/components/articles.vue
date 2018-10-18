@@ -1,36 +1,18 @@
 <template>
   <section class="articles-module module">
-    <h1>articles</h1>
-    <h2>{{description}}</h2>
-    <div>{{main}}</div>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>标题</th>
-            <th>创建时间</th>
-            <th>更新时间</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for='article of articles' :key="article._id">
-            <td>
-              <router-link :to="'/articles/' + article._id">
-                <!-- <router-link :to="{ name: 'articles', params: {id: article._id} }"> -->
-                {{article.title}}
-              </router-link>
-            </td>
-            <td>{{article.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
-            <td>{{article.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+    <h1 class="module-title">articles</h1>
+    <div class="article-list rs-scrollbar">
+      <div class="article" v-for="article in articles" :key="article._id">
+        <div class="article-top-bar">
+          <p class="text-right">更新：{{article.updateTime | time_format('YYYY/MM/DD HH:mm')}}</p>
+        </div>
+        <router-link :to="'/articles/' + article._id" class="article-title"> {{article.title}}</router-link>
+        <div class="clearfix article-info">
+          <div class="float-left"></div>
+        </div>
+      </div>
     </div>
-    <!-- <button class="edit-new button btn-circle" @click="editNew">+</button> -->
-    <router-link to="/editArticle" tag="button" exact class="edit-new-btn button btn-circle">+</router-link>
-
+    <router-link to="/editArticle" tag="button" exact class="edit-new-btn button btn-circle">✎</router-link>
   </section>
 </template>
 <script>
@@ -49,25 +31,54 @@ export default {
   },
   methods: {
     getList () {
-      this.$http
-        .get('/api/articles')
-        .then(res => {
+      let _this = this
+      this.$store.commit('ACTIVE_LOADING')
+      this.$api.getArticleList().then(
+        res => {
+          _this.$store.commit('INACTIVE_LOADING')
           this.articles = res.data.articles
-        })
-        .catch(err => console.log(err))
-    },
-    editNew () {
-      alert('editNew!')
+        },
+        err => {
+          _this.$store.commit('INACTIVE_LOADING')
+          console.log(err)
+        }
+      )
     }
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+.article-list {
+  max-height: calc(100vh - 6rem - 1rem); // 1rem 留空不贴底部
+  overflow: auto;
+}
+.article {
+  min-height: 50px;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.article-top-bar {
+  color: #7b7b7b;
+  font-weight: bold;
+}
+.article-title {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  &:hover {
+    // background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: underline;
+  }
+}
 .edit-new-btn {
   position: absolute;
   bottom: 70px;
-  right: 40px;
+  right: 20px;
   width: 50px;
   height: 50px;
+  font-size: 26px;
+  line-height: 1;
 }
 </style>

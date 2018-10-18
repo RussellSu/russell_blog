@@ -1,5 +1,5 @@
-import api from '@/web/api'
-import TOOL from '@/web/utils/tool.js'
+import api from '@/cms/api'
+import TOOL from '@/cms/utils/tool.js'
 const userProfile = {
   state: {
     _id: '',
