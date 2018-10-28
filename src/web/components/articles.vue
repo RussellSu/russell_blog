@@ -33,7 +33,7 @@ export default {
     getList () {
       let _this = this
       _this.$store.commit('ACTIVE_LOADING')
-      _this.$api.getArticleList('/api/articles').then(
+      _this.$api.getArticleList().then(
         res => {
           _this.$store.commit('INACTIVE_LOADING')
           _this.articles = res.data.articles
