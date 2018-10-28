@@ -10,6 +10,7 @@
       </transition>
     </div>
     <nav-bar></nav-bar>
+    <media-player></media-player>
     <loading :active="activeLoading" :content="loadingContent"></loading>
   </div>
 </template>
@@ -17,6 +18,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import NavBar from '@/web/components/NavBar'
+import MediaPlayer from '@/web/components/MediaPlayer'
 import Loading from '@/web/components/Loading'
 // import {mapGetters, mapState} from 'vuex'
 import '@/web/styles/index.scss'
@@ -25,6 +27,7 @@ export default {
   name: 'web',
   components: {
     NavBar,
+    MediaPlayer,
     Loading
   },
   data () {

@@ -46,6 +46,16 @@ export default {
       method: 'GET'
     })
   },
+  getSongList (pageSize = 10, curPage = 1) {
+    return service({
+      url: `/api/songs`,
+      method: 'GET',
+      params: {
+        pageSize: pageSize,
+        curPage: curPage
+      }
+    })
+  },
   getDemo (id, pageSize = 10, curPage = 1) {
     return service({
       url: `/api/getDemo/${pageSize}/${curPage}`,
