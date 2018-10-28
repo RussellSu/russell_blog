@@ -1,6 +1,17 @@
 // const path = require('path')
 // const fse = require("fs-extra")
 const { checkChunkExisted } = require('../../utils/upload.js')
+const Assets = require('../../models/assets')
+
+exports.checkMD5Exist = (req, res) => {
+  const md5 = req.params.md5
+  Assets.findOne({ identifier: md5 }, 'filePath fileType fileSize').lean().exec((err, result) => {
+    if (err) {
+      return res.status(500).send(err)
+    }
+    res.status(200).send({ 'result': result })
+  })
+}
 
 exports.checkUploadMovie = (req, res) => {
   const chunk = {

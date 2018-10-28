@@ -60,6 +60,12 @@ export default {
       data: data
     })
   },
+  checkMD5Existed (md5) {
+    return service({
+      url: `/api/uploads/md5/${md5}`,
+      method: 'GET'
+    })
+  },
   getDemo (id, pageSize = 10, curPage = 1) {
     return service({
       url: `/api/getDemo/${pageSize}/${curPage}`,

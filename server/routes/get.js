@@ -18,5 +18,6 @@ module.exports = function (app, config, apiRouter) {
   apiRouter.get('/movies/:id', movies.movieDetail)
 
   const uploads = require('../controllers/get/uploads.js')
+  apiRouter.get('/uploads/md5/:md5', uploads.checkMD5Exist)
   apiRouter.get('/uploads/movie', uploads.checkUploadMovie)
 }
