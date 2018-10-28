@@ -178,6 +178,24 @@ exports.uploadMovie = (req, res) => {
   })
 }
 
+exports.uploadSong = (req, res) => {
+  let form = new formidable.IncomingForm()
+  form.uploadDir = global.appConfig.tempPath // 文件上传 临时文件存放路径
+  form.encoding = "utf-8"
+  form.keepExtensions = true
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      return res.status(500).send(err)
+    }
+    storeChunk(files.file, fields, (err, result) => {
+      if (err) {
+        return res.status(500).send(err)
+      }
+      res.status(200).send({ 'msg': 'chunk upload success' })
+    })
+  })
+}
+
 exports.mergeChunk = (req, res) => {
   const mergeInfo = {
     chunks: req.body.chunks || [],
@@ -185,6 +203,7 @@ exports.mergeChunk = (req, res) => {
     fileSize: req.body.fileSize,
     identifier: req.body.identifier,
     mimeType: req.body.mimeType,
+    assetType: req.body.assetType,
     user: req.user,
   }
   mergeChunk(mergeInfo, (err, result) => {

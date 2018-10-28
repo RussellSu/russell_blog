@@ -14,10 +14,15 @@ module.exports = function (app, config, apiRouter) {
   const movies = require('../controllers/post/movies.js')
   apiRouter.post('/movies', isLogin, movies.createMovie)
 
+  const songs = require('../controllers/post/songs.js')
+  apiRouter.post('/songs', isLogin, songs.createSong)
+
   const comments = require('../controllers/post/comments.js')
   apiRouter.post('/comments', isLogin, comments.addComment)
+
   const uploads = require('../controllers/post/uploads.js')
   apiRouter.post('/uploads/avatar', isLogin, uploads.uploadAvatar2)
   apiRouter.post('/uploads/movie', isLogin, uploads.uploadMovie)
+  apiRouter.post('/uploads/song', isLogin, uploads.uploadSong)
   apiRouter.post('/uploads/mergeChunk', isLogin, uploads.mergeChunk)
 }

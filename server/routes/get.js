@@ -17,6 +17,10 @@ module.exports = function (app, config, apiRouter) {
   apiRouter.get('/movies', movies.movieList)
   apiRouter.get('/movies/:id', movies.movieDetail)
 
+  const songs = require('../controllers/get/songs')
+  apiRouter.get('/songs', songs.songList)
+  apiRouter.get('/songs/:id', songs.songDetail)
+
   const uploads = require('../controllers/get/uploads.js')
   apiRouter.get('/uploads/md5/:md5', uploads.checkMD5Exist)
   apiRouter.get('/uploads/movie', uploads.checkUploadMovie)

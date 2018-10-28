@@ -4,6 +4,8 @@ import Articles from '@/cms/components/articles'
 import ArticleItem from '@/cms/components/ArticleItem'
 import Movies from '@/cms/components/Movies'
 import Movie from '@/cms/components/Movie'
+import Songs from '@/cms/components/Songs'
+import Song from '@/cms/components/Song'
 import Author from '@/cms/components/Author'
 import EditArticle from '@/cms/components/EditArticle'
 import NotFoundPage from '@/cms/components/notFoundPage'
@@ -56,6 +58,16 @@ let router = new Router({
       component: Movie
     },
     {
+      path: '/songs',
+      name: 'songs',
+      component: Songs
+    },
+    {
+      path: '/songs/:id',
+      name: 'song',
+      component: Song
+    },
+    {
       path: '/author',
       name: 'author',
       component: Author
@@ -78,7 +90,6 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
   // let _this = this
   console.log('to', to)
-  console.log(store)
   if (to.matched.some(item => item.meta.requireAuth)) {
     if (store.state.userProfile._id) {
       next()

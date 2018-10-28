@@ -35,6 +35,7 @@ var navList = [
   // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },
   { title: 'movies', routeName: '/movies' },
+  { title: 'songs', routeName: '/songs' },
   { title: 'author', routeName: '/author' },
 ]
 // var user = window.Russell.user
