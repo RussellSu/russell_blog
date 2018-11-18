@@ -95,7 +95,7 @@ exports.storeChunk = (fileInfo, fields, cb) => {
 }
 
 exports.mergeChunk = (mergeInfo, cb) => {
-  const { chunks, filename, fileSize, identifier, mimeType, user } = mergeInfo
+  const { chunks, filename, fileSize, identifier, mimeType, user, assetType } = mergeInfo
   const totalChunkDir = path.join(global.appConfig.tempPath, identifier)
   const totalChunkPath = path.join(totalChunkDir, filename)
   const chunkPathList = chunks.map(item => path.join(totalChunkDir, item.chunkNum, filename))
@@ -105,9 +105,9 @@ exports.mergeChunk = (mergeInfo, cb) => {
       'name': filename,
       // 'filePath': fileInfo.path,
       'fileType': mimeType,
-      'filesize': fileSize,
+      'fileSize': fileSize,
       'user': user._id,
-      'type': 'movie',
+      'type': assetType,
     }, (err, result) => {
       if (err) {
         cb(err)

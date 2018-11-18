@@ -25,7 +25,7 @@ commentSchema.pre('save', next => {
   next()
 })
 
-commentSchema.pre("update", function(next) {
+commentSchema.pre("update", function (next) {
   this.update({}, { $set: { updateTime: new Date() } })
   next()
 })
