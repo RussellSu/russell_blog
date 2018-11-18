@@ -59,19 +59,20 @@ module.exports = function (app, passport, config) {
   console.log('■■■secret.cookieSecret■', secret.cookieSecret)
   app.use(cookieParser(secret.cookieSecret))
   app.use(session({
-    resave: true,
-    saveUninitialized: false,
-    name: 'russell.cookie', // 浏览器中cookie的name，默认cookie的name是：connect.sid
+    resave: true, // 强制保存session, 无论是否修改， 默认为 true
+    saveUninitialized: false, // 强制将未初始化的 session 存储 默认为 true
+    name: 'russell.cookie', // 生成session 的key名 ,即浏览器中cookie的name，默认cookie的name是：connect.sid
     secret: secret.cookieSecret, // 签名，与cookie-parse中设置的签名字符串一致
-    rolling: false,
+    rolling: false, // 动态刷新页面cookie存放时间,在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
     cookie: {
       // secure: process.env.NODE_ENV === 'production', // 一旦true, 若无https 连接， cookie不会再发送给server
-      httpOnly: true, // 只有server可读写cookie(防止client修改伪造cookie)
+      httpOnly: true, // 只有server可读写cookie(防止client修改伪造cookie) Default: true
       maxAge: 60 * 60 * 1000 // 1 小时失效
     },
     store: new MongoStore({
       // db: "avatarz"
-      mongooseConnection: mongoose.connection
+      mongooseConnection: mongoose.connection,
+      // ttl: 14 * 24 * 60 * 60, // Default 14days, if above session cookie has an expire date(cookie maxAge), this will follow, Otherwise, set ttl option
     }),
     auto_reconnect: true
   }))
