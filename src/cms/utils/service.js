@@ -27,6 +27,7 @@ service.interceptors.response.use(
         break
       case 401:
         error.message = '未授权，请登录'
+        window.location.href = '/login'
         break
       case 403:
         error.message = '拒绝访问'
@@ -59,7 +60,10 @@ service.interceptors.response.use(
         error.message = 'HTTP版本不受支持'
         break
       }
-      console.log('service error:', error)
+      console.error('!!!service error:', error)
+    }
+    else {
+      console.error('error without error.response', error)
     }
     return Promise.reject(error.response)
   }

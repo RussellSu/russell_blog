@@ -10,7 +10,7 @@ exports.isLogin = (req, res, next) => {
       return
     }
     // res.setHeader('Content-type', 'text/html')
-    res.status(500).send({ 'notLogin': true })
+    res.status(401).send({ 'notLogin': true })
   }
   else {
     next()
