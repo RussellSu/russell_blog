@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="nav-wrapper">
   <nav class="side-nav">
     <div class="user-info" v-if="isLogin" :style="{'background-image':`url(${thumbnail})`}">
     </div>

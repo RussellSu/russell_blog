@@ -55,7 +55,10 @@ service.interceptors.response.use(
         error.message = 'HTTP版本不受支持'
         break
       }
-      console.log('service error:', error)
+      console.error('!!!service error:', error)
+    }
+    else {
+      console.error('error without error.response', error)
     }
     return Promise.reject(error)
   }

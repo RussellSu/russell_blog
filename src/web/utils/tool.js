@@ -98,6 +98,14 @@ const timeFormat = function (data, formatStr = 'yyyy-MM-dd') {
 const moneyFormat = function (data) {
 
 }
+
+const NumberFormat = function (data, decimalPlace = 0) {
+  if (data === undefined) {
+    return data
+  }
+  return Math.round(data * Math.pow(10, decimalPlace)) / Math.pow(10, decimalPlace)
+}
+
 // base64转换成二进制图片（Blob）
 const dataURI2Blob = function (base64Data) {
   // base64 is like        data:image/png;base64,iVBORw0KGgoAAAAN..........
@@ -176,6 +184,7 @@ export default {
   deepClone,
   timeFormat,
   moneyFormat,
+  NumberFormat,
   dataURI2Blob,
   dataURI2File,
   dataURI2FormData,

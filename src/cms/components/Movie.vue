@@ -22,7 +22,7 @@
       <uploader-drop class="drop-wrapper text-center">
         <p>拖动文件到此处</p>
         <p>或者</p>
-        <uploader-btn class="select-file-btn btn btn-sm">选择文件</uploader-btn>
+        <uploader-btn class="select-file-btn btn btn-sm" :attrs="attrs">选择文件</uploader-btn>
         <!-- <uploader-btn :attrs="attrs">select images</uploader-btn> -->
         <!-- <uploader-btn :directory="true">select folder</uploader-btn> -->
       </uploader-drop>
@@ -41,10 +41,12 @@ export default {
     console.log('data')
     return {
       md5: '',
+      preprocessCheckingFlg: false,
       options: {
         // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
         target: '/api/uploads/movie',
         singleFile: true,
+        // simultaneousUploads: 3, // 并发上传数，默认 3
         fileParameterName: 'file', // default: 'file'
         testChunks: true,
         successStatuses: [200, 201],
@@ -60,6 +62,9 @@ export default {
           cb(null, res)
         },
         preprocess: this.preprocess,
+      },
+      attrs: {
+        accept: 'video/*'
       },
       fileStatusText: {
         success: '成功',
@@ -116,24 +121,38 @@ export default {
         'filename': rootFile.name,
         'fileSize': rootFile.size,
         'mimeType': rootFile.fileType,
+        'assetType': 'movie',
       }).then(res => {
         _this.$api.updateMovieAsset(_this.movie._id, { 'source': res.data.filePath }).then(res => {
           _this.movie.source = res.data.source
           alert('更新资源成功')
         })
       }, err => {
-        alert(err)
+        console.log(err)
       })
     },
     preprocess (chunk) {
+      // 几个并发， 几个preprocess同时跑
       let _this = this
+      _this.preprocessCheckingFlg = true
       console.log('preprocess chunk', chunk)
       // 上传或test之前执行,生成md5(如果file存在md5 就不生成了)
       if (!_this.md5) {
+        console.log('no md5')
         tool.getFileMD5(chunk.file.file, md5Value => {
-          _this.md5 = md5Value
-          chunk.file.uniqueIdentifier = md5Value
-          chunk.preprocessFinished()
+          console.log('md5', md5Value)
+          _this.$api.checkMD5Existed(md5Value).then(res => {
+            if (res.data.result) {
+              alert('已经有啦')
+            }
+            else {
+              _this.md5 = md5Value
+              chunk.file.uniqueIdentifier = md5Value
+              chunk.preprocessFinished()
+            }
+          }, err => {
+            console.log(err)
+          })
         })
       }
       else {
