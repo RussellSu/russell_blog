@@ -82,6 +82,18 @@ module.exports = {
         .plugin('webpack-bundle-analyzer')
         .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
     }
+    const UglifyPlugin = require('uglifyjs-webpack-plugin')
+    config.optimization.minimizer([
+      new UglifyPlugin({
+        uglifyOptions: {
+          compress: {
+            // warnings: false,
+            drop_console: true, // console
+            pure_funcs: ['console.log']// 移除console
+          }
+        }
+      })
+    ])
   },
   configureWebpack: {
     resolve: {
