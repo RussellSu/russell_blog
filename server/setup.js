@@ -80,11 +80,13 @@ module.exports = function (app, passport, config) {
   app.use(passport.session())
 
   passport.serializeUser((user123, done) => {
+    console.log('passport.serializeUser')
     // 序列化： 将环境中的user.id序列化到session中，即sessionID，同时它将作为凭证存储在用户cookie中。
     done(null, user123._id) // 绑到 req.session.passport.user
   })
 
   passport.deserializeUser((userId, done) => {
+    console.log('passport.deserializeUser', userId)
     // 反序列化： 从session反序列化，参数为用户提交的sessionID，若存在则从数据库中查询user并存储与req.user中。
     // userId来源 req.session.passport.user
     // 通过req.session.passport.user 实时查询user 更新req.user
@@ -95,7 +97,11 @@ module.exports = function (app, passport, config) {
       done(err, user) // 置为  req.user req.session.passport.user
     })
   })
-  passport.use(new PassportHttp.BasicStrategy((username, password, done) => {
+  passport.use(new PassportHttp.BasicStrategy({
+    usernameField: 'email',
+    passwordField: 'passwd'
+  }, (username, password, done) => {
+    console.log('BasicStrategy', username, password)
     // 每次走中间件 passport.authenticate('basic', { session: true }) 都会执行此部分
     User.findOne({
       '$or': [

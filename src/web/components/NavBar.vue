@@ -163,9 +163,11 @@ export default {
   }
 }
 .bottom-nav ul {
+
   // margin-top: 40px;
   // height: calc(100% - 40px);
   li {
+    display: inline-block;
     width: 20vw;
     box-sizing: border-box;
     &:not(:first-of-type) {
