@@ -39,7 +39,6 @@ var navList = [
   { title: 'author', routeName: '/author' },
   { title: 'me', routeName: '/me' },
 ]
-// var user = window.Russell.user
 export default {
   name: 'navBar',
   data () {
@@ -52,9 +51,6 @@ export default {
     console.log('sidebar created')
   },
   mounted () {
-    // console.log('sidebar mounted', window.Russell.user)
-    // this.user = window.Russell.user || {}
-    // console.log('sidebar mounted', 'window.Russell', window.Russell)
   },
   computed: {
     ...mapState({

@@ -1,3 +1,4 @@
+const { afterLoginSuccess } = require('../../utils/index.js')
 const User = require('../../models/users')
 
 exports.login = function (req, res) {
@@ -25,6 +26,6 @@ exports.login = function (req, res) {
     delete user.salt
     delete user.hash
     req.session.user = user
-    res.status(200).send({ 'user': user })
+    afterLoginSuccess(req, res)
   })
 }

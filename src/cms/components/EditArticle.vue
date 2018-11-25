@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import Marked from 'marked'
 import highlightjs from 'highlight.js'
 import 'highlight.js/styles/googlecode.css'
@@ -45,7 +46,16 @@ export default {
   computed: {
     compileMD: function () {
       return Marked(this.article.text, { sanitize: true })
-    }
+    },
+    ...mapState({
+      fullname: state => state.userProfile.fullname,
+      nickname: state => state.userProfile.nickname,
+      gender: state => state.userProfile.gender,
+      thumbnail: state => state.userProfile.thumbnail,
+    }),
+    ...mapGetters([
+      'isLogin'
+    ])
   },
   created () {
     document.title = '编辑'

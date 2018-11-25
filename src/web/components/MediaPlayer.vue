@@ -15,7 +15,6 @@
 <script>
 //  import sidebar from '@/web/navList'
 import { mapState, mapGetters } from 'vuex'
-// var user = window.Russell.user
 export default {
   name: 'mediaPlay',
   data () {
@@ -29,9 +28,6 @@ export default {
     this.getSongList()
   },
   mounted () {
-    // console.log('sidebar mounted', window.Russell.user)
-    // this.user = window.Russell.user || {}
-    // console.log('sidebar mounted', 'window.Russell', window.Russell)
   },
   computed: {
     ...mapState({

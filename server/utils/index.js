@@ -25,16 +25,18 @@ exports.afterLoginSuccess = (req, res, next) => {
     if (err) {
       return console.log(err)
     }
+    console.log('login user update lastLogin success')
   })
   AccessLog.create({
     'fullname': req.user.fullname,
-    'user': req.user,
+    'user': req.user._id,
     'accessTime': now,
     'ua': req.headers['user-agent'],
   }, (err, updated) => {
     if (err) {
       return console.log(err)
     }
+    console.log('login AccessLog.create success')
   })
   res.status(200).send('OK')
 }

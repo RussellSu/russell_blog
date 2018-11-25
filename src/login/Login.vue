@@ -10,16 +10,8 @@
         </div>
         <div class="right-bar">
           <p class="">I have a account</p>
-          <div class="acount login-item">
-            <i class="fa fa-user"></i>
-            <input type="text" class="" v-model='username'>
-          </div>
-          <div class="password login-item">
-            <i class="fa fa-key"></i>
-            <input type="password" class="" v-model='password'>
-          </div>
           <div class="btn-bar login-item">
-            <a class="login-btn cursor-hand" title="login" @click='login'>login</a>
+            <a class="login-btn cursor-hand" title="login" @click='login'>login with username/email/phoneNumber</a>
           </div>
         </div>
       </div>
@@ -45,18 +37,17 @@ export default {
   },
   methods: {
     login () {
-      var _this = this
-      var data = {
-        username: _this.username,
-        password: _this.password
-      }
+      // var _this = this
+      // var data = {
+      //   username: _this.username,
+      //   password: _this.password
+      // }
       console.log('login')
       this.$http
-        .post('/api/login', { data: JSON.stringify(data) })
-        // .get('/api/auth/provider')
+        // .post('/api/login', { data: JSON.stringify(data) })
+        .get('/api/auth/provider')
         .then(res => {
           console.log(res.data)
-
           window.location.href = '/'
         }, err => {
           if (err.response.data) {

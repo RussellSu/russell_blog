@@ -1,9 +1,9 @@
 const { isLogin } = require('../utils/index')
-const passport = require('passport')
+// const passport = require('passport')
 
 module.exports = function (app, config, apiRouter) {
   const login = require('../controllers/post/login.js')
-  apiRouter.post('/login', passport.authenticate('basic', { session: true }), login.login)
+  apiRouter.post('/login', login.login)
 
   const user = require('../controllers/post/users.js')
   apiRouter.post('/users', user.addUser)

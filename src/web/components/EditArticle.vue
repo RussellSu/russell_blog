@@ -3,16 +3,16 @@
     <h1>{{ mainTitle }}</h1>
     <div>
       <h3 class="ar-title">标题</h3>
-      <input type="text" v-model="article.title">
+      <input type="text" v-model="title">
     </div>
     <div>
       <h3 class="ar-title">作者</h3>
-      <p v-text="article.author"></p>
+      <p v-text="fullname"></p>
     </div>
     <div class="edit-body row clearfix">
       <div class="pull-left m-6">
         <h3 class="ar-title">正文</h3>
-        <textarea v-model='article.text' name="" class="ar-text" cols="30" rows="10" placeholder="正文" style="width:100%"></textarea>
+        <textarea v-model='text' name="" class="ar-text" cols="30" rows="10" placeholder="正文" style="width:100%"></textarea>
       </div>
       <div class="pull-right m-6">
         <h3>预览</h3>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import Marked from 'marked'
 import highlightjs from 'highlight.js'
 import 'highlight.js/styles/googlecode.css'
@@ -35,17 +36,23 @@ export default {
   data () {
     return {
       mainTitle: '编辑文章',
-      article: {
-        title: '',
-        author: window.Russell.user ? window.Russell.user.fullname : '',
-        text: ''
-      }
+      title: '',
+      text: '',
     }
   },
   computed: {
     compileMD: function () {
-      return Marked(this.article.text, { sanitize: true })
-    }
+      return Marked(this.text, { sanitize: true })
+    },
+    ...mapState({
+      fullname: state => state.userProfile.fullname,
+      nickname: state => state.userProfile.nickname,
+      gender: state => state.userProfile.gender,
+      thumbnail: state => state.userProfile.thumbnail,
+    }),
+    ...mapGetters([
+      'isLogin'
+    ])
   },
   created () {
     document.title = '编辑'
@@ -56,7 +63,12 @@ export default {
   methods: {
     createNewArticle () {
       var _this = this
-      this.$api.createNewArticle({ data: this.article }).then(
+      this.$api.createNewArticle({
+        data: {
+          title: _this.title,
+          text: _this.text,
+        }
+      }).then(
         res => {
           console.log(res.data)
           _this.$router.replace('articles')
