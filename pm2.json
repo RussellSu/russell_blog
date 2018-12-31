@@ -1,7 +1,7 @@
 {
   "name"             : "russell-blog",
   "cwd"              : "./",
-  "args"             : ["--secret01=sss001 coco", "-d", "1"],
+  "args"             : [],
   "script"           : "server/server.js",
   "node_args"        : ["--harmony"],
   "log_date_format"  : "YYYY-MM-DD HH:mm Z",
@@ -27,6 +27,8 @@
   "env": {
     "NODE_ENV": "production",
     "cookieSecret": "bogeyman",
+    "dbUser": "",
+    "dbPassword": "",
     "AWESOME_SERVICE_API_TOKEN": "xxx"
   },
   "env_*" : {
