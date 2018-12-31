@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 module.exports = (config) => {
-  mongoose.connect(`mongodb://${process.env.dbUser}:${process.env.dbPassword}@${config.dev.host}/${config.dev.dbname}`, { useMongoClient: true }, err => {
+  mongoose.connect(`mongodb://${process.env.dbUser}:${process.env.dbPassword}@${config.dev.host}/${config.dev.dbname}`, { useNewUrlParser: true }, err => {
     if (err) {
       return console.error('■mongo connect error■', err)
     }
