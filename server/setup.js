@@ -23,9 +23,11 @@ console.log("tempPath:", tempPath)
 console.log("uploadPath:", uploadPath)
 
 module.exports = function (app, passport, config) {
-  process.env.NODE_ENV = process.env.NODE_ENV || 'dev123'
+  process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
+  console.log(`■■■process.env■`, JSON.stringify(process.env, null, '  \r'))
   console.log(`■■■process.env.NODE_ENV■${process.env.NODE_ENV}`)
-  console.log(`■■■process.env■`, JSON.stringify(process.env, null, '  \n'))
+  console.log(`■■■process.NODE_ENV■${process.NODE_ENV}`)
+  console.log(`■■■process${JSON.stringify(process.NODE_ENV, null, '  \r')}`)
   console.log(`■■■process.env.secret01■${process.env.secret01}`)
   console.log(`■■■process.env.AWESOME_SERVICE_API_TOKEN■${process.env.AWESOME_SERVICE_API_TOKEN}`)
 
