@@ -26,8 +26,10 @@ module.exports = function (app, passport, config) {
   process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
   // console.log(`■■■process.env■`, JSON.stringify(process.env, null, '  \r'))
   console.log(`■■■process.env.NODE_ENV■${process.env.NODE_ENV}`)
-  console.log(`■■■process■`, JSON.stringify(process, null, '  \r'))
   console.log(`■■■process.env.AWESOME_SERVICE_API_TOKEN■${process.env.AWESOME_SERVICE_API_TOKEN}`)
+  for (let item of Object.keys(process)) {
+    console.log('-----------process key', item)
+  }
 
   // 非生产环境CORS
   if (process.env.NODE_ENV !== 'production') {
