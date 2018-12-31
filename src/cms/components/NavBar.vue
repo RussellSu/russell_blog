@@ -169,6 +169,7 @@ export default {
   // margin-top: 40px;
   // height: calc(100% - 40px);
   li {
+    display: inline-block;
     width: 25vw;
     box-sizing: border-box;
     &:not(:first-of-type) {
