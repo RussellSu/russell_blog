@@ -3,7 +3,13 @@
   <ol class="song-list">
     <li v-for="(song, index) in songList" :key="song._id">
       【{{song.name}}】
-      <audio v-if="song.source" controls="controls" :autoplay="index===0" preload="metadata">
+      <audio
+      v-if="song.source"
+      controls="controls"
+      :autoplay="index===0"
+      :preload="'auto'"
+       :id="song._id"
+      >
         <source :src=song.source type="audio/mpeg">
       </audio>
     </li>
@@ -25,9 +31,9 @@ export default {
   },
   created () {
     console.log('sidebar created')
-    this.getSongList()
   },
   mounted () {
+    this.getSongList()
   },
   computed: {
     ...mapState({
