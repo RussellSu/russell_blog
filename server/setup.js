@@ -23,7 +23,7 @@ console.log("tempPath:", tempPath)
 console.log("uploadPath:", uploadPath)
 
 module.exports = function (app, passport, config) {
-  process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
+  process.env.NODE_ENV = process.env.NODE_ENV || 'dev123'
   console.log(`■■■process.env.NODE_ENV■${process.env.NODE_ENV}`)
   console.log(`■■■process.env■${process.env}`)
   console.log(`■■■process.env.secret01■${process.env.secret01}`)
