@@ -75,7 +75,7 @@ export default {
   text-align: center;
 }
 #video {
-  width: 100%;
+  max-width: 100%;
   max-height: calc(100vh - 10rem);
   object-fit: fill;
 }
