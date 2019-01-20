@@ -164,6 +164,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .video-wrapper{
+  width: 100%;
   text-align: center;
 }
 .drop-wrapper {
