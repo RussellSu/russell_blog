@@ -6,7 +6,7 @@
       <div class="float-right">更新时间:{{video.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
     </div>
     <div class="video-wrapper">
-      <video v-if="video.source" controls>
+      <video v-if="video.source" id="video" controls>
         <source :src=video.source type="video/mp4">
       </video>
     </div>
@@ -170,7 +170,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .video-wrapper{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
   text-align: center;
+}
+#video {
+  with: 50%;
+  object-fit: fill;
 }
 .drop-wrapper {
   background-color: #DDDAD6;
