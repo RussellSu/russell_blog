@@ -6,7 +6,7 @@
       <div class="float-right">更新时间:{{video.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
     </div>
     <div class="video-wrapper">
-      <video class="video" v-if="video.source" controls>
+      <video id="video" v-if="video.source" controls>
         <source :src=video.source type="video/mp4">
       </video>
     </div>
@@ -67,7 +67,16 @@ export default {
 .video-wrapper{
   text-align: center;
 }
-.video{
+.video-wrapper{
+  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
+  text-align: center;
+}
+#video {
+  width: 100%;
+  max-height: calc(100vh - 10rem);
+  object-fit: fill;
 }
 </style>

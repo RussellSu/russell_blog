@@ -177,7 +177,8 @@ export default {
   text-align: center;
 }
 #video {
-  width: 50%;
+  width: 100%;
+  max-height: calc(100vh - 10rem);
   object-fit: fill;
 }
 .drop-wrapper {
