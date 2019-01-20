@@ -26,6 +26,9 @@ module.exports = function (app, passport, config) {
   process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
   // console.log(`■■■process.env■`, JSON.stringify(process.env, null, '  \r'))
   console.log(`■■■process.env.NODE_ENV■${process.env.NODE_ENV}`)
+  console.log(`■■■process.env.dbUser${process.env.dbUser}`)
+  console.log(`■■■process.env.dbPassword${process.env.dbPassword}`)
+
   console.log(`■■■process.env.AWESOME_SERVICE_API_TOKEN■${process.env.AWESOME_SERVICE_API_TOKEN}`)
 
   // 非生产环境CORS

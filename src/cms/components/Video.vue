@@ -1,13 +1,13 @@
 <template>
-  <section class="movies-detail-module module">
-    <h1>{{movie.name}}</h1>
+  <section class="videos-detail-module module">
+    <h1>{{video.name}}</h1>
     <div class="clearfix">
-      <div class="float-left">创建时间:{{movie.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
-      <div class="float-right">更新时间:{{movie.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
+      <div class="float-left">创建时间:{{video.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
+      <div class="float-right">更新时间:{{video.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
     </div>
     <div class="video-wrapper">
-      <video v-if="movie.source" controls>
-        <source :src=movie.source type="video/mp4">
+      <video v-if="video.source" controls>
+        <source :src=video.source type="video/mp4">
       </video>
     </div>
 
@@ -34,7 +34,7 @@
 import { mapState, mapGetters } from 'vuex'
 import tool from '../utils/tool.js'
 export default {
-  name: 'movie',
+  name: 'videoDetail',
   components: {
   },
   data () {
@@ -44,9 +44,9 @@ export default {
       preprocessCheckingFlg: false,
       options: {
         // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
-        target: '/api/uploads/movie',
+        target: '/api/uploads/video',
         singleFile: true,
-        // simultaneousUploads: 3, // 并发上传数，默认 3
+        simultaneousUploads: 1, // 并发上传数，默认 3
         fileParameterName: 'file', // default: 'file'
         testChunks: true,
         successStatuses: [200, 201],
@@ -73,7 +73,7 @@ export default {
         paused: '暂停',
         waiting: '等待中'
       },
-      movie: {
+      video: {
         _id: '',
         name: '',
         source: '',
@@ -101,10 +101,10 @@ export default {
     getData () {
       let _this = this
       this.$store.commit('ACTIVE_LOADING')
-      this.$api.getMovieDetail(this.$route.params.id).then(res => {
+      this.$api.getVideoDetail(this.$route.params.id).then(res => {
         _this.$store.commit('INACTIVE_LOADING')
-        if (res.data.movie) {
-          _this.movie = res.data.movie
+        if (res.data.video) {
+          _this.video = res.data.video
         }
       }, err => {
         _this.$store.commit('INACTIVE_LOADING')
@@ -112,19 +112,19 @@ export default {
       })
     },
     fileSuccess (rootFile, file, message, chunk) {
+      console.log('fileSuccess', rootFile, file, message, chunk)
       let _this = this
       // message: post res
-      console.log('fileSuccess', rootFile, file, message, chunk)
       this.$api.mergeChunk({
         'identifier': rootFile.uniqueIdentifier,
         'chunks': rootFile.chunks.map(item => ({ chunkNum: (item.offset + 1).toString() })),
         'filename': rootFile.name,
         'fileSize': rootFile.size,
         'mimeType': rootFile.fileType,
-        'assetType': 'movie',
+        'assetType': 'video',
       }).then(res => {
-        _this.$api.updateMovieAsset(_this.movie._id, { 'source': res.data.filePath }).then(res => {
-          _this.movie.source = res.data.source
+        _this.$api.updateVideoAsset(_this.video._id, { 'source': res.data.filePath }).then(res => {
+          _this.video.source = res.data.source
           alert('更新资源成功')
         })
       }, err => {
@@ -133,9 +133,9 @@ export default {
     },
     preprocess (chunk) {
       // 几个并发， 几个preprocess同时跑
+      console.log('preprocess chunk', chunk)
       let _this = this
       _this.preprocessCheckingFlg = true
-      console.log('preprocess chunk', chunk)
       // 上传或test之前执行,生成md5(如果file存在md5 就不生成了)
       if (!_this.md5) {
         console.log('no md5')
@@ -144,6 +144,11 @@ export default {
           _this.$api.checkMD5Existed(md5Value).then(res => {
             if (res.data.result) {
               alert('已经有啦')
+              // chunk.preprocessFinished()
+              _this.$api.updateVideoAsset(_this.video._id, { 'source': res.data.result.filePath }).then(res => {
+                _this.video.source = res.data.source
+                alert('更新资源成功')
+              })
             }
             else {
               _this.md5 = md5Value
@@ -156,6 +161,7 @@ export default {
         })
       }
       else {
+        console.log('md5 exists in page')
         chunk.preprocessFinished()
       }
     },

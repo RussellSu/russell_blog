@@ -13,9 +13,9 @@ module.exports = function (app, config, apiRouter) {
   apiRouter.get('/articles', articles.articleList)
   apiRouter.get('/articles/:id', articles.articleDetail)
 
-  const movies = require('../controllers/get/movies')
-  apiRouter.get('/movies', movies.movieList)
-  apiRouter.get('/movies/:id', movies.movieDetail)
+  const videos = require('../controllers/get/videos')
+  apiRouter.get('/videos', videos.videoList)
+  apiRouter.get('/videos/:id', videos.videoDetail)
 
   const songs = require('../controllers/get/songs')
   apiRouter.get('/songs', songs.songList)
@@ -23,6 +23,6 @@ module.exports = function (app, config, apiRouter) {
 
   const uploads = require('../controllers/get/uploads.js')
   apiRouter.get('/uploads/md5/:md5', uploads.checkMD5Exist)
-  apiRouter.get('/uploads/movie', uploads.checkUploadMovie)
+  apiRouter.get('/uploads/video', uploads.checkUploadVideo)
   apiRouter.get('/uploads/song', uploads.checkUploadSong)
 }

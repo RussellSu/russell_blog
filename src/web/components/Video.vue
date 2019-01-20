@@ -1,13 +1,13 @@
 <template>
-  <section class="movies-detail-module module">
-    <h1>{{movie.name}}</h1>
+  <section class="videos-detail-module module">
+    <h1>{{video.name}}</h1>
     <div class="clearfix">
-      <div class="float-left">创建时间:{{movie.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
-      <div class="float-right">更新时间:{{movie.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
+      <div class="float-left">创建时间:{{video.createTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
+      <div class="float-right">更新时间:{{video.updateTime | time_format('YYYY/MM/DD HH:mm:ss')}}</div>
     </div>
     <div class="video-wrapper">
-      <video class="video" v-if="movie.source" controls>
-        <source :src=movie.source type="video/mp4">
+      <video class="video" v-if="video.source" controls>
+        <source :src=video.source type="video/mp4">
       </video>
     </div>
   </section>
@@ -16,13 +16,13 @@
 import { mapState, mapGetters } from 'vuex'
 // import tool from '../utils/tool.js'
 export default {
-  name: 'movie',
+  name: 'video',
   components: {
   },
   data () {
     console.log('data')
     return {
-      movie: {
+      video: {
         _id: '',
         name: '',
         source: '',
@@ -50,10 +50,10 @@ export default {
     getData () {
       let _this = this
       this.$store.commit('ACTIVE_LOADING')
-      this.$api.getMovieDetail(this.$route.params.id).then(res => {
+      this.$api.getVideoDetail(this.$route.params.id).then(res => {
         _this.$store.commit('INACTIVE_LOADING')
-        if (res.data.movie) {
-          _this.movie = res.data.movie
+        if (res.data.video) {
+          _this.video = res.data.video
         }
       }, err => {
         _this.$store.commit('INACTIVE_LOADING')

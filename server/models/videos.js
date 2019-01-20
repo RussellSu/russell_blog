@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-var movieSchema = new Schema({
+var videoSchema = new Schema({
   name: { type: String, default: '', index: true },
   // author: { type: Schema.Types.ObjectId, ref: 'userModel', index: true },
   source: { type: String, default: '' },
@@ -11,13 +11,13 @@ var movieSchema = new Schema({
   createTime: { type: Date, default: Date.now },
   updateTime: { type: Date, default: Date.now, index: true },
 }, {
-  collection: 'movies'
+  collection: 'videos'
 })
 
-movieSchema.pre('save', next => {
+videoSchema.pre('save', next => {
   var _this = this
   _this.updateTime = Date.now()
   next()
 })
 
-module.exports = mongoose.model('movieModel', movieSchema)
+module.exports = mongoose.model('videoModel', videoSchema)

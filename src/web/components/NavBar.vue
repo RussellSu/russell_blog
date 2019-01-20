@@ -10,6 +10,9 @@
       <li v-for="item of navList" :key="item.title">
         <router-link :to="item.routeName" exact>{{item.title}}</router-link>
       </li>
+      <li class="" v-if="isAdmin">
+        <a @click="goCMS">CMS</a>
+      </li>
       <li class="logout-btn" v-if="isLogin">
         <a href="/logout">logout</a>
       </li>
@@ -35,7 +38,7 @@ var navList = [
   // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },
   { title: 'links', routeName: '/links' },
-  { title: 'movies', routeName: '/movies' },
+  { title: 'videos', routeName: '/videos' },
   { title: 'author', routeName: '/author' },
   { title: 'me', routeName: '/me' },
 ]
@@ -60,12 +63,16 @@ export default {
       thumbnail: state => state.userProfile.thumbnail,
     }),
     ...mapGetters([
-      'isLogin'
+      'isLogin',
+      'isAdmin',
     ])
   },
   methods: {
     toLogin () {
       window.location.href = '/login'
+    },
+    goCMS () {
+      window.location.href = '/cms'
     },
   }
 }

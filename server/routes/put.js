@@ -6,8 +6,8 @@ module.exports = function (app, config, apiRouter) {
 
   // const articles = require('../controllers/put/articles')
   // apiRouter.put('/articles', isLogin, articles.modifyArticle)
-  const movies = require('../controllers/put/movies')
-  apiRouter.put('/movies/:id/asset', movies.updateMovieAsset)
+  const videos = require('../controllers/put/videos')
+  apiRouter.put('/videos/:id/asset', videos.updateVideoAsset)
 
   const songs = require('../controllers/put/songs')
   apiRouter.put('/songs/:id/asset', songs.updateSongAsset)

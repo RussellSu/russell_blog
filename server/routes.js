@@ -17,7 +17,7 @@ module.exports = (express, app, config, apiRouter) => {
   app.get([
     /^\/articles/,
     /^\/links/,
-    /^\/movies/,
+    /^\/videos/,
     /^\/author/,
     /^\/me/
   ], function (req, res) {

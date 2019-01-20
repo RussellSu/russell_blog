@@ -30,9 +30,9 @@ export default {
       data: data
     })
   },
-  getMovieList (pageSize = 10, curPage = 1) {
+  getVideoList (pageSize = 10, curPage = 1) {
     return service({
-      url: `/api/movies`,
+      url: `/api/videos`,
       method: 'GET',
       params: {
         pageSize: pageSize,
@@ -40,9 +40,9 @@ export default {
       }
     })
   },
-  getMovieDetail (id) {
+  getVideoDetail (id) {
     return service({
-      url: `/api/movies/${id}`,
+      url: `/api/videos/${id}`,
       method: 'GET'
     })
   },

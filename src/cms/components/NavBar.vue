@@ -34,7 +34,7 @@ import { mapState, mapGetters } from 'vuex'
 var navList = [
   // {title: 'home', routeName: '/', exact: true},
   { title: 'articles', routeName: '/articles' },
-  { title: 'movies', routeName: '/movies' },
+  { title: 'videos', routeName: '/videos' },
   { title: 'songs', routeName: '/songs' },
   { title: 'author', routeName: '/author' },
 ]

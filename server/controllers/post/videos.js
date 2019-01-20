@@ -1,6 +1,6 @@
-const Movie = require('../../models/movies.js')
+const Video = require('../../models/videos.js')
 
-exports.createMovie = (req, res) => {
+exports.createVideo = (req, res) => {
   let dataBody = req.body
   const name = (dataBody.name || '').toString().replace(/(^\s+)|(\s+$)/g, '')
   if (!name) {
@@ -11,10 +11,10 @@ exports.createMovie = (req, res) => {
     'creator': req.user._id,
   }
 
-  Movie.create(createObj, (err, updated) => {
+  Video.create(createObj, (err, updated) => {
     if (err) {
       return res.status(500).send(err)
     }
-    res.send({ 'movie': updated })
+    res.send({ 'video': updated })
   })
 }

@@ -16,7 +16,7 @@ var assetSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'userModel' },
   identifier: { type: String },
   // options: optionsSchema,
-  type: { type: String, default: 'other', enum: ['avatar', 'movie', 'music', 'image', 'other'] },
+  type: { type: String, default: 'other', enum: ['avatar', 'video', 'music', 'image', 'other'] },
   created: { type: Date, default: Date.now }
 }, {
   collection: "assets"

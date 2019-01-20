@@ -13,7 +13,7 @@ exports.checkMD5Exist = (req, res) => {
   })
 }
 
-exports.checkUploadMovie = (req, res) => {
+exports.checkUploadVideo = (req, res) => {
   const chunk = {
     identifier: req.query.identifier,
     chunkNumber: req.query.chunkNumber,

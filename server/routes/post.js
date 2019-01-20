@@ -12,8 +12,8 @@ module.exports = function (app, config, apiRouter) {
   const articles = require('../controllers/post/articles.js')
   apiRouter.post('/articles', isLogin, articles.addArticle)
 
-  const movies = require('../controllers/post/movies.js')
-  apiRouter.post('/movies', isLogin, movies.createMovie)
+  const videos = require('../controllers/post/videos.js')
+  apiRouter.post('/videos', isLogin, videos.createVideo)
 
   const songs = require('../controllers/post/songs.js')
   apiRouter.post('/songs', isLogin, songs.createSong)
@@ -23,7 +23,7 @@ module.exports = function (app, config, apiRouter) {
 
   const uploads = require('../controllers/post/uploads.js')
   apiRouter.post('/uploads/avatar', isLogin, uploads.uploadAvatar2)
-  apiRouter.post('/uploads/movie', isLogin, uploads.uploadMovie)
+  apiRouter.post('/uploads/video', isLogin, uploads.uploadVideo)
   apiRouter.post('/uploads/song', isLogin, uploads.uploadSong)
   apiRouter.post('/uploads/mergeChunk', isLogin, uploads.mergeChunk)
 }

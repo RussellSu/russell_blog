@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Articles from '@/cms/components/articles'
 import ArticleItem from '@/cms/components/ArticleItem'
-import Movies from '@/cms/components/Movies'
-import Movie from '@/cms/components/Movie'
+import Videos from '@/cms/components/Videos'
+import Video from '@/cms/components/Video'
 import Songs from '@/cms/components/Songs'
 import Song from '@/cms/components/Song'
 import Author from '@/cms/components/Author'
@@ -48,14 +48,14 @@ let router = new Router({
       }
     },
     {
-      path: '/movies',
-      name: 'movies',
-      component: Movies
+      path: '/videos',
+      name: 'videos',
+      component: Videos
     },
     {
-      path: '/movies/:id',
-      name: 'movie',
-      component: Movie
+      path: '/videos/:id',
+      name: 'video',
+      component: Video
     },
     {
       path: '/songs',

@@ -160,7 +160,7 @@ exports.uploadAvatar2 = (req, res) => {
   }
 }
 
-exports.uploadMovie = (req, res) => {
+exports.uploadVideo = (req, res) => {
   let form = new formidable.IncomingForm()
   form.uploadDir = global.appConfig.tempPath // 文件上传 临时文件存放路径
   form.encoding = "utf-8"
