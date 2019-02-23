@@ -4,8 +4,10 @@
     <div class="user-info" v-if="isLogin" :style="{'background-image':`url(${thumbnail})`}">
     </div>
     <div class="user-info hand" v-else @click="toLogin">未登录</div>
-    {{fullname}}
-    {{nickname}}
+    <span>
+      {{fullname}}
+      {{nickname}}
+    </span>
     <ul>
       <li v-for="item of navList" :key="item.title">
         <router-link :to="item.routeName" exact>{{item.title}}</router-link>
@@ -83,7 +85,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100px;
+  width: 200px;
   height: 100vh;
   background-color: #000;
   text-align: center;
@@ -113,9 +115,9 @@ export default {
   background-color: #000;
 }
 .user-info {
-  height: 80px;
-  line-height: 80px;
-  margin: 10px;
+  height: 160px;
+  line-height: 160px;
+  margin: 20px;
   border-radius: 50%;
   background-color: #2e2e2e;
   background-position: center;
@@ -135,10 +137,11 @@ export default {
       color: #fff;
       line-height: 30px;
       &:hover {
-        // color: #00FF39;
-        background-color: rgba(255, 255, 255, 0.3);
+        color: #00FF39;
+        // background-color: rgba(255, 255, 255, 0.3);
       }
       &.router-link-active {
+        font-size: 1.4rem;
         color: #00ff39;
       }
     }
