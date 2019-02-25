@@ -39,7 +39,7 @@
 import { mapState, mapGetters } from 'vuex'
 import AvatarEditor from '@/web/components/avatarEditor'
 export default {
-  name: 'author',
+  name: 'me',
   components: {
     AvatarEditor
   },
