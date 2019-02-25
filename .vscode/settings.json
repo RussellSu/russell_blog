@@ -4,7 +4,7 @@
   "vsicons.dontShowNewVersionMessage": true,
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
-  "editor.formatOnType": true,
+  "editor.formatOnType": false,
   "editor.formatOnPaste": false,
   "editor.autoIndent": true,
   "editor.formatOnSave": false,
@@ -31,6 +31,6 @@
   "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
   "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
   "eslint.autoFixOnSave": true,
-  
-  
+
+
 }

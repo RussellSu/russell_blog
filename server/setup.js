@@ -91,7 +91,7 @@ module.exports = function (app, passport, config) {
   })
 
   passport.deserializeUser((userId, done) => {
-    console.log('passport.deserializeUser', userId)
+    console.log('passport.deserialize UserId:', userId)
     // 反序列化： 从session反序列化，参数为用户提交的sessionID，若存在则从数据库中查询user并存储与req.user中。
     // userId来源 req.session.passport.user
     // 通过req.session.passport.user 实时查询user 更新req.user

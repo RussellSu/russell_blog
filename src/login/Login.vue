@@ -11,7 +11,10 @@
         <div class="right-bar">
           <p class="">I have a account</p>
           <div class="btn-bar login-item">
-            <a class="login-btn cursor-hand" title="login" @click='login'>login with username/email/phoneNumber</a>
+            <a class="login-btn cursor-hand dis-b" title="login" @click='login'>login</a>
+            <div>
+              <small>you can login with username/email/phoneNumber</small>
+            </div>
           </div>
         </div>
       </div>
