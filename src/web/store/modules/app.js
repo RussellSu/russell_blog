@@ -1,5 +1,6 @@
 const app = {
   state: {
+    permission: {},
     status: false,
     activePopup: false,
     popup: {
@@ -16,8 +17,8 @@ const app = {
     },
     loading: {
       active: false,
-      content: '加载中'
-    }
+      content: '加载中',
+    },
   },
   mutations: {
     SET_STATUS (state, payload) { // 单独设置status 值
@@ -68,8 +69,11 @@ const app = {
     INACTIVE_LOADING (state) {
       state.loading.active = false
       state.loading.content = '加载中'
-    }
-  }
+    },
+    SET_PERMISSION (state, payload) {
+      state.permission = payload
+    },
+  },
 }
 
 export default app

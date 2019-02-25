@@ -29,7 +29,14 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'comma-dangle': [2, 'only-multiline'], // allow paren-less arrow functions
+    'comma-dangle': [2, {
+      'arrays': 'always-multiline',
+      'objects': 'always-multiline',
+      'imports': 'only-multiline',
+      'exports': 'always-multiline',
+      'functions': 'only-multiline',
+    }],
+    // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await
     'generator-star-spacing': 0,
