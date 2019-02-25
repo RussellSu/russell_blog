@@ -1,5 +1,6 @@
 // const Path = require('path')
 const Crypto = require('crypto')
+const TLS = require('tls')
 const User = require("../models/users.js")
 const AccessLog = require('../models/accessLog.js')
 
@@ -45,7 +46,7 @@ exports.encrypt = (originStr, secretKey, algorithm = 'aes192') => {
   if (!secretKey) {
     throw new Error('encrypt: secreKey(second parameter) can not be empty!')
   }
-  let cip = Crypto.createCipher(algorithm, secretKey)
+  let cip = TLS.createCipheriv(algorithm, secretKey)
   let encrypted = cip.update(originStr, 'binary', 'hex')
   encrypted += cip.final('hex')
   return encrypted
@@ -56,7 +57,7 @@ exports.decrypt = (encryptedStr, secretKey, algorithm = 'aes192') => {
   if (!secretKey) {
     throw new Error('encrypt: secreKey(second parameter) can not be empty!')
   }
-  let decipher = Crypto.createDecipher(algorithm, secretKey)
+  let decipher = TLS.createDecipheriv(algorithm, secretKey)
   let decrypted = ""
   decrypted += decipher.update(encryptedStr, 'hex', 'binary')
   decrypted += decipher.final('binary')
