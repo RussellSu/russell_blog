@@ -63,11 +63,11 @@ export default {
         text: '',
         createTime: '',
         updateTime: '',
-        comments: []
+        comments: [],
       },
       comments: [],
       showCommentEditor: false,
-      newComment: ''
+      newComment: '',
     }
   },
   computed: {
@@ -78,8 +78,8 @@ export default {
 
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   created () {
     console.log('created')
@@ -116,7 +116,7 @@ export default {
         pedantic: false,
         sanitize: true,
         smartLists: true,
-        smartypants: false
+        smartypants: false,
       })
     },
     writeComment () {
@@ -130,7 +130,7 @@ export default {
       }
       this.$api.submitComment({
         article: this.article._id,
-        text: this.newComment
+        text: this.newComment,
       }).then(res => {
         _this.newComment = ''
         _this.showCommentEditor = false
@@ -149,8 +149,8 @@ export default {
       }, err => {
         console.log(err)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>

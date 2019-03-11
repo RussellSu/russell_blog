@@ -40,8 +40,8 @@ export default {
       gender: state => state.userProfile.gender,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   methods: {
     createNewVideo () {
@@ -73,8 +73,8 @@ export default {
           console.log(err)
         }
       )
-    }
-  }
+    },
+  },
 }
 </script>
 

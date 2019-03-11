@@ -28,8 +28,8 @@ export default {
     ...mapState({
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   methods: {
     getVideos () {
@@ -45,8 +45,8 @@ export default {
           console.log(err)
         }
       )
-    }
-  }
+    },
+  },
 }
 </script>
 

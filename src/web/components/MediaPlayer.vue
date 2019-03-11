@@ -26,7 +26,7 @@ export default {
   data () {
     return {
       songList: [],
-      collapsePlayList: true
+      collapsePlayList: true,
     }
   },
   created () {
@@ -43,8 +43,8 @@ export default {
       thumbnail: state => state.userProfile.thumbnail,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   methods: {
     tooglePlayList () {
@@ -64,7 +64,7 @@ export default {
         }
       )
     },
-  }
+  },
 }
 </script>
 <style lang="scss" scoped >

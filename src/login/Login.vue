@@ -35,7 +35,7 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
     }
   },
   methods: {
@@ -63,8 +63,8 @@ export default {
           }
           console.log('login', err.response)
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

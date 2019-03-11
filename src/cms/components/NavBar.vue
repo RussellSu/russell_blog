@@ -44,7 +44,7 @@ export default {
   data () {
     return {
       navList: navList,
-      user: {}
+      user: {},
     }
   },
   created () {
@@ -63,14 +63,14 @@ export default {
       thumbnail: state => state.userProfile.thumbnail,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   methods: {
     toLogin () {
       window.location.href = '/login'
     },
-  }
+  },
 }
 </script>
 <style lang="scss" scoped >

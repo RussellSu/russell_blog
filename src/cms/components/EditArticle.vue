@@ -39,8 +39,8 @@ export default {
       article: {
         title: '',
         author: window.Russell.user ? window.Russell.user.fullname : '',
-        text: ''
-      }
+        text: '',
+      },
     }
   },
   computed: {
@@ -54,8 +54,8 @@ export default {
       thumbnail: state => state.userProfile.thumbnail,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   created () {
     document.title = '编辑'
@@ -97,10 +97,10 @@ export default {
         pedantic: false,
         sanitize: true,
         smartLists: true,
-        smartypants: false
+        smartypants: false,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

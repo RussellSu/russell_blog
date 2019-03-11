@@ -29,7 +29,7 @@ export default {
         description: '',
         createTime: '',
         updateTime: '',
-        types: []
+        types: [],
       },
     }
   },
@@ -38,8 +38,8 @@ export default {
 
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   created () {
     this.getData()
@@ -60,7 +60,7 @@ export default {
         console.log(err)
       })
     },
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

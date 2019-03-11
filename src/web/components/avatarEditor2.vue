@@ -91,12 +91,12 @@ export default {
     },
     originPic: {
       type: String,
-      default: '/img/avatar-placeholder.png'
+      default: '/img/avatar-placeholder.png',
     },
     maxSize: {
       type: Number,
-      default: 6 * 1024 * 1024 // 6 * 1024K
-    }
+      default: 6 * 1024 * 1024, // 6 * 1024K
+    },
   },
   data () {
     return {
@@ -137,7 +137,7 @@ export default {
             },
             zoom: function (e) {
               console.log("zoom")
-            }
+            },
           })
           this.cropper = cropper
           console.log('this.cropper', cropper)
@@ -231,8 +231,8 @@ export default {
     closeEditor () {
       console.log('closeEditor')
       this.$emit('cancel')
-    }
-  }
+    },
+  },
 }
 </script>
 

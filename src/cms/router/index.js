@@ -20,7 +20,7 @@ let router = new Router({
     {
       path: '/',
       name: 'home',
-      redirect: '/articles'
+      redirect: '/articles',
     },
     {
       path: '/articles',
@@ -44,33 +44,33 @@ let router = new Router({
       name: 'editArticle',
       component: EditArticle,
       meta: {
-        requireAuth: true // 需要登陆
-      }
+        requireAuth: true, // 需要登陆
+      },
     },
     {
       path: '/videos',
       name: 'videos',
-      component: Videos
+      component: Videos,
     },
     {
       path: '/videos/:id',
       name: 'video',
-      component: Video
+      component: Video,
     },
     {
       path: '/songs',
       name: 'songs',
-      component: Songs
+      component: Songs,
     },
     {
       path: '/songs/:id',
       name: 'song',
-      component: Song
+      component: Song,
     },
     {
       path: '/author',
       name: 'author',
-      component: Author
+      component: Author,
     },
     // {
     //   path: '/about',
@@ -83,9 +83,9 @@ let router = new Router({
     {
       path: '*',
       name: 'notFoundPage',
-      component: NotFoundPage
-    }
-  ]
+      component: NotFoundPage,
+    },
+  ],
 })
 router.beforeEach((to, from, next) => {
   // let _this = this

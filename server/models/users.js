@@ -20,7 +20,7 @@ var userSchema = new Schema({
   updateTime: { type: Date, default: Date.now },
 },
 {
-  collection: 'users'
+  collection: 'users',
 }
 )
 

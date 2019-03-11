@@ -14,12 +14,12 @@ module.exports = {
     commonjs: true, // CommonJS 全局变量和 CommonJS 作用域 (用于 Browserify/WebPack 打包的只在浏览器中运行的代码)。
     es6: true, // 启用除了 modules 以外的所有 ECMAScript 6 特性（该选项会自动设置 ecmaVersion 解析器选项为 6）。
     amd: true, // 将 require() 和 define() 定义为像 amd 一样的全局变量。
-    mocha: false // 添加所有的 Mocha 测试全局变量。
+    mocha: false, // 添加所有的 Mocha 测试全局变量。
   },
   // http://eslint.cn/docs/user-guide/configuring#extending-configuration-files
   'extends': [
     'plugin:vue/essential',
-    '@vue/standard'
+    '@vue/standard',
   ],
   // http://eslint.cn/docs/user-guide/configuring#using-the-configuration-from-a-plugin
   plugins: [
@@ -50,8 +50,8 @@ module.exports = {
     'space-before-function-paren': [2, {
       "anonymous": "always",
       "named": "always",
-      "asyncArrow": "always"
+      "asyncArrow": "always",
     }],
-    "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }] //   来自某插件的某规则:  <pluginName>/<ruleName>
+    "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }], //   来自某插件的某规则:  <pluginName>/<ruleName>
   },
 }

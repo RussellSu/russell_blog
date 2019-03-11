@@ -25,7 +25,7 @@ export default {
   name: 'cms',
   components: {
     NavBar,
-    Loading
+    Loading,
   },
   data () {
     return {
@@ -42,8 +42,8 @@ export default {
       loadingContent: state => state.app.loading.content,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   created () {
     this.getProfile()

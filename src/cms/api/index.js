@@ -4,21 +4,21 @@ export default {
   getUserProfile () {
     return service({
       url: '/api/profile',
-      method: 'GET'
+      method: 'GET',
     })
   },
   mergeChunk (data) {
     return service({
       url: '/api/uploads/mergeChunk',
       method: 'POST',
-      data: data
+      data: data,
     })
   },
   updateVideoAsset (id, data) {
     return service({
       url: `/api/videos/${id}/asset`,
       method: 'PUT',
-      data: data
+      data: data,
     })
   },
   getArticleList (pageSize = 10, curPage = 1) {
@@ -27,14 +27,14 @@ export default {
       method: 'GET',
       params: {
         pageSize: pageSize,
-        curPage: curPage
-      }
+        curPage: curPage,
+      },
     })
   },
   getArticleDetail (id) {
     return service({
       url: `/api/articles/${id}`,
-      method: 'GET'
+      method: 'GET',
     })
   },
   getVideoList (pageSize = 10, curPage = 1) {
@@ -43,27 +43,27 @@ export default {
       method: 'GET',
       params: {
         pageSize: pageSize,
-        curPage: curPage
-      }
+        curPage: curPage,
+      },
     })
   },
   getVideoDetail (id) {
     return service({
       url: `/api/videos/${id}`,
-      method: 'GET'
+      method: 'GET',
     })
   },
   createNewVideo (data) {
     return service({
       url: '/api/videos',
       method: 'POST',
-      data: data
+      data: data,
     })
   },
   checkMD5Existed (md5) {
     return service({
       url: `/api/uploads/md5/${md5}`,
-      method: 'GET'
+      method: 'GET',
     })
   },
   getSongList (pageSize = 10, curPage = 1) {
@@ -72,28 +72,28 @@ export default {
       method: 'GET',
       params: {
         pageSize: pageSize,
-        curPage: curPage
-      }
+        curPage: curPage,
+      },
     })
   },
   getSongDetail (id) {
     return service({
       url: `/api/songs/${id}`,
-      method: 'GET'
+      method: 'GET',
     })
   },
   createNewSong (data) {
     return service({
       url: '/api/songs',
       method: 'POST',
-      data: data
+      data: data,
     })
   },
   updateSongAsset (id, data) {
     return service({
       url: `/api/songs/${id}/asset`,
       method: 'PUT',
-      data: data
+      data: data,
     })
   },
   getDemo (id, pageSize = 10, curPage = 1) {
@@ -101,15 +101,15 @@ export default {
       url: `/api/getDemo/${pageSize}/${curPage}`,
       method: 'GET',
       params: {
-        id: id
-      }
+        id: id,
+      },
     })
   },
   submitComment (data) {
     return service({
       url: '/api/comments',
       method: 'POST',
-      data: data
+      data: data,
     })
   },
   markLike (id, type) {
@@ -117,34 +117,34 @@ export default {
       url: `/api/like/${id}`,
       method: 'POST',
       data: {
-        type // article comment
-      }
+        type, // article comment
+      },
     })
   },
   uploadAvatar (data) {
     return service({
       url: '/api/upload/avatar',
       method: 'POST',
-      data: data
+      data: data,
     })
   },
   postDemo (data) {
     return service({
       url: '/api/postDemo',
       method: 'POST',
-      data: data
+      data: data,
     })
   },
   putDemo () {
     return service({
       url: '/api/putDemo',
-      method: 'PUT'
+      method: 'PUT',
     })
   },
   deleteDemo () {
     return service({
       url: '/api/deleteDemo',
-      method: 'DELETE'
+      method: 'DELETE',
     })
-  }
+  },
 }

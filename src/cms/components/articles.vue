@@ -22,7 +22,7 @@ export default {
     return {
       description: 'This is articles module.',
       main: 'to be continued.',
-      articles: []
+      articles: [],
     }
   },
   created () {
@@ -43,8 +43,8 @@ export default {
           console.log(err)
         }
       )
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>

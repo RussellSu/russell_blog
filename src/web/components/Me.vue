@@ -41,7 +41,7 @@ import AvatarEditor from '@/web/components/avatarEditor'
 export default {
   name: 'me',
   components: {
-    AvatarEditor
+    AvatarEditor,
   },
   data () {
     return {
@@ -71,7 +71,7 @@ export default {
       'isLogin',
       'isAdmin',
       'genderText',
-    ])
+    ]),
   },
   methods: {
     refresh (done) {
@@ -120,8 +120,8 @@ export default {
     },
     goCMS () {
       window.location.href = '/cms'
-    }
-  }
+    },
+  },
 }
 </script>
 

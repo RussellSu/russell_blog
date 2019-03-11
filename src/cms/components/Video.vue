@@ -64,14 +64,14 @@ export default {
         preprocess: this.preprocess,
       },
       attrs: {
-        accept: 'video/*'
+        accept: 'video/*',
       },
       fileStatusText: {
         success: '成功',
         error: '错误',
         uploading: '上传中',
         paused: '暂停',
-        waiting: '等待中'
+        waiting: '等待中',
       },
       video: {
         _id: '',
@@ -80,7 +80,7 @@ export default {
         description: '',
         createTime: '',
         updateTime: '',
-        types: []
+        types: [],
       },
     }
   },
@@ -89,8 +89,8 @@ export default {
 
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   created () {
     this.getData()
@@ -165,7 +165,7 @@ export default {
         chunk.preprocessFinished()
       }
     },
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

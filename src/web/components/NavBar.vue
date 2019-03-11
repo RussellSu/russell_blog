@@ -49,7 +49,7 @@ export default {
   data () {
     return {
       navList: navList,
-      user: {}
+      user: {},
     }
   },
   created () {
@@ -67,7 +67,7 @@ export default {
     ...mapGetters([
       'isLogin',
       'isAdmin',
-    ])
+    ]),
   },
   methods: {
     toLogin () {
@@ -76,7 +76,7 @@ export default {
     goCMS () {
       window.location.href = '/cms'
     },
-  }
+  },
 }
 </script>
 <style lang="scss" scoped >

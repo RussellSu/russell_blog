@@ -4,7 +4,7 @@
       <button class="close-btn btn" @click="closeEditor">×</button>
       <div class="left-bar position-R pull-left">
         <div class="cropper-wrapper">
-          <vue-cropper
+          <vueCropper
             ref="cropper"
             id="avatar-cropper"
             :img="option.img"
@@ -23,7 +23,7 @@
             :fixedBox="option.fixedBox"
             :original="option.original"
             @realTime="realTime">
-          </vue-cropper>
+          </vueCropper>
         </div>
         <div>
           <label class="btn btn-sm" for="uploads">upload</label>
@@ -45,7 +45,7 @@
             <img :src="previews.url" :style="previews.img">
           </div>
         </div>
-        <button @click="confirmUpdate">确认上传</button>
+        <button class="btn" @click="confirmUpdate">确认上传</button>
       </div>
     </div>
   </section>
@@ -84,8 +84,8 @@ export default {
         centerBox: true, // 截图框是否被限制在图片里面 default: false
         fixedBox: false, // 固定截图框大小 不允许改变 default: false
         original: false, // 上传图片按照原始比例渲染 default: false
-        canMoveBox: true // 截图框能否拖动 default: true
-      }
+        canMoveBox: true, // 截图框能否拖动 default: true
+      },
     }
   },
   watch: {
@@ -94,7 +94,7 @@ export default {
         console.log('acitve false')
         this.resetAll()
       }
-    }
+    },
   },
   methods: {
     updateImg (e, num) {
@@ -163,8 +163,8 @@ export default {
     resetAll () {
       this.option.img = ''
       this.preview = {}
-    }
-  }
+    },
+  },
 }
 </script>
 

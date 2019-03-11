@@ -28,12 +28,12 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Russell\'s blog'
+      msg: 'Welcome to Russell\'s blog',
     }
   },
   created () {
     document.title = this.$route.name
-  }
+  },
 }
 </script>
 

@@ -51,8 +51,8 @@ export default {
       thumbnail: state => state.userProfile.thumbnail,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   created () {
     document.title = '编辑'
@@ -67,7 +67,7 @@ export default {
         data: {
           title: _this.title,
           text: _this.text,
-        }
+        },
       }).then(
         res => {
           console.log(res.data)
@@ -99,10 +99,10 @@ export default {
         pedantic: false,
         sanitize: true,
         smartLists: true,
-        smartypants: false
+        smartypants: false,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

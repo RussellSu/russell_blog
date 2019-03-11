@@ -40,7 +40,7 @@ export default {
   name: 'links',
   data () {
     return {
-      msg: 'Welcome to Russell\'s App'
+      msg: 'Welcome to Russell\'s App',
     }
   },
   created () {
@@ -53,11 +53,11 @@ export default {
       gender: state => state.userProfile.gender,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   methods: {
-  }
+  },
 }
 </script>
 

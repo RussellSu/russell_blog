@@ -35,8 +35,8 @@ export default {
       gender: state => state.userProfile.gender,
     }),
     ...mapGetters([
-      'isLogin'
-    ])
+      'isLogin',
+    ]),
   },
   methods: {
     createNewSong () {
@@ -67,8 +67,8 @@ export default {
           console.log(err)
         }
       )
-    }
-  }
+    },
+  },
 }
 </script>
 

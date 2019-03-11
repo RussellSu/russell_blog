@@ -17,7 +17,7 @@ export default {
     content: {
       type: String,
       default: 'loading...',
-    }
+    },
   },
   data () {
     return {
@@ -26,7 +26,7 @@ export default {
   created () {
   },
   methods: {
-  }
+  },
 }
 </script>
 

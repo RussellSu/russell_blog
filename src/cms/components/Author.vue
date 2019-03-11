@@ -22,7 +22,7 @@ export default {
   },
   created () {
     document.title = this.$route.name
-  }
+  },
 }
 </script>
 

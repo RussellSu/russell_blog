@@ -13,7 +13,7 @@ const userProfile = {
     avatar: '',
     roles: [],
     createTime: '',
-    updateTime: ''
+    updateTime: '',
   },
   mutations: {
     SET_USER_PROFILE (state, payload) { // 批量设置字段
@@ -69,7 +69,7 @@ const userProfile = {
       }
       return text
     },
-  }
+  },
 }
 
 export default userProfile

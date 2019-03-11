@@ -63,18 +63,18 @@ module.exports = {
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          '^/api': '/api'
-        }
+          '^/api': '/api',
+        },
       },
       '/uploads': {
         target: 'http://localhost:3000/',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          '^/uploads': '/uploads'
-        }
-      }
-    }
+          '^/uploads': '/uploads',
+        },
+      },
+    },
   },
   chainWebpack: config => {
     if (process.env.npm_config_report) {
@@ -89,17 +89,17 @@ module.exports = {
           compress: {
             // warnings: false,
             drop_console: true, // console
-            pure_funcs: ['console.log']// 移除console
-          }
-        }
-      })
+            pure_funcs: ['console.log'], // 移除console
+          },
+        },
+      }),
     ])
   },
   configureWebpack: {
     resolve: {
       alias: {
         // '@pages': path.resolve(__dirname, 'src/pages/'),
-      }
+      },
     },
   },
   pages: {
@@ -115,28 +115,28 @@ module.exports = {
       title: 'Russell-blog',
       // 在这个页面中包含的块，默认情况下会包含
       // 提取出来的通用 chunk 和 vendor chunk。
-      chunks: ['chunk-vendors', 'chunk-common', 'web']
+      chunks: ['chunk-vendors', 'chunk-common', 'web'],
     },
     login: {
       entry: 'src/login/login.js',
       template: 'src/login/login.html',
       filename: 'login.html',
       title: '登陆',
-      chunks: ['chunk-vendors', 'chunk-common', 'login']
+      chunks: ['chunk-vendors', 'chunk-common', 'login'],
     },
     signup: {
       entry: 'src/signup/signup.js',
       template: 'src/signup/signup.html',
       filename: 'signup.html',
       title: '注册',
-      chunks: ['chunk-vendors', 'chunk-common', 'signup']
+      chunks: ['chunk-vendors', 'chunk-common', 'signup'],
     },
     cms: {
       entry: 'src/cms/cms.js',
       template: 'src/cms/cms.html',
       filename: 'cms.html',
       title: 'RUSSELL-CMS',
-      chunks: ['chunk-vendors', 'chunk-common', 'cms']
+      chunks: ['chunk-vendors', 'chunk-common', 'cms'],
     },
     // 当使用只有入口的字符串格式时，
     // 模板会被推导为 `public/subpage.html`
@@ -147,8 +147,8 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: fs.readFileSync('src/web/styles/variable.scss', 'utf-8')
-      }
-    }
-  }
+        data: fs.readFileSync('src/web/styles/variable.scss', 'utf-8'),
+      },
+    },
+  },
 }

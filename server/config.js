@@ -8,5 +8,5 @@ module.exports = {
     host: '',
     dbname: 'russell-blog',
 
-  }
+  },
 }

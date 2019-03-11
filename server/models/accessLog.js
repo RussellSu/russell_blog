@@ -7,7 +7,7 @@ var accessLogSchema = new Schema({
   accessTime: { type: Date, default: Date.now },
   ua: { type: String, default: '' },
 }, {
-  collection: 'accessLog'
+  collection: 'accessLog',
 })
 
 module.exports = mongoose.model('accessLogModel', accessLogSchema)
