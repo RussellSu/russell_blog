@@ -47,17 +47,22 @@ const deepClone = function (data) {
   }
   if (type === 'array') {
     for (let i = 0; i < data.length; i++) {
-      temp.push(_this.deepCopy(data[i]))
+      temp.push(_this.deepClone(data[i]))
     }
   }
   else if (type === 'object') {
-    for (let [key, value] of data) {
-      temp[key] = _this.deepCopy(value)
+    for (let [key, value] of Object.entries(data)) {
+      temp[key] = _this.deepClone(value)
     }
   }
   return temp
 }
-
+/**
+ * @description 时间格式转换成指定格式
+ * @param {Date} data 需要转换的时间
+ * @param {String} formatStr 转换格式
+ * @return {String} 转换后的时间字符串
+ */
 const timeFormat = function (data, formatStr = 'yyyy-MM-dd') {
   const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   var map = {
@@ -94,18 +99,67 @@ const timeFormat = function (data, formatStr = 'yyyy-MM-dd') {
   }
   return formatStr
 }
-
-const moneyFormat = function (data) {
-
+/**
+ * @description number --> 三位分节法 & 指定保留小数位
+ * @param {Number} data 需要转换的数字
+ * @param {Number} decimalLength 保留小数位数
+ * @return {String} 转换后的值
+ */
+const moneyFormat = function (data, decimalLength = 2) {
+  if (['', null, undefined].includes(data)) {
+    return '0.'.padEnd(2 + decimalLength, '0')
+  }
+  const NUM_POWER_OF_TEN = Math.pow(10, decimalLength)
+  let num = Math.round(parseFloat(data) * NUM_POWER_OF_TEN) / NUM_POWER_OF_TEN // 四舍五入且保留最多decimalLength位小数
+  let numStr = num.toString()
+  let integerPart = numStr.split('.')[0]
+  let decimalPart = numStr.split('.')[1] || ''
+  let part1 = integerPart.replace(/(?=((?!\b)\d{3})+$)/g, ',')
+  let part2 = ''
+  if (decimalPart.length === decimalLength) {
+    part2 = decimalPart
+  }
+  else {
+    part2 = decimalPart + ''.padEnd(decimalLength - decimalPart.length, '0')
+  }
+  let finalStr = part1 + '.' + part2
+  return finalStr
 }
 
-const NumberFormat = function (data, decimalPlace = 0) {
+/**
+ * @description 数字保留最多指定位小数并四舍五入
+ * @param {Number} data 需要转换的数字
+ * @param {Number} decimalLength 保留小数位数
+ * @return {Number} 转换后的值
+ */
+const NumberFormat = function (data, decimalLength = 0) {
   if (data === undefined) {
     return data
   }
-  return Math.round(data * Math.pow(10, decimalPlace)) / Math.pow(10, decimalPlace)
+  const NUM_POWER_OF_TEN = Math.pow(10, decimalLength)
+  return Math.round(data * NUM_POWER_OF_TEN) / NUM_POWER_OF_TEN
 }
-
+/**
+ * @example formatUrl('xxxxx{0}xxxx{1}'， 'AAA', 'BBB') ---> 'xxxxxAAAxxxxBBB'
+ */
+const StringFormat = function () {
+  let url = arguments[0]
+  let params = []
+  let ary = [...arguments]
+  ary.forEach((item, index) => {
+    if (item > 0) {
+      params.push(item)
+    }
+  })
+  return url.replace(/\{(\d+)\}/g, (c, d) => {
+    if (params[d] === null) {
+      return ''
+    }
+    else {
+      return params[d]
+    }
+  })
+}
 // base64转换成二进制图片（Blob）
 const dataURI2Blob = function (base64Data) {
   // base64 is like        data:image/png;base64,iVBORw0KGgoAAAAN..........
@@ -166,8 +220,8 @@ const axiosSendFormData = function (uploadUrl, file) {
   fd.append('file', file)
   let config = {
     headers: {
-      'Content-Type': 'multipart/form-data'
-    }
+      'Content-Type': 'multipart/form-data',
+    },
   }
   axios.post(uploadUrl, fd, config).then(res => {
     console.log(res)
@@ -175,7 +229,109 @@ const axiosSendFormData = function (uploadUrl, file) {
     console.log(res)
   })
 }
+/**
+ *
+ * @param {string} cookieName
+ * @return {string}
+ */
+const getCookie = function (cookieName) {
+  // 注： cookie 字符串是以【;+space】分隔，最后一个无分号
+  //  'username=russell; fullname=suxiao; gender=M'
+  const COOKIE = document.cookie
+  const startIndex = COOKIE.indexOf(`${cookieName}=`)
+  if (startIndex === -1) {
+    return ''
+  }
+  let endIndex = COOKIE.indexOf(';', startIndex)
+  if (endIndex === -1) {
+    endIndex = COOKIE.length - 1
+  }
+  return decodeURIComponent(COOKIE.substring(startIndex, endIndex))
+}
 
+const setCookie = function (cookieDic) {
+  for (let [key, value] of Object.entries(cookieDic)) {
+    let item = key + encodeURIComponent(value.content) // 1. document.cookie 新增非全覆盖 2. 注： cookie值可存中文,但最好转一下
+    if (value.expire) { // expire 时间戳
+      const expireTime = `;expires=${value.expire.toGMTString()}` // 添加过期时间，但expires 不会体现先cookie字符串中
+      item += expireTime
+    }
+    document.cookie = item
+  }
+}
+
+let cbIndex = 0
+let noop = function () {}
+const DEFAULT_TIMEOUT = 60 * 1000
+/**
+ *
+ * @param {String} url
+ * @param {Object} options
+ * @param {Function} okCB
+ * @description JSONP 跨域
+ * @example
+ * options: {
+ *   prefix: '', name place
+ *   name: 'jsonpName', jsonpName in window
+ *   params: {}, queryString
+ *   timeout: 6000, timeout
+ *   cbName: '', jsonp callback name in url
+ * }
+ */
+const jsonp = function (url, options = {}, okCB) {
+  if (typeof options === 'function') {
+    okCB = options
+    options = {}
+  }
+  let prefix = options.prefix || '__cn'
+  let id = options.name || (prefix + (cbIndex++))
+  let cbName = options.cbName || 'callback'
+  let timeout = options.timeout || DEFAULT_TIMEOUT
+  let target = document.getElementsByTagName('script')[0] || document.head
+  let script
+  let timer
+  if (timeout) {
+    timer = setTimeout(function () {
+      cleanup()
+      if (okCB) {
+        okCB(new Error('jsonp timeout!'))
+      }
+    })
+  }
+  function cleanup () {
+    if (script.parentNode) {
+      script.parentNode.removeChild(script)
+      window[id] = noop
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }
+  function cancel () {
+    if (window[id]) {
+      cleanup()
+    }
+  }
+  window[id] = function (data) {
+    cleanup()
+    if (okCB) {
+      okCB(null, data)
+    }
+  }
+  url += '?'
+  if (options.params) {
+    for (let [key, value] of Object.entries(options.params)) {
+      url += `&${key}=${encodeURIComponent(value)}`
+    }
+  }
+  url += cbName
+
+  script = document.createElement('script')
+  script.src = url
+  target.parentNode.insertBefore(script, target)
+
+  return cancel
+}
 export default {
   trim,
   isEmptyObj,
@@ -185,8 +341,12 @@ export default {
   timeFormat,
   moneyFormat,
   NumberFormat,
+  StringFormat,
   dataURI2Blob,
   dataURI2File,
   dataURI2FormData,
   axiosSendFormData,
+  getCookie,
+  setCookie,
+  jsonp,
 }
