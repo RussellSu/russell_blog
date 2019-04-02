@@ -17,5 +17,5 @@ Vue.config.productionTip = false
 new Vue({
   // el: '#signup',
   // router,
-  render: h => h(Signup)
+  render: h => h(Signup),
 }).$mount('#signup')

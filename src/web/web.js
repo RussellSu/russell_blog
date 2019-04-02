@@ -25,6 +25,6 @@ Vue.filter('time_format', (value, formatStr = 'YYYYMMDD') => Moment(value).forma
 const vue = new Vue({
   router,
   store,
-  render: h => h(Web)
+  render: h => h(Web),
 }).$mount('#web')
 window.vueVO = vue

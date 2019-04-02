@@ -47,12 +47,12 @@ const deepClone = function (data) {
   }
   if (type === 'array') {
     for (let i = 0; i < data.length; i++) {
-      temp.push(_this.deepCopy(data[i]))
+      temp.push(_this.deepClone(data[i]))
     }
   }
   else if (type === 'object') {
-    for (let [key, value] of data) {
-      temp[key] = _this.deepCopy(value)
+    for (let [key, value] of Object.entries(data)) {
+      temp[key] = _this.deepClone(value)
     }
   }
   return temp

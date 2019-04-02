@@ -57,7 +57,7 @@ export default {
       phoneNumber: '',
       username: '',
       password: '',
-      password2: ''
+      password2: '',
     }
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
         phoneNumber: _this.phoneNumber,
         username: _this.username,
         password: _this.password,
-        password2: _this.password2
+        password2: _this.password2,
       }
       this.$http
         .post('/api/users/register', { data: JSON.stringify(data) })
@@ -114,8 +114,8 @@ export default {
             alert(JSON.stringify(err.response))
           }
         })
-    }
-  }
+    },
+  },
 }
 </script>
 
