@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Articles from '@/web/components/articles'
-import ArticleItem from '@/web/components/ArticleItem'
-import Videos from '@/web/components/Videos'
-import Video from '@/web/components/Video'
-import Links from '@/web/components/Links'
+// import Articles from '@/web/components/articles'
+// import ArticleItem from '@/web/components/ArticleItem'
+// import Videos from '@/web/components/Videos'
+// import Video from '@/web/components/Video'
+// import Links from '@/web/components/Links'
 import Author from '@/web/components/Author'
 import Me from '@/web/components/Me'
-import EditArticle from '@/web/components/EditArticle'
-import NotFoundPage from '@/web/components/notFoundPage'
+// import EditArticle from '@/web/components/EditArticle'
+// import NotFoundPage from '@/web/components/notFoundPage'
 import store from '@/web/store'
 
 Vue.use(Router)
@@ -19,12 +19,16 @@ let router = new Router({
     {
       path: '/',
       name: 'home',
-      redirect: '/articles'
+      redirect: '/articles',
     },
     {
       path: '/articles',
       name: 'articles',
-      component: Articles,
+      component: resolve => {
+        import('@/web/components/articles').then(module => {
+          resolve(module)
+        })
+      },
       // children: [
       //   {
       //     path: ':id',
@@ -36,40 +40,60 @@ let router = new Router({
     {
       path: '/articles/:id',
       name: 'articleItem',
-      component: ArticleItem,
+      component: resolve => {
+        import('@/web/components/ArticleItem').then(module => {
+          resolve(module)
+        })
+      },
     },
     {
       path: '/editArticle',
       name: 'editArticle',
-      component: EditArticle,
+      component: resolve => {
+        import('@/web/components/EditArticle').then(module => {
+          resolve(module)
+        })
+      },
       meta: {
-        requireAuth: true // 需要登陆
-      }
+        requireAuth: true, // 需要登陆
+      },
     },
     {
       path: '/videos',
       name: 'videos',
-      component: Videos,
+      component: resolve => {
+        import('@/web/components/Videos').then(module => {
+          resolve(module)
+        })
+      },
     },
     {
       path: '/videos/:id',
       name: 'video',
-      component: Video,
+      component: resolve => {
+        import('@/web/components/Video').then(module => {
+          resolve(module)
+        })
+      },
     },
     {
       path: '/links',
       name: 'links',
-      component: Links
+      component: resolve => {
+        import('@/web/components/Links').then(module => {
+          resolve(module)
+        })
+      },
     },
     {
       path: '/author',
       name: 'author',
-      component: Author
+      component: Author,
     },
     {
       path: '/me',
       name: 'me',
-      component: Me
+      component: Me,
     },
     // {
     //   path: '/about',
@@ -80,11 +104,24 @@ let router = new Router({
     //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     // },
     {
+      path: '/lab',
+      name: 'lab',
+      component: resolve => {
+        import('@/web/components/Lab').then(module => {
+          resolve(module)
+        })
+      },
+    },
+    {
       path: '*',
       name: 'notFoundPage',
-      component: NotFoundPage
-    }
-  ]
+      component: resolve => {
+        import('@/web/components/notFoundPage').then(module => {
+          resolve(module)
+        })
+      },
+    },
+  ],
 })
 router.beforeEach((to, from, next) => {
   // let _this = this
