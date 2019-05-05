@@ -1,5 +1,5 @@
 <template>
-<div class="media-player-wrapper" :class="{collapsed: collapsePlayList}">
+<div class="media-player-wrapper" :class="{collapsed: playListCollapseFlg}" v-clickoutside="collapsePlayList">
   <ol class="song-list">
     <li v-for="(song, index) in songList" :key="song._id">
       【{{song.name}}】
@@ -21,12 +21,16 @@
 <script>
 //  import sidebar from '@/web/navList'
 import { mapState, mapGetters } from 'vuex'
+import clickoutside from '@/web/directives/clickoutside.js'
 export default {
   name: 'mediaPlay',
+  directives: {
+    clickoutside,
+  },
   data () {
     return {
       songList: [],
-      collapsePlayList: true,
+      playListCollapseFlg: true,
     }
   },
   created () {
@@ -48,7 +52,10 @@ export default {
   },
   methods: {
     tooglePlayList () {
-      this.collapsePlayList = !this.collapsePlayList
+      this.playListCollapseFlg = !this.playListCollapseFlg
+    },
+    collapsePlayList () {
+      this.playListCollapseFlg = true
     },
     getSongList () {
       let _this = this
