@@ -3,7 +3,7 @@
   <nav class="side-nav">
     <div class="user-info" v-if="isLogin" :style="{'background-image':`url(${thumbnail})`}">
     </div>
-    <div class="user-info hand" v-else @click="toLogin">未登录</div>
+    <div class="user-info hand" v-else @click="toLogin">去登录</div>
     <span>
       {{fullname}}
       {{nickname}}
@@ -42,6 +42,8 @@ var navList = [
   { title: 'links', routeName: '/links' },
   { title: 'videos', routeName: '/videos' },
   { title: 'author', routeName: '/author' },
+  { title: 'lab', routeName: '/lab' },
+  { title: 'chatroom', routeName: '/chatroom' },
   { title: 'me', routeName: '/me' },
 ]
 export default {
